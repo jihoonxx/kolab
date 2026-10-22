@@ -799,7 +799,7 @@ const pubLi = (p,rev) => {
   const venue = rev ? `${v?esc(v)+' · ':''}${y}` : `${esc(v)}, ${y}`;
   const doi = !rev && DOI[t];
   const href = doi ? 'https://doi.org/'+doi : (!rev ? 'https://scholar.google.com/scholar?q='+encodeURIComponent('"'+t+'"') : '');
-  return `<li><span class="tag${rev?' rev':''}">${esc(tag)}</span><div><span class="t">${href?`<a class="pl" href="${href}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</span><span class="a">${bold(a)}</span><span class="v">${venue}</span>${note&&!rev?`<span class="note">${esc(note)}</span>`:''}${kw?`<span class="kws">${ptype?`<span class="ptype">${esc(ptype)}</span>`:''}${role?`<span class="ptype">${role}</span>`:''}${kw.map(k=>`<span class="kw2">${esc(k)}</span>`).join('')}</span>`:''}${href?`<a class="doi" href="${href}" target="_blank" rel="noopener">${doi?'DOI '+doi:'Google Scholar'} ↗</a>`:''}</div></li>`;
+  return `<li><span class="tag${rev?' rev':''}">${esc(tag)}</span><div><span class="t">${href?`<a class="pl" href="${href}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</span><span class="a">${bold(a)}</span><span class="v">${venue}</span>${note&&!rev?`<span class="note">${esc(note)}</span>`:''}${kw?`<span class="kws">${kw.map(k=>`<span class="kw2">${esc(k)}</span>`).join('')}</span>`:''}${href?`<a class="doi" href="${href}" target="_blank" rel="noopener">${doi?'DOI '+doi:'Google Scholar'} ↗</a>`:''}</div></li>`;
 };
 document.getElementById('pubs-rev').innerHTML = REV.map(p=>pubLi(p,true)).join('');
 const selHTML = SEL.map(p=>pubLi(p)).join('');
