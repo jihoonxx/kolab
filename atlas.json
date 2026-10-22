@@ -1,0 +1,135 @@
+[
+  {
+    "id": "tumor-angiogenesis",
+    "title": "Tumor angiogenesis",
+    "type": "fluor",
+    "src": "images/research/tumor-angiogenesis.jpg",
+    "note": ""
+  },
+  {
+    "id": "corneal",
+    "title": "Corneal neovascularization",
+    "type": "fluor",
+    "src": "images/research/corneal.jpg",
+    "note": ""
+  },
+  {
+    "id": "perfusable-vessel",
+    "title": "Perfusable blood vessel",
+    "type": "fluor",
+    "src": "images/research/perfusable-vessel.jpg",
+    "note": ""
+  },
+  {
+    "id": "brain-organoid",
+    "title": "Brain organoid-on-a-chip",
+    "type": "fluor",
+    "src": "images/research/brain-organoid.jpg",
+    "note": ""
+  },
+  {
+    "id": "vascular-mimicry",
+    "title": "Vascular mimicry",
+    "type": "r3d",
+    "src": "images/research/vascular-mimicry.jpg",
+    "note": ""
+  },
+  {
+    "id": "vascularized-skin",
+    "title": "Vascularized skin",
+    "type": "r3d",
+    "src": "images/research/vascularized-skin.jpg",
+    "note": ""
+  },
+  {
+    "id": "immune-cells",
+    "title": "Tumor immune microenvironment",
+    "type": "fluor",
+    "src": "images/research/immune-cells.jpg",
+    "note": ""
+  },
+  {
+    "id": "tumor-vasculature",
+    "title": "Vascularized tumor",
+    "type": "r3d",
+    "src": "images/research/tumor-vasculature.jpg",
+    "note": ""
+  },
+  {
+    "id": "keratinocytes",
+    "title": "Keratinocytes",
+    "type": "fluor",
+    "src": "images/research/keratinocytes.jpg",
+    "note": ""
+  },
+  {
+    "id": "organoids",
+    "title": "Patient-derived organoids",
+    "type": "bf",
+    "src": "images/research/organoids.jpg",
+    "note": ""
+  },
+  {
+    "id": "ai-segmentation",
+    "title": "AI vessel segmentation",
+    "type": "ai",
+    "src": "images/research/ai-segmentation.jpg",
+    "note": ""
+  },
+  {
+    "id": "stretchable",
+    "title": "Stretchable culture",
+    "type": "fluor",
+    "src": "images/research/stretchable.jpg",
+    "note": ""
+  },
+  {
+    "id": "tumor-3d",
+    "title": "Vascularized tumor spheroid",
+    "type": "r3d",
+    "src": "images/research/tumor-3d.jpg",
+    "note": ""
+  },
+  {
+    "id": "coculture",
+    "title": "Vascular co-culture",
+    "type": "fluor",
+    "src": "images/research/coculture.jpg",
+    "note": ""
+  },
+  {
+    "id": "endothelial-ring",
+    "title": "Endothelial network",
+    "type": "fluor",
+    "src": "images/research/endothelial-ring.jpg",
+    "note": ""
+  },
+  {
+    "id": "platforms",
+    "title": "3D cell culture platforms",
+    "type": "dev",
+    "src": "images/research/platforms.jpg",
+    "note": ""
+  },
+  {
+    "id": "chips",
+    "title": "Microfluidic chips",
+    "type": "dev",
+    "src": "images/research/chips.jpg",
+    "note": ""
+  },
+  {
+    "id": "mps-plate",
+    "title": "Microphysiological system plate",
+    "type": "dev",
+    "src": "images/research/mps-plate.jpg",
+    "note": ""
+  },
+  {
+    "id": "chip-flow",
+    "title": "Chip flow test",
+    "type": "dev",
+    "src": "images/research/chip-flow.jpg",
+    "note": ""
+  }
+]

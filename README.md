@@ -7,7 +7,7 @@
    - Repository name: `kolab` (원하는 이름으로 해도 됩니다)
    - **Public**을 선택하고 **Create repository**를 누릅니다.
 3. 새 저장소 화면에서 **uploading an existing file** 링크를 누릅니다.
-4. 압축을 푼 폴더 **안의 내용 전체**(`index.html`, `gallery.json`, `images` 폴더, `.nojekyll`, `README.md`)를 끌어다 놓고 **Commit changes**를 누릅니다.
+4. 압축을 푼 폴더 **안의 내용 전체**(`index.html`, `gallery.json`, `atlas.json`, `images` 폴더, `.nojekyll`, `README.md`)를 끌어다 놓고 **Commit changes**를 누릅니다.
    - `.nojekyll`이 숨김 파일이라 안 보이면 없어도 사이트는 동작합니다.
 5. 저장소의 **Settings → Pages**로 갑니다.
    - Source: **Deploy from a branch**
@@ -42,6 +42,27 @@
 **갤러리가 안 보이면**: `gallery.json`의 쉼표나 따옴표가 빠졌을 가능성이 큽니다. https://jsonlint.com 에 내용을 붙여넣어 검사할 수 있습니다.
 
 글을 지우려면 `gallery.json`에서 해당 덩어리(`{ ... },`)를 지우고, 필요하면 사진 파일도 삭제하세요.
+
+
+## 2-1. 이미지 아틀라스(image atlas)에 연구 이미지 추가하기
+
+1. `images/research` 폴더에 이미지를 올립니다. (예: `liver-chip.jpg`, 가로 1200~2000px 권장)
+2. `atlas.json`을 열어 Edit → 원하는 위치에 아래 형식으로 한 덩어리를 추가합니다. **쉼표 주의.**
+
+```json
+  {
+    "id": "liver-chip",
+    "title": "Liver-on-a-chip",
+    "type": "fluor",
+    "src": "images/research/liver-chip.jpg",
+    "note": "Confocal, 20×"
+  },
+```
+
+- `type`은 다음 중 하나: `fluor`(형광), `r3d`(3D 재구성), `bf`(명시야), `ai`(AI 분석), `dev`(디바이스)
+- `note`는 확대 보기에서 제목 옆에 표시됩니다 (비워도 됩니다).
+- `atlas.json`의 순서가 화면 순서입니다.
+- 첫 화면의 큰 이미지와 연구 분야 이미지는 `images/research/` 안의 같은 이름 파일(예: `tumor-angiogenesis.jpg`)을 **같은 이름의 고해상도 원본으로 덮어쓰면** 바로 바뀝니다.
 
 ## 3. 다른 내용 수정하기
 

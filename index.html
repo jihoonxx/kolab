@@ -2,12 +2,13 @@
 <html lang="ko">
 <head>
 <title>KOLAB · Hanyang University</title>
+<meta name="theme-color" content="#06080a">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="KOLAB – Laboratory for Advanced Microphysiological Systems, Department of Bioengineering, Hanyang University (PI: Prof. Jihoon Ko).">
 <meta property="og:title" content="KOLAB · Hanyang University">
 <meta property="og:description" content="Laboratory for Advanced Microphysiological Systems, Department of Bioengineering, Hanyang University.">
-<meta property="og:image" content="images/people/ko.jpg">
+<meta property="og:image" content="images/research/tumor-angiogenesis.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,12 +23,6 @@
   --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   --w:860px;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141819; --surface:#1d2324; --fg:#e4e9ea; --muted:#94a2a7; --line:#2c3437;
-  --accent:#5cb8d6; --accent-soft:#16323b; --hot:#f07896; --hot-soft:#3a1b25; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#141819; --surface:#1d2324; --fg:#e4e9ea; --muted:#94a2a7; --line:#2c3437;
-  --accent:#5cb8d6; --accent-soft:#16323b; --hot:#f07896; --hot-soft:#3a1b25; color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
@@ -211,6 +206,99 @@ code,.kw{font:500 .86em/1 var(--mono);background:var(--accent-soft);color:var(--
 
 footer{border-top:1px solid var(--line);padding-block:22px;font:400 12px/1.6 var(--mono);color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between}
+/* ===== Microscope dark: fluorescence-on-black. Layout: full-bleed figure bands + 1080px column; channel colors (DAPI/GFP/RFP) encode image modality only ===== */
+:root{
+  --bg:#06080a; --surface:#0e1215; --surface2:#141a1e; --fg:#e6ecee; --muted:#8c9aa1; --line:#1f282d;
+  --accent:#62d3e6; --accent-soft:#0f2a31; --hot:#ff6f91; --hot-soft:#2c121b;
+  --ch-blue:#5b7cff; --ch-green:#3fdc8a; --ch-red:#ff5a6e; --ch-mag:#e46cff; --ch-white:#d9dfe2;
+  --w:1080px; color-scheme:dark;
+}
+html,body{overflow-x:clip}
+header{background:color-mix(in srgb,var(--bg) 82%,transparent)}
+.brand small{color:var(--accent)}
+.bleed{width:100vw;margin-left:calc(50% - 50vw)}
+.prose,.lede{max-width:70ch}
+h1{font-stretch:118%;font-weight:650}
+h2{font-stretch:112%}
+.fig{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* hero */
+.hero2{position:relative;background:radial-gradient(120% 90% at 78% 40%,#0d1f1a 0%,var(--bg) 60%);border-bottom:1px solid var(--line);margin-top:-44px}
+.hero2 .in{max-width:var(--w);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:56px 48px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:44px;align-items:center}
+.hero2 h1{font-size:clamp(34px,5.4vw,62px);line-height:1.02;margin:14px 0 18px;letter-spacing:-.02em}
+.hero2 h1 em{font-style:normal;color:var(--ch-green)}
+.hero2 p{color:#b7c3c8;font-size:15.5px;max-width:46ch}
+.hero2 .ko2{color:var(--muted);font-size:14px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.cta a{font:500 13px/1 var(--mono);padding:12px 16px;border-radius:3px;border:1px solid var(--line);color:var(--fg)}
+.cta a.pri{background:var(--accent);border-color:var(--accent);color:#04161a}
+.cta a:hover{text-decoration:none;border-color:var(--accent)}
+.plate{margin:0;position:relative}
+.plate img{width:100%;display:block;border-radius:2px;box-shadow:0 30px 80px -20px rgba(63,220,138,.18)}
+.plate figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font:400 12px/1.4 var(--mono);color:var(--muted)}
+.plate figcaption b{color:var(--fg);font-weight:500}
+@media (max-width:820px){.hero2 .in{grid-template-columns:1fr;gap:28px;padding-block:36px 32px}}
+
+/* strip */
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:4px}
+.strip a{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:var(--surface)}
+.strip img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .5s ease;filter:saturate(1.05)}
+.strip a:hover img{transform:scale(1.06)}
+.strip span{position:absolute;left:8px;bottom:7px;font:500 10.5px/1.2 var(--mono);color:#fff;text-shadow:0 1px 6px #000;letter-spacing:.04em}
+@media (max-width:700px){.strip{grid-template-columns:repeat(3,1fr)}}
+
+/* theme cards */
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.theme{display:flex;flex-direction:column;gap:10px;color:var(--fg);min-width:0}
+.theme:hover{text-decoration:none}
+.theme .im{aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--surface)}
+.theme img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.theme:hover img{transform:scale(1.05)}
+.theme h3{font-size:16px;margin:0}
+.theme p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.55}
+@media (max-width:860px){.themes{grid-template-columns:repeat(2,1fr)}}
+
+.pi-row{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:center;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pi-row img{width:120px;height:120px;border-radius:50%;object-fit:cover}
+.pi-row > div{min-width:0}
+.pi-row .links{justify-content:flex-start}
+@media (max-width:520px){.pi-row{grid-template-columns:1fr}}
+
+/* modality tags */
+.mod{display:inline-flex;align-items:center;gap:6px;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mod i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.mod.fluor i{background:var(--ch-green);box-shadow:0 0 8px var(--ch-green)}
+.mod.r3d i{background:var(--ch-red);box-shadow:0 0 8px var(--ch-red)}
+.mod.bf i{background:var(--ch-white)}
+.mod.dev i{background:var(--accent)}
+.mod.ai i{background:var(--ch-mag);box-shadow:0 0 8px var(--ch-mag)}
+
+/* research figures */
+.rfig{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:36px;align-items:center;padding:38px 0;border-top:1px solid var(--line)}
+.rfig:nth-child(even){grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.rfig:nth-child(even) .ri{order:2}
+.rfig .ri{position:relative;margin:0;cursor:zoom-in;background:#000;border-radius:2px;overflow:hidden}
+.rfig .ri img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .6s ease}
+.rfig .ri:hover img{transform:scale(1.03)}
+.rfig .rt{min-width:0;display:flex;flex-direction:column;gap:10px}
+.rfig h3{font-size:22px;font-stretch:110%;margin:0}
+.rfig p{font-size:14.5px;color:#b9c4c9;margin:0}
+.rfig.noimg{grid-template-columns:1fr}
+@media (max-width:760px){.rfig,.rfig:nth-child(even){grid-template-columns:1fr;gap:18px}.rfig:nth-child(even) .ri{order:0}}
+
+/* atlas */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 24px}
+.chips button{font:500 12px/1 var(--mono);color:var(--muted);background:none;border:1px solid var(--line);border-radius:99px;padding:8px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chips button[aria-pressed="true"]{color:var(--fg);border-color:var(--accent);background:var(--accent-soft)}
+.masonry{columns:3 280px;column-gap:12px}
+.tile{break-inside:avoid;margin:0 0 12px;position:relative;cursor:zoom-in;background:#000;border-radius:2px;overflow:hidden}
+.tile img{width:100%;display:block;transition:transform .6s ease,opacity .3s}
+.tile:hover img{transform:scale(1.03)}
+.tile figcaption{position:absolute;inset:auto 0 0 0;padding:28px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.85));display:flex;flex-direction:column;gap:4px}
+.tile figcaption b{font:600 14px/1.3 var(--display);color:#fff}
+.tile figcaption .mod{color:#c9d3d7}
+.atlas-note{color:var(--muted);font-size:13px;margin-top:18px}
+
 </style>
 </head>
 <body>
@@ -219,52 +307,66 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-betw
   <div class="wrap bar">
     <a class="brand" href="#about">KOLAB <small>HANYANG UNIV.</small></a>
     <nav id="nav">
-      <a href="#about">about</a>
-      <a href="#people">members</a>
+      <a href="#about">home</a>
       <a href="#research">research</a>
+      <a href="#atlas">image atlas</a>
       <a href="#publications">publications</a>
+      <a href="#people">people</a>
       <a href="#news">news</a>
       <a href="#moments">moments</a>
       <a href="#contact">contact</a>
-      <button id="theme" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-      </button>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
 
-<!-- ABOUT -->
+<!-- HOME -->
 <section class="view" id="v-about">
-  <div class="hero">
-    <span class="eyebrow">Advanced Biosystems Engineering Laboratory</span>
-    <h1>Laboratory for Advanced<br>Microphysiological Systems</h1>
-    <span class="ko">한양대학교 생명공학과 · 미세생리시스템 연구실</span>
-    <img class="portrait" src="images/people/ko.jpg" alt="Prof. Jihoon Ko">
-    <div class="pi"><b>Jihoon</b> Ko, Ph.D.</div>
-    <div class="pi-meta">Assistant Professor, Department of Bioengineering, Hanyang University<br><span class="mail">kchip [at] hanyang.ac.kr</span></div>
-    <div class="links">
-      <a href="https://scholar.google.co.kr/citations?user=h2xps9oAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a>
-      <a href="https://orcid.org/0000-0002-6555-3728" target="_blank" rel="noopener">ORCID</a>
-      <a href="https://www.instagram.com/kolabkr" target="_blank" rel="noopener">Instagram</a>
+  <div class="hero2 bleed">
+    <div class="in">
+      <div>
+        <span class="fig">KOLAB · Hanyang University</span>
+        <h1>Human tissue,<br><em>engineered</em> on a chip.</h1>
+        <p>We build vascularized microphysiological systems that recreate human tissue microenvironments, and we read them with quantitative, AI-enabled imaging.</p>
+        <p class="ko2">한양대학교 생명공학과 미세생리시스템 연구실 · Laboratory for Advanced Microphysiological Systems</p>
+        <div class="cta"><a class="pri" href="#research">Explore research</a><a href="#atlas">Image atlas →</a></div>
+      </div>
+      <figure class="plate" data-atlas="tumor-angiogenesis">
+        <img src="images/research/tumor-angiogenesis.jpg" alt="Tumor angiogenesis on a chip: green vessels sprouting toward a red tumor spheroid">
+        <figcaption><span><b>Fig. 01</b> · Tumor angiogenesis on a chip</span><span class="mod fluor"><i></i>fluorescence</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="strip bleed" id="strip"></div>
+
+  <h2>what we study</h2>
+  <div class="themes">
+    <a class="theme" href="#research"><div class="im"><img src="images/research/perfusable-vessel.jpg" alt="Perfusable blood vessel network"></div><h3>Vascularized human models</h3><p>Engineered, perfusable microvascular networks inside organ and tumor models.</p></a>
+    <a class="theme" href="#research"><div class="im"><img src="images/research/tumor-vasculature.jpg" alt="3D reconstruction of a vascularized tumor"></div><h3>Tumor &amp; immune microenvironment</h3><p>Patient-derived tumors, immune cell trafficking and immune–vascular crosstalk.</p></a>
+    <a class="theme" href="#research"><div class="im"><img src="images/research/platforms.jpg" alt="Microfluidic culture platforms"></div><h3>High-throughput platforms</h3><p>Standardized, automation-ready organ chips for drug screening and safety.</p></a>
+    <a class="theme" href="#research"><div class="im"><img src="images/research/ai-segmentation.jpg" alt="AI segmentation of vessel networks"></div><h3>AI bioimage analysis</h3><p>Virtual staining, segmentation and label-free phenotyping of 3D tissues.</p></a>
+  </div>
+
+  <h2>principal investigator</h2>
+  <div class="pi-row">
+    <img src="images/people/ko.jpg" alt="Prof. Jihoon Ko">
+    <div>
+      <h3 style="font-size:19px;margin:0">Jihoon Ko, Ph.D. <span style="color:var(--muted);font-weight:400">고지훈</span></h3>
+      <span class="role">Assistant Professor · Department of Bioengineering, Hanyang University</span>
+      <span class="mail">kchip [at] hanyang.ac.kr</span>
+      <div class="links" style="margin-top:10px">
+        <a href="#people">Profile</a>
+        <a href="https://scholar.google.co.kr/citations?user=h2xps9oAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-6555-3728" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.instagram.com/kolabkr" target="_blank" rel="noopener">Instagram</a>
+      </div>
     </div>
   </div>
 
-  <div class="prose">
-    <p>We develop advanced <span class="kw">Microphysiological Systems</span> through a multidisciplinary approach that integrates <span class="kw">microfluidics</span>, <span class="kw">3D cell culture</span>, and advanced biomaterials. Our platforms enable the study of disease mechanisms, drug efficacy evaluation, and personalized medicine. By bridging lab discoveries and real-world applications, we contribute to human health and to alternatives to animal testing.</p>
-    <p>우리 연구실은 미세유체기술, 3D 세포 배양, 첨단 생체재료를 통합하는 다학제적 접근을 통해 첨단 Microphysiological Systems를 개발합니다. 이러한 플랫폼은 질병 메커니즘 연구, 약물 효능 평가, 개인 맞춤형 의학 발전을 가능하게 합니다.</p>
-    <p>Our research focuses on:</p>
-    <ul>
-      <li>Vascularized human organ models and engineered microvascular networks</li>
-      <li>Tumor–immune microenvironments and patient-derived disease models</li>
-      <li>High-throughput, automation-ready organ-on-a-chip platforms for drug screening and safety assessment</li>
-      <li><span class="kw">AI</span>-enabled bioimage analysis for label-free phenotyping of complex 3D tissues</li>
-    </ul>
-    <div class="call">
-      <h3>We are actively recruiting passionate and driven students</h3>
-      <p>If you are interested in next-generation biomedical technologies, including microfluidics, 3D printing, 3D cell culture, and AI-based data analysis, come explore, learn, and create with us at Hanyang University. <a href="#contact">How to apply →</a></p>
-    </div>
+  <div class="call">
+    <h3>We are recruiting graduate students and undergraduate researchers</h3>
+    <p>Microfluidics, 3D printing, 3D cell culture, organoids and AI-based image analysis. 관심 있는 분들은 CV와 성적표를 보내주세요. <a href="#contact">How to apply →</a></p>
   </div>
 
   <h2>news</h2>
@@ -278,7 +380,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-betw
 
 <!-- MEMBERS -->
 <section class="view" id="v-people">
-  <h1>members</h1>
+  <h1>people</h1>
   <p class="lede">Principal investigator, graduate students, undergraduate researchers and alumni.</p>
 
   <div class="pi-card">
@@ -329,7 +431,10 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-betw
   <h1>research</h1>
   <p class="lede">Our lab drives biomedical engineering to benefit society through real-world applications in healthcare, pharmaceuticals, cosmetics, and beyond.</p>
 
-  <h2 style="margin-top:20px">funded projects <span style="color:var(--muted);font-weight:400;font-size:.7em">ongoing</span></h2>
+
+  <div id="topics"></div>
+
+  <h2 >funded projects <span style="color:var(--muted);font-weight:400;font-size:.7em">ongoing</span></h2>
   <ul class="funds">
     <li><span>Multi-organoid digital twin platform for predicting therapeutic responses in autoimmune diseases<br><small style="color:var(--muted)">Excellent Young Researcher Program · MSIT / NRF</small><span class="pi-tag">PI</span></span><span class="yrs">2026–2031</span></li>
     <li><span>Immune cell discovery platform for cancer therapy<br><small style="color:var(--muted)">Engineering Research Center (ERC) · MSIT / NRF · Co-Investigator</small></span><span class="yrs">2023–2030</span></li>
@@ -338,8 +443,23 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-betw
     <li><span>Customized 3D biofabrication materials and components for drug safety evaluation<br><small style="color:var(--muted)">Materials &amp; Components Technology Program · MOTIE / KEIT · Co-Investigator</small></span><span class="yrs">2024–2027</span></li>
   </ul>
 
-  <h2>research areas</h2>
-  <div id="topics"></div>
+</section>
+
+<!-- ATLAS -->
+<section class="view" id="v-atlas">
+  <span class="fig">Image atlas</span>
+  <h1>Seeing inside the chip</h1>
+  <p class="lede">Confocal, 3D-reconstructed and brightfield images from our microphysiological systems, alongside the devices that hold them. Select an image to view it larger.</p>
+  <div class="chips" id="chips" role="group" aria-label="Filter by image type">
+    <button type="button" data-f="all" aria-pressed="true">All</button>
+    <button type="button" data-f="fluor" aria-pressed="false"><span class="mod fluor"><i></i></span>Fluorescence</button>
+    <button type="button" data-f="r3d" aria-pressed="false"><span class="mod r3d"><i></i></span>3D reconstruction</button>
+    <button type="button" data-f="bf" aria-pressed="false"><span class="mod bf"><i></i></span>Brightfield</button>
+    <button type="button" data-f="ai" aria-pressed="false"><span class="mod ai"><i></i></span>AI analysis</button>
+    <button type="button" data-f="dev" aria-pressed="false"><span class="mod dev"><i></i></span>Devices</button>
+  </div>
+  <div class="masonry" id="masonry"></div>
+  <p class="atlas-note">Images © KOLAB. Please contact us before reuse.</p>
 </section>
 
 <!-- PUBLICATIONS -->
@@ -421,13 +541,6 @@ const IMG = {
 "taeim": "images/people/taeim.jpg",
 "jaehong": "images/people/jaehong.jpg",
 "yedam": "images/people/yedam.jpg",
-"r_platform": "images/research/platform.jpg",
-"r_ai": "images/research/ai.jpg",
-"r_tumor": "images/research/tumor.jpg",
-"r_skin": "images/research/skin.jpg",
-"r_time": "images/research/time.jpg",
-"r_organoid": "images/research/organoid.jpg",
-"r_brain": "images/research/brain.jpg",
 "g0": "images/gallery/g0.jpg",
 "g1": "images/gallery/g1.jpg",
 "g2": "images/gallery/g2.jpg",
@@ -484,21 +597,24 @@ const alumni = [
 document.getElementById('alumni').innerHTML = alumni.map(a=>`<li>${avatar(a[0],a[2],'')}<div><b>${a[1]}</b> ${a[2]}<small>${a[3]}</small></div></li>`).join('');
 
 /* ---------- research ---------- */
+const MODN = {fluor:'fluorescence', r3d:'3D reconstruction', bf:'brightfield', dev:'device', ai:'AI analysis'};
+const modTag = m => `<span class="mod ${m}"><i></i>${MODN[m]||''}</span>`;
 const topics = [
- ['r_platform','Customizable 3D Cell Culture Platforms','We engineer 3D cell culture chips using advanced microfabrication, from microfluidic chip arrays and modular systems to compact well-plate devices. They mimic in vivo conditions for high-resolution studies of cell behavior and disease. We are now focused on organoid-on-a-chip systems for more physiologically relevant in vitro models.','',''],
- ['r_ai','AI/ML-driven Data Analysis','We use machine learning to analyze complex biomedical images, enabling virtual staining, segmentation, and morphological quantification. A user-friendly graphical interface is in development so these tools are accessible to every lab, reducing reliance on traditional staining.','',''],
- ['','Standardized and Automation-Compatible Organ Chip','We are establishing standardized organ-on-a-chip formats and workflows fully compatible with automated liquid handling and dispensing. Consistent chip specifications and procedures reduce operator-dependent variability and support reproducible, scalable high-throughput screening.','','Sangyoon Kyung'],
- ['','Angiogenesis-on-a-Chip','A 3D angiogenesis model within a microfluidic chip enables real-time live imaging of vascular sprouting, remodeling, and barrier function. Patient-derived endothelial cells capture patient-specific vascular morphogenesis for personalized drug screening in a high-throughput format.','','Jaehong Min & Sujin Kim'],
- ['r_tumor','Vascularized Tumor-on-a-Chip','We engineer perfusable microvascular networks within 3D tumor spheroids and organoids to observe tumor–vasculature interactions in real time. Using patient-derived specimens, the platform serves as an in vitro avatar for personalized drug screening, drug penetration, and resistance studies.','',''],
- ['r_skin','Vascularized Skin-on-a-Chip','This model integrates epidermis, dermis, and perfusable microvascular networks. Designed for high-throughput use, it enables reliable testing of skin irritation and sensitization as an alternative to animal-based assays.','Kolmar Korea',''],
- ['r_time','Tumor Immune Microenvironment (TIME)','We recreate the tumor immune microenvironment in vitro to study macrophage polarization, endothelial interaction, and tumor–immune crosstalk, with real-time analysis of immune responses for evaluating immunotherapies.','',''],
- ['r_organoid','Patient-derived Organoid Development','Patient-specific organoids derived from clinical specimens recapitulate key structural and functional features of native tissue, enabling personalized studies of disease progression and drug response.','Gil Medical Center','Yedam Lee'],
- ['r_brain','Brain Organoid-on-a-Chip','Our platform supports complex neural networks and axonal myelination for studies of pain signaling, analgesic screening, and neurological disorders, and for evaluating cell-based therapies for neurodegenerative and neuropathic conditions.','KIST','Heesuh Yi'],
+ ['platforms','dev','Customizable 3D Cell Culture Platforms','We engineer 3D cell culture chips using advanced microfabrication, from microfluidic chip arrays and modular systems to compact well-plate devices. They mimic in vivo conditions for high-resolution studies of cell behavior and disease. We are now focused on organoid-on-a-chip systems for more physiologically relevant in vitro models.','',''],
+ ['ai-segmentation','ai','AI/ML-driven Data Analysis','We use machine learning to analyze complex biomedical images, enabling virtual staining, segmentation, and morphological quantification. A user-friendly graphical interface is in development so these tools are accessible to every lab, reducing reliance on traditional staining.','',''],
+ ['mps-plate','dev','Standardized and Automation-Compatible Organ Chip','We are establishing standardized organ-on-a-chip formats and workflows fully compatible with automated liquid handling and dispensing. Consistent chip specifications and procedures reduce operator-dependent variability and support reproducible, scalable high-throughput screening.','','Sangyoon Kyung'],
+ ['corneal','fluor','Angiogenesis-on-a-Chip','A 3D angiogenesis model within a microfluidic chip enables real-time live imaging of vascular sprouting, remodeling, and barrier function. Patient-derived endothelial cells capture patient-specific vascular morphogenesis for personalized drug screening in a high-throughput format.','','Jaehong Min & Sujin Kim'],
+ ['tumor-vasculature','r3d','Vascularized Tumor-on-a-Chip','We engineer perfusable microvascular networks within 3D tumor spheroids and organoids to observe tumor–vasculature interactions in real time. Using patient-derived specimens, the platform serves as an in vitro avatar for personalized drug screening, drug penetration, and resistance studies.','',''],
+ ['vascularized-skin','r3d','Vascularized Skin-on-a-Chip','This model integrates epidermis, dermis, and perfusable microvascular networks. Designed for high-throughput use, it enables reliable testing of skin irritation and sensitization as an alternative to animal-based assays.','Kolmar Korea',''],
+ ['immune-cells','fluor','Tumor Immune Microenvironment (TIME)','We recreate the tumor immune microenvironment in vitro to study macrophage polarization, endothelial interaction, and tumor–immune crosstalk, with real-time analysis of immune responses for evaluating immunotherapies.','',''],
+ ['organoids','bf','Patient-derived Organoid Development','Patient-specific organoids derived from clinical specimens recapitulate key structural and functional features of native tissue, enabling personalized studies of disease progression and drug response.','Gil Medical Center','Yedam Lee'],
+ ['brain-organoid','fluor','Brain Organoid-on-a-Chip','Our platform supports complex neural networks and axonal myelination for studies of pain signaling, analgesic screening, and neurological disorders, and for evaluating cell-based therapies for neurodegenerative and neuropathic conditions.','KIST','Heesuh Yi'],
 ];
-document.getElementById('topics').innerHTML = topics.map(t=>`
- <article class="topic${IMG[t[0]]?'':' noimg'}">${IMG[t[0]]?`<img src="${IMG[t[0]]}" alt="${t[1]}">`:''}<div>
-  <h3>${t[1]}</h3><p>${t[2]}</p>
-  ${t[3]?`<span class="collab">In collaboration with ${t[3]}</span><br>`:''}${t[4]?`<span class="credit">Credit: ${t[4]}</span>`:''}</div></article>`).join('');
+document.getElementById('topics').innerHTML = topics.map((t,i)=>`
+ <article class="rfig">
+  <figure class="ri" data-atlas="${t[0]}"><img src="images/research/${t[0]}.jpg" alt="${t[2]}" loading="lazy"></figure>
+  <div class="rt"><span class="fig">Fig. ${String(i+2).padStart(2,'0')}</span><h3>${t[2]}</h3>${modTag(t[1])}<p>${t[3]}</p>
+  ${t[4]?`<span class="collab">In collaboration with ${t[4]}</span>`:''}${t[5]?`<span class="credit">Credit: ${t[5]}</span>`:''}</div></article>`).join('');
 
 /* ---------- publications ---------- */
 // [authors, title, venue, year, note]
@@ -699,8 +815,40 @@ $('posts').addEventListener('click', e=>{
   const p = POSTS[+o.dataset.open]; if(p) lbOpen(p.photos.map(src=>({src,cap:`${p.date} · ${p.title}`})));
 });
 
+/* ---------- image atlas (atlas.json) ---------- */
+let ATLAS = [];
+const STRIP = ['corneal','vascular-mimicry','brain-organoid','perfusable-vessel','immune-cells','keratinocytes'];
+function atlasItems(list){ return list.map(a=>({src:a.src, cap:`${a.title}${a.note?' · '+a.note:''}`})); }
+function openAtlasById(id){
+  const i = ATLAS.findIndex(a=>a.id===id);
+  if (i>=0) lbOpen(atlasItems(ATLAS), i);
+}
+function renderAtlas(f='all'){
+  const list = ATLAS.filter(a=>f==='all'||a.type===f);
+  $('masonry').innerHTML = list.map(a=>`<figure class="tile" data-atlas="${escA(a.id)}"><img src="${escA(a.src)}" alt="${escA(a.title)}" loading="lazy"><figcaption><b>${escA(a.title)}</b>${modTag(a.type)}</figcaption></figure>`).join('');
+}
+function renderStrip(){
+  $('strip').innerHTML = STRIP.map(id=>ATLAS.find(a=>a.id===id)).filter(Boolean)
+    .map(a=>`<a href="#atlas" data-strip="${escA(a.id)}"><img src="${escA(a.src)}" alt="${escA(a.title)}" loading="lazy"><span>${escA(a.title)}</span></a>`).join('');
+}
+fetch('atlas.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{ ATLAS=Array.isArray(d)?d:[]; renderAtlas(); renderStrip(); })
+  .catch(()=>{ $('masonry').innerHTML='<p class="empty">Image atlas could not be loaded (check atlas.json format).</p>'; });
+$('chips').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  $('chips').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b)));
+  renderAtlas(b.dataset.f);
+});
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-strip]');
+  if(s){ e.preventDefault(); e.stopPropagation(); openAtlasById(s.dataset.strip); return; }
+  const t=e.target.closest('[data-atlas]');
+  if(t){ const id=t.dataset.atlas; const a=ATLAS.find(x=>x.id===id);
+    if(a){ if(t.classList.contains('tile')){ const f=$('chips').querySelector('[aria-pressed="true"]').dataset.f; const list=ATLAS.filter(x=>f==='all'||x.type===f); lbOpen(atlasItems(list), list.indexOf(a)); } else openAtlasById(id); }
+    else { const img=t.querySelector('img'); if(img) lbOpen([{src:img.src,cap:img.alt}]); } }
+}, true);
+
 /* ---------- routing + theme ---------- */
-const views = ['about','people','research','publications','news','moments','contact'];
+const views = ['about','research','atlas','publications','people','news','moments','contact'];
 function show(){
   const h = (location.hash||'').slice(1);
   const v = views.includes(h) ? h : 'about';
@@ -714,13 +862,6 @@ document.addEventListener('click', e=>{
 });
 window.addEventListener('popstate', show); window.addEventListener('hashchange', show); show();
 
-document.getElementById('theme').addEventListener('click', ()=>{
-  const r=document.documentElement;
-  const dark = r.dataset.theme ? r.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-  r.dataset.theme = dark ? 'light' : 'dark';
-  try{ localStorage.setItem('kolab-theme', r.dataset.theme) }catch(e){}
-});
-try{ const t=localStorage.getItem('kolab-theme'); if(t) document.documentElement.dataset.theme=t }catch(e){}
 
 document.getElementById('copy').addEventListener('click', async e=>{
   const b=e.currentTarget;
