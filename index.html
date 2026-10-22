@@ -3,6 +3,7 @@
 <head>
 <title>KOLAB · Hanyang University</title>
 <meta name="theme-color" content="#06080a">
+<script>try{var _t=localStorage.getItem("kolab-theme");if(_t==="light"){document.documentElement.dataset.theme="light";}}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="KOLAB – Laboratory for Advanced Microphysiological Systems, Department of Bioengineering, Hanyang University (PI: Prof. Jihoon Ko).">
@@ -223,18 +224,18 @@ h2{font-stretch:112%}
 .fig{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 
 /* hero */
-.hero2{position:relative;background:radial-gradient(120% 90% at 78% 40%,#0d1f1a 0%,var(--bg) 60%);border-bottom:1px solid var(--line);margin-top:-44px}
+.hero2{position:relative;background:radial-gradient(120% 90% at 78% 40%,var(--glow) 0%,var(--bg) 60%);border-bottom:1px solid var(--line);margin-top:-44px}
 .hero2 .in{max-width:var(--w);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:56px 48px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:44px;align-items:center}
 .hero2 h1{font-size:clamp(34px,5.4vw,62px);line-height:1.02;margin:14px 0 18px;letter-spacing:-.02em}
 .hero2 h1 em{font-style:normal;color:var(--ch-green)}
-.hero2 p{color:#b7c3c8;font-size:15.5px;max-width:46ch}
+.hero2 p{color:var(--text2);font-size:15.5px;max-width:46ch}
 .hero2 .ko2{color:var(--muted);font-size:14px}
 .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
 .cta a{font:500 13px/1 var(--mono);padding:12px 16px;border-radius:3px;border:1px solid var(--line);color:var(--fg)}
-.cta a.pri{background:var(--accent);border-color:var(--accent);color:#04161a}
+.cta a.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .cta a:hover{text-decoration:none;border-color:var(--accent)}
 .plate{margin:0;position:relative}
-.plate img{width:100%;display:block;border-radius:2px;box-shadow:0 30px 80px -20px rgba(63,220,138,.18)}
+.plate img{width:100%;display:block;border-radius:2px;box-shadow:0 30px 80px -20px var(--plate-shadow)}
 .plate figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:10px;font:400 12px/1.4 var(--mono);color:var(--muted)}
 .plate figcaption b{color:var(--fg);font-weight:500}
 @media (max-width:820px){.hero2 .in{grid-template-columns:1fr;gap:28px;padding-block:36px 32px}}
@@ -282,7 +283,7 @@ h2{font-stretch:112%}
 .rfig .ri:hover img{transform:scale(1.03)}
 .rfig .rt{min-width:0;display:flex;flex-direction:column;gap:10px}
 .rfig h3{font-size:22px;font-stretch:110%;margin:0}
-.rfig p{font-size:14.5px;color:#b9c4c9;margin:0}
+.rfig p{font-size:14.5px;color:var(--text2);margin:0}
 .rfig.noimg{grid-template-columns:1fr}
 @media (max-width:760px){.rfig,.rfig:nth-child(even){grid-template-columns:1fr;gap:18px}.rfig:nth-child(even) .ri{order:0}}
 
@@ -307,7 +308,7 @@ h2{font-stretch:112%}
 :root{--muted:#a3b0b6}
 body{font-size:16px}
 .fig,.mod{font-size:11.5px}
-.pubs .a,.tl span.x,.post p,.theme p{color:#b3bfc4}
+.pubs .a,.tl span.x,.post p,.theme p{color:var(--text2)}
 .src{font:400 12px/1.5 var(--mono);color:var(--muted);margin:2px 0 0}
 .axes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 8px}
 .axes a{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);border-radius:3px;color:var(--fg);font:500 14px/1.35 var(--display)}
@@ -338,7 +339,28 @@ a.kp:hover .kt{color:var(--accent)}
 .steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:16px 0;border-top:1px solid var(--line)}
 .steps li::before{content:counter(s,decimal-leading-zero);font:500 13px/1.6 var(--mono);color:var(--accent);grid-row:span 2}
 .steps b{font-weight:600}
-.steps li > span{color:#b9c4c9;font-size:15px}
+.steps li > span{color:var(--text2);font-size:15px}
+
+/* ===== theme tokens: dark (default) / light ===== */
+:root{--text2:#b9c4c9;--on-accent:#04161a;--glow:#0d1f1a;--plate-shadow:rgba(63,220,138,.18)}
+:root[data-theme="light"]{
+  --bg:#f6f8f9; --surface:#ffffff; --surface2:#eef2f4; --fg:#121a1e; --muted:#56646b; --line:#dbe3e7;
+  --accent:#0a7790; --accent-soft:#dff0f4; --hot:#b8274f; --hot-soft:#fbe6ec;
+  --ch-blue:#3552d8; --ch-green:#11935a; --ch-red:#d93248; --ch-mag:#a335c4; --ch-white:#8a979d;
+  --text2:#3d4a50; --on-accent:#ffffff; --glow:#e3f3ec; --plate-shadow:rgba(10,60,40,.18);
+  color-scheme:light;
+}
+:root[data-theme="light"] .mod.fluor i,:root[data-theme="light"] .mod.r3d i,:root[data-theme="light"] .mod.ai i{box-shadow:none}
+:root[data-theme="light"] .tile figcaption .mod{color:#e3e9eb}
+.tbtn{background:none;border:1px solid var(--line);border-radius:99px;color:var(--fg);cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;font:500 12px/1 var(--mono)}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+.tbtn svg{width:15px;height:15px}
+.tbtn .sun{display:none}
+:root[data-theme="light"] .tbtn .sun{display:block}
+:root[data-theme="light"] .tbtn .moon{display:none}
+.kws{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.kw2,.ptype{font:400 11.5px/1 var(--mono);padding:5px 8px;border-radius:99px;border:1px solid var(--line);color:var(--text2)}
+.ptype{border-color:var(--accent);color:var(--accent)}
 </style>
 </head>
 <body>
@@ -356,6 +378,11 @@ a.kp:hover .kt{color:var(--accent)}
       <a href="#moments">moments</a>
       <a href="#join">join</a>
       <a href="#contact">contact</a>
+      <button class="tbtn" id="theme-btn" type="button" aria-label="Switch between dark and light mode" title="Dark / Light">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <span id="theme-lbl">Light</span>
+      </button>
     </nav>
   </div>
 </header>
@@ -695,12 +722,12 @@ const REV = [
  ['Kim, S., Park, E., Byeon, M., Yang, S., Ko, J.*','Macrophage Polarization Shapes Vascular Fate: Visualizing Inflammatory and Reparative Endothelial Responses in an Open Microfluidic Co-Culture Chip','','In preparation'],
 ];
 const SEL = [
- ['Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*','Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms','ACS Nano, 18(36), 24909–24928',2024],
- ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 306, 122504',2024],
- ['Ko, J., Park, D., Lee, J., Jung, S., Baek, K., Sung, K.E., Lee, J., Jeon, N.L.','Microfluidic high-throughput 3D cell culture','Nature Reviews Bioengineering, 2(6), 453–469',2024,'Journal cover'],
- ['Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.','Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer','Science Advances, 9(47), eadk1098',2023],
- ['Leung, C.M., Haan, P., Ronaldson-Bouchard, K., Kim, G.-A., Ko, J., Rho, H.S., Chen, Z., Habibovic, P., Jeon, N.L., Takayama, S., Shuler, M.L., Vunjak-Novakovic, G., Frey, O., Verpoorte, E., Toh, Y.-C.','A Guide to the Organ-on-a-Chip','Nature Reviews Methods Primers, 2, 33',2022],
- ['Shin, J.†, Ko, J.†, Jeong, S., Won, P., Lee, Y., Kim, J., Hong, S., Jeon, N.L., Ko, S.H.','Monolithic digital patterning of polydimethylsiloxane with successive laser pyrolysis','Nature Materials, 20(1), 100–107',2021,'Journal cover'],
+ ["Ko, J., Park, D., Lee, J., Jung, S., Baek, K., Sung, K.E., Lee, J., Jeon, N.L.", "Microfluidic high-throughput 3D cell culture", "Nature Reviews Bioengineering, 2(6), 453–469", 2024, "Journal cover", ["High-throughput screening", "3D cell culture", "Microfluidics", "Organ-on-a-chip"], "Review"],
+ ["Leung, C.M., Haan, P., Ronaldson-Bouchard, K., Kim, G.-A., Ko, J., Rho, H.S., Chen, Z., Habibovic, P., Jeon, N.L., Takayama, S., Shuler, M.L., Vunjak-Novakovic, G., Frey, O., Verpoorte, E., Toh, Y.-C.", "A Guide to the Organ-on-a-Chip", "Nature Reviews Methods Primers, 2, 33", 2022, "", ["Organ-on-a-chip", "Microphysiological systems", "Experimental design", "Methods primer"], "Primer"],
+ ["Shin, J.†, Ko, J.†, Jeong, S., Won, P., Lee, Y., Kim, J., Hong, S., Jeon, N.L., Ko, S.H.", "Monolithic digital patterning of polydimethylsiloxane with successive laser pyrolysis", "Nature Materials, 20(1), 100–107", 2021, "Journal cover", ["Laser pyrolysis", "PDMS patterning", "Microfabrication"], "Article"],
+ ["Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*", "Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms", "ACS Nano, 18(36), 24909–24928", 2024, "", ["Open microfluidics", "Vascular phenotyping", "Proteomics", "Angiogenesis"], "Article"],
+ ["Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.", "Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer", "Biomaterials, 306, 122504", 2024, "", ["Patient-derived tumor spheroids", "Tumor angiogenesis", "Preclinical drug testing", "Precision oncology"], "Article"],
+ ["Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.", "Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer", "Science Advances, 9(47), eadk1098", 2023, "", ["Patient-derived exosomes", "MET", "Gastric cancer", "Targeted therapy"], "Article"],
 ];
 const ALL = [
  ['Yi, H.†, Jin, Y.†, Lee, T.†, Yang, S., Kim, S., Han, J.Y.*, Ko, J.*','Engineering Mechanobiology in Microphysiological Systems: From Mechanical Microenvironments to Quantitative Readouts','Journal of Mechanical Science and Technology (Accepted)',2026],
@@ -766,12 +793,13 @@ const short = v => { const j=v.split(',')[0].replace(/\(Accepted\)/,'').trim();
   const map={'Advanced Healthcare Materials':'Adv. Healthc. Mater.','Advanced Materials Technologies':'Adv. Mater. Technol.','Materials Today Bio':'Mater. Today Bio','Materials Today Advances':'Mater. Today Adv.','Lab on a Chip':'Lab Chip','Biotechnology and Bioengineering':'Biotechnol. Bioeng.','Advanced Drug Delivery Reviews':'Adv. Drug Deliv. Rev.','Nature Reviews Bioengineering':'Nat. Rev. Bioeng.','Nature Reviews Methods Primers':'Nat. Rev. Methods Primers','Microsystems & Nanoengineering':'Microsyst. Nanoeng.','Annual Review of Biomedical Engineering':'Annu. Rev. Biomed. Eng.','International Journal of Stem Cells':'Int. J. Stem Cells','Journal of Materials Chemistry B':'J. Mater. Chem. B','Journal of Mechanical Science and Technology':'J. Mech. Sci. Technol.','International Journal of Precision Engineering and Manufacturing':'IJPEM','Journal of the Korean Medical Association':'J. Korean Med. Assoc.','Advanced Intelligent Systems':'Adv. Intell. Syst.','Pathology and Oncology Research':'Pathol. Oncol. Res.','Frontiers in Immunology':'Front. Immunol.','Biomaterials Research':'Biomater. Res.','Current Opinion in Biomedical Engineering':'Curr. Opin. Biomed. Eng.','Nature Communications':'Nat. Commun.','Advanced Science':'Adv. Sci.','Scientific Reports':'Sci. Rep.','JCO Precision Oncology':'JCO Precis. Oncol.','APL Bioengineering':'APL Bioeng.','Acta Biomaterialia':'Acta Biomater.','NPG Asia Materials':'NPG Asia Mater.'};
   return map[j]||j; };
 const pubLi = (p,rev) => {
-  const [a,t,v,y,note]=p;
+  const [a,t,v,y,note,kw,ptype]=p;
+  const role = !kw ? '' : (/^Ko, J\.†?\*?,/.test(a) ? (/^Ko, J\.†/.test(a)?'Co-first author':'First author') : (/Ko, J\.†/.test(a)?'Co-first author':(/Ko, J\.\*/.test(a)?'Corresponding author':'Co-author')));
   const tag = rev ? (v?short(v):y) : short(v);
   const venue = rev ? `${v?esc(v)+' · ':''}${y}` : `${esc(v)}, ${y}`;
   const doi = !rev && DOI[t];
   const href = doi ? 'https://doi.org/'+doi : (!rev ? 'https://scholar.google.com/scholar?q='+encodeURIComponent('"'+t+'"') : '');
-  return `<li><span class="tag${rev?' rev':''}">${esc(tag)}</span><div><span class="t">${href?`<a class="pl" href="${href}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</span><span class="a">${bold(a)}</span><span class="v">${venue}</span>${note&&!rev?`<span class="note">${esc(note)}</span>`:''}${href?`<a class="doi" href="${href}" target="_blank" rel="noopener">${doi?'DOI '+doi:'Google Scholar'} ↗</a>`:''}</div></li>`;
+  return `<li><span class="tag${rev?' rev':''}">${esc(tag)}</span><div><span class="t">${href?`<a class="pl" href="${href}" target="_blank" rel="noopener">${esc(t)}</a>`:esc(t)}</span><span class="a">${bold(a)}</span><span class="v">${venue}</span>${note&&!rev?`<span class="note">${esc(note)}</span>`:''}${kw?`<span class="kws">${ptype?`<span class="ptype">${esc(ptype)}</span>`:''}${role?`<span class="ptype">${role}</span>`:''}${kw.map(k=>`<span class="kw2">${esc(k)}</span>`).join('')}</span>`:''}${href?`<a class="doi" href="${href}" target="_blank" rel="noopener">${doi?'DOI '+doi:'Google Scholar'} ↗</a>`:''}</div></li>`;
 };
 document.getElementById('pubs-rev').innerHTML = REV.map(p=>pubLi(p,true)).join('');
 const selHTML = SEL.map(p=>pubLi(p)).join('');
@@ -980,6 +1008,16 @@ document.getElementById('copy').addEventListener('click', async e=>{
   catch(err){ const s=getSelection(), r=document.createRange(); r.selectNodeContents(document.getElementById('em')); s.removeAllRanges(); s.addRange(r); b.textContent='Selected — press Ctrl/Cmd+C'; }
   setTimeout(()=>b.textContent='Copy email',2200);
 });
+
+/* ---------- dark / light toggle ---------- */
+(function(){
+  const root=document.documentElement, btn=document.getElementById('theme-btn'), lbl=document.getElementById('theme-lbl');
+  const meta=document.querySelector('meta[name="theme-color"]');
+  function sync(){ const light=root.dataset.theme==='light'; lbl.textContent=light?'Dark':'Light'; if(meta) meta.content=light?'#f6f8f9':'#06080a'; }
+  btn.addEventListener('click',()=>{ if(root.dataset.theme==='light') delete root.dataset.theme; else root.dataset.theme='light';
+    try{ localStorage.setItem('kolab-theme', root.dataset.theme||'dark'); }catch(e){} sync(); });
+  sync();
+})();
 </script>
 
 </body>
