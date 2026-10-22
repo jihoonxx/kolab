@@ -361,6 +361,9 @@ a.kp:hover .kt{color:var(--accent)}
 .kws{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
 .kw2,.ptype{font:400 11.5px/1 var(--mono);padding:5px 8px;border-radius:99px;border:1px solid var(--line);color:var(--text2)}
 .ptype{border-color:var(--accent);color:var(--accent)}
+.joinus{margin-top:56px;padding-top:36px;border-top:1px solid var(--line);scroll-margin-top:72px}
+.joinus h2{margin:8px 0 6px}
+.howto{font-size:19px;margin:34px 0 8px}
 </style>
 </head>
 <body>
@@ -376,7 +379,6 @@ a.kp:hover .kt{color:var(--accent)}
       <a href="#people">people</a>
       <a href="#news">news</a>
       <a href="#moments">moments</a>
-      <a href="#join">join</a>
       <a href="#contact">contact</a>
       <button class="tbtn" id="theme-btn" type="button" aria-label="Switch between dark and light mode" title="Dark / Light">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -580,12 +582,28 @@ a.kp:hover .kt{color:var(--accent)}
   <button class="lbn" id="lb-next" type="button" aria-label="Next photo">›</button>
 </div>
 
-<!-- JOIN -->
-<section class="view" id="v-join">
-  <span class="fig">Join KOLAB</span>
-  <h1>Build human tissue on a chip with us</h1>
-  <p class="lede">We are looking for students who want to connect biology, engineering and AI. 바이오와 AI를 함께 다루며 차세대 인체 모사 플랫폼을 만들 연구원을 찾습니다.</p>
+<!-- CONTACT (incl. Join us) -->
+<section class="view" id="v-contact">
+  <span class="fig">Contact</span>
+  <h1>Contact</h1>
+  <p class="lede">For collaborations, questions or joining the lab, please email us. 공동연구, 문의, 연구실 지원 모두 환영합니다.</p>
+  <div class="contact" style="margin-top:8px">
+    <div>
+      <span class="eyebrow">Email</span>
+      <div class="addr" id="em">kchip [at] hanyang.ac.kr</div>
+      <button class="copy" id="copy" type="button">Copy email</button>
+    </div>
+    <div>
+      <span class="eyebrow">Address</span>
+      <div class="addr">Department of Bioengineering<br>Hanyang University<br>222 Wangsimni-ro, Seongdong-gu<br>Seoul 04763, Republic of Korea</div>
+      <a class="more" href="https://maps.google.com/?q=Hanyang+University+Seoul" target="_blank" rel="noopener">Open in maps →</a>
+    </div>
+  </div>
 
+  <div class="joinus" id="join-us">
+    <span class="fig">Join us</span>
+    <h2>Build human tissue on a chip with us</h2>
+    <p class="lede">We are looking for students who want to connect biology, engineering and AI. 바이오와 AI를 함께 다루며 차세대 인체 모사 플랫폼을 만들 연구원을 찾습니다.</p>
   <div class="jgrid">
     <div class="jcard">
       <h3>Who we are looking for</h3>
@@ -603,35 +621,14 @@ a.kp:hover .kt{color:var(--accent)}
     </div>
   </div>
 
-  <h2>How to join</h2>
+    <h3 class="howto">How to join</h3>
   <ol class="steps">
     <li><b>Send your CV and transcript</b><span>Email both to <span class="mail">kchip [at] hanyang.ac.kr</span>. 이메일로 이력서(CV)와 성적증명서(사본 가능)를 보내주세요.</span></li>
     <li><b>Interview</b><span>We will contact you for a meeting with Prof. Ko. 서류 검토 후 면담을 진행합니다.</span></li>
     <li><b>Six-month internship</b><span>Before admission, you join the lab as an intern for about six months to get to know the research and the team. 입학 전 약 6개월간 인턴 연구원으로 함께 연구합니다.</span></li>
     <li><b>Admission</b><span>You begin your graduate program in the following semester. Funding and stipends are discussed individually. 인건비 등 지원 사항은 면담 후 개별적으로 논의합니다.</span></li>
   </ol>
-  <div class="cta"><a class="pri" href="#contact">Contact &amp; address</a><a href="#people">Meet the team →</a></div>
-</section>
-
-<!-- CONTACT -->
-<section class="view" id="v-contact">
-  <h1>contact</h1>
-  <div class="call" style="margin-top:20px">
-    <h3>Seeking motivated researchers</h3>
-    <p>딥러닝 기반 이미지 분석과 오가노이드 및 세포배양칩 개발에 관심있는 연구원을 모집합니다. 관심 있는 분들은 이력서(CV)와 성적증명서(사본 가능)를 이메일로 보내주세요.</p>
-    <p>We welcome future researchers interested in solving real-world problems together.</p>
-  </div>
-  <div class="contact" style="margin-top:34px">
-    <div>
-      <span class="eyebrow">Email</span>
-      <div class="addr" id="em">kchip [at] hanyang.ac.kr</div>
-      <button class="copy" id="copy" type="button">Copy email</button>
-    </div>
-    <div>
-      <span class="eyebrow">Address</span>
-      <div class="addr">Department of Bioengineering<br>Hanyang University<br>222 Wangsimni-ro, Seongdong-gu<br>Seoul 04763, Republic of Korea</div>
-      <a class="more" href="https://maps.google.com/?q=Hanyang+University+Seoul" target="_blank" rel="noopener">Open in maps →</a>
-    </div>
+    <div class="cta"><a href="#people">Meet the team →</a></div>
   </div>
 </section>
 </main>
@@ -985,13 +982,15 @@ document.addEventListener('click',e=>{
 }, true);
 
 /* ---------- routing + theme ---------- */
-const views = ['about','research','atlas','publications','people','news','moments','join','contact'];
+const views = ['about','research','atlas','publications','people','news','moments','contact'];
 function show(){
   const h = (location.hash||'').slice(1);
-  const v = views.includes(h) ? h : 'about';
+  const toJoin = (h==='join' || h==='join-us');
+  const v = toJoin ? 'contact' : (views.includes(h) ? h : 'about');
   views.forEach(x=>document.getElementById('v-'+x).classList.toggle('on', x===v));
   document.querySelectorAll('#nav a').forEach(a=>a.toggleAttribute('aria-current', a.getAttribute('href')==='#'+v) && a.setAttribute('aria-current','page'));
-  window.scrollTo(0,0);
+  if (toJoin) requestAnimationFrame(()=>document.getElementById('join-us').scrollIntoView());
+  else window.scrollTo(0,0);
 }
 document.addEventListener('click', e=>{
   const a = e.target.closest('a[href^="#"]'); if(!a) return;
