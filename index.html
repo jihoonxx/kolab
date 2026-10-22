@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<title>KOLAB · Hanyang University</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="KOLAB – Laboratory for Advanced Microphysiological Systems, Department of Bioengineering, Hanyang University (PI: Prof. Jihoon Ko).">
+<meta property="og:title" content="KOLAB · Hanyang University">
+<meta property="og:description" content="Laboratory for Advanced Microphysiological Systems, Department of Bioengineering, Hanyang University.">
+<meta property="og:image" content="images/people/ko.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: single centered academic column (al-folio lineage), fixed top bar, hash-routed views; wide band only for image grids */
+:root{
+  --bg:#fbfcfc; --surface:#f1f4f5; --fg:#1b2225; --muted:#5d6a70; --line:#dfe5e8;
+  --accent:#0f6e8c; --accent-soft:#e0eef3; --hot:#c2335a; --hot-soft:#f8e3ea;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --w:860px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141819; --surface:#1d2324; --fg:#e4e9ea; --muted:#94a2a7; --line:#2c3437;
+  --accent:#5cb8d6; --accent-soft:#16323b; --hot:#f07896; --hot-soft:#3a1b25; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141819; --surface:#1d2324; --fg:#e4e9ea; --muted:#94a2a7; --line:#2c3437;
+  --accent:#5cb8d6; --accent-soft:#16323b; --hot:#f07896; --hot-soft:#3a1b25; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 15.5px/1.75 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--w);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:20px;min-height:58px;flex-wrap:wrap;padding-block:6px}
+.brand{font:700 20px/1 var(--display);font-stretch:112%;letter-spacing:.02em;color:var(--fg);display:flex;align-items:baseline;gap:8px}
+.brand small{font:400 11px/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.brand:hover{text-decoration:none}
+nav{margin-left:auto;display:flex;gap:2px 16px;flex-wrap:wrap;align-items:center}
+nav a{color:var(--fg);font:400 14.5px/1 var(--display);font-stretch:100%;padding:6px 0;position:relative}
+nav a[aria-current="page"]{color:var(--accent)}
+nav a:hover{text-decoration:none;color:var(--accent)}
+#theme{background:none;border:0;color:var(--muted);cursor:pointer;padding:6px;display:grid;place-items:center}
+#theme:hover{color:var(--accent)}
+@media (max-width:640px){nav{margin-left:0;width:100%;gap:2px 14px} .bar{gap:6px}}
+
+main{padding-block:44px 72px}
+section.view{display:none}
+section.view.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+h1{font:600 clamp(30px,5vw,42px)/1.12 var(--display);font-stretch:108%;letter-spacing:-.01em;margin:0 0 6px;text-wrap:balance}
+h2{font:500 26px/1.2 var(--display);font-stretch:104%;margin:56px 0 18px;text-wrap:balance}
+h3{font:600 17px/1.35 var(--display);margin:0 0 6px;text-wrap:balance}
+.lede{color:var(--muted);margin:0 0 28px}
+p{margin:0 0 14px}
+code,.kw{font:500 .86em/1 var(--mono);background:var(--accent-soft);color:var(--accent);padding:2px 5px;border-radius:3px;white-space:nowrap}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* about */
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.hero .ko{font:300 15px/1.4 var(--body);color:var(--muted);letter-spacing:.06em}
+.portrait{width:168px;height:168px;border-radius:50%;object-fit:cover;margin:22px 0 12px;border:1px solid var(--line)}
+.pi{font:400 21px/1.3 var(--display)} .pi b{font-weight:700}
+.pi-meta{color:var(--muted);font-size:14.5px;line-height:1.6}
+.links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px;font:400 13px/1 var(--mono)}
+.prose{margin-top:36px}
+.prose ul{padding-left:20px;margin:0 0 14px}
+.prose li{margin-bottom:6px}
+.call{border-left:3px solid var(--hot);background:var(--hot-soft);padding:16px 20px;margin:30px 0 0;border-radius:0 4px 4px 0}
+.call h3{color:var(--hot);margin-bottom:4px}
+.call p:last-child{margin:0}
+
+/* tables / lists */
+.news{width:100%;border-collapse:collapse}
+.news td{vertical-align:top;padding:10px 0;border-bottom:1px solid var(--line)}
+.news td.d{width:118px;padding-right:18px;font:500 13px/1.9 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.news em{font-style:normal;font-weight:600}
+.more{display:inline-block;margin-top:14px;font:500 13px/1 var(--mono)}
+
+.pubs{list-style:none;padding:0;margin:0;counter-reset:p}
+.pubs li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.pubs .tag{align-self:start;font:500 11px/1.2 var(--mono);text-align:center;padding:6px 4px;border-radius:3px;background:var(--accent-soft);color:var(--accent);letter-spacing:.02em;overflow-wrap:anywhere}
+.pubs .tag.rev{background:var(--hot-soft);color:var(--hot)}
+.pubs .t{font-weight:600;display:block;margin-bottom:2px;line-height:1.5}
+.pubs .a{color:var(--muted);font-size:14px;display:block;line-height:1.55}
+.pubs .a b{color:var(--fg);font-weight:600}
+.pubs .v{font-style:italic;font-size:14px;display:block}
+.pubs .note{font:500 11.5px/1.4 var(--mono);color:var(--hot);display:block;margin-top:4px}
+.pubs > li > div{min-width:0}
+.yr{font:600 15px/1 var(--mono);color:var(--muted);margin:34px 0 4px;letter-spacing:.06em}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin:6px 0 10px;font:400 13.5px/1.5 var(--mono);color:var(--muted)}
+.stats b{color:var(--fg);font-weight:500}
+@media (max-width:560px){.pubs li{grid-template-columns:1fr;gap:6px}.pubs .tag{justify-self:start;padding:4px 8px}}
+
+/* members */
+.pi-card{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start}
+.pi-card img{width:200px;aspect-ratio:1;object-fit:cover;border-radius:4px;max-width:100%}
+.pi-card > div{min-width:0}
+.cv{display:grid;grid-template-columns:1fr 1fr;gap:28px 36px;margin-top:26px}
+.cv > div{min-width:0}
+.cv h4{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.cv ul{list-style:none;padding:0;margin:0;font-size:14px;line-height:1.55}
+.cv li{padding:6px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:92px 1fr;gap:10px}
+.cv li span:first-child{font:400 12.5px/1.7 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:640px){.pi-card,.cv{grid-template-columns:1fr}.pi-card img{width:160px}}
+
+.person{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}
+.person > div{min-width:0}
+.ph{width:120px;height:120px;border-radius:50%;object-fit:cover;max-width:100%}
+.ph.ini{display:grid;place-items:center;background:var(--surface);color:var(--muted);font:600 30px/1 var(--display);border:1px solid var(--line)}
+.role{font:500 12.5px/1.4 var(--mono);color:var(--accent);margin:2px 0 4px;display:block}
+.mail{font:400 13px/1.4 var(--mono);color:var(--muted);user-select:all}
+.person p{font-size:14.5px;margin:10px 0 0}
+@media (max-width:560px){.person{grid-template-columns:1fr;gap:12px}.ph{width:96px;height:96px}}
+.ugrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:26px 22px;margin-top:8px}
+.ug{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ug .ph{width:96px;height:96px;margin-bottom:8px}
+.ug .ph.ini{font-size:24px}
+.ug .n{font-weight:600}
+.ug .s{font-size:13px;color:var(--muted);line-height:1.5}
+.alumni{list-style:none;padding:0;margin:0}
+.alumni li{display:flex;gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.alumni img,.alumni .ini{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
+.alumni .ini{display:grid;place-items:center;background:var(--surface);color:var(--muted);font:600 16px/1 var(--display);border:1px solid var(--line)}
+.alumni div{min-width:0;font-size:14.5px;line-height:1.5}
+.alumni small{color:var(--muted);display:block;font-size:13px}
+
+/* research */
+.funds{list-style:none;padding:0;margin:0 0 10px}
+.funds li{padding:12px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:4px 18px;font-size:14.5px}
+.funds li > *{min-width:0}
+.funds .yrs{font:400 12.5px/1.8 var(--mono);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.funds .pi-tag{font:500 11px/1 var(--mono);color:var(--hot);margin-left:6px}
+@media (max-width:560px){.funds li{grid-template-columns:1fr}}
+.topic{display:grid;grid-template-columns:240px 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+.topic:nth-of-type(even){grid-template-columns:1fr 240px}
+.topic:nth-of-type(even) img{order:2}
+.topic img{width:240px;aspect-ratio:1;object-fit:cover;border-radius:4px;max-width:100%;background:#000}
+.topic > div{min-width:0}
+.topic p{font-size:14.5px}
+.credit{font:400 12px/1.4 var(--mono);color:var(--muted)}
+.collab{font:500 12px/1.4 var(--mono);color:var(--accent)}
+.topic.noimg{grid-template-columns:1fr}
+@media (max-width:640px){.topic,.topic:nth-of-type(even){grid-template-columns:1fr}.topic:nth-of-type(even) img{order:0}.topic img{width:100%;max-width:320px}}
+
+/* moments */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;display:block}
+@media (max-width:640px){.gal{grid-template-columns:repeat(2,1fr)}}
+.tl{list-style:none;padding:0;margin:0}
+.tl li{display:grid;grid-template-columns:118px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tl li > div{min-width:0}
+.tl .d{font:500 13px/1.8 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.tl b{font-weight:600;display:block}
+.tl span.x{color:var(--muted);font-size:14px}
+@media (max-width:560px){.news td.d{width:92px;padding-right:12px}.tl li{grid-template-columns:1fr;gap:2px}}
+
+/* gallery posts */
+.btn{font:500 13px/1 var(--mono);background:var(--accent);color:var(--bg);border:1px solid var(--accent);padding:10px 14px;border-radius:3px;cursor:pointer}
+.btn.ghost{background:none;color:var(--fg);border-color:var(--line)}
+.btn:disabled{opacity:.55;cursor:progress}
+#gal-admin{margin:0 0 28px;padding:16px;border:1px dashed var(--line);border-radius:4px}
+#gal-form{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+#gal-form label{display:flex;flex-direction:column;gap:4px;font:500 12px/1.4 var(--mono);color:var(--muted);letter-spacing:.04em}
+#gal-form input,#gal-form textarea{font:400 14.5px/1.5 var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:8px 10px;width:100%}
+.fgrid{display:grid;grid-template-columns:1fr 180px;gap:12px}
+.fgrid > *{min-width:0}
+@media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+.frow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.status{font:400 13px/1.4 var(--mono);color:var(--muted)}
+.status.err{color:var(--hot)}
+.thumbs{display:flex;gap:6px;flex-wrap:wrap}
+.thumbs img{width:72px;height:72px;object-fit:cover;border-radius:3px}
+.posts{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 26px}
+@media (max-width:640px){.posts{grid-template-columns:1fr}}
+.post{min-width:0;display:flex;flex-direction:column;gap:6px}
+.post .cover{position:relative;display:block;padding:0;border:0;background:var(--surface);cursor:zoom-in;border-radius:4px;overflow:hidden;aspect-ratio:4/3;width:100%}
+.post .cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.post .cover:hover img{transform:scale(1.03)}
+.post .count{position:absolute;right:8px;bottom:8px;font:500 11px/1 var(--mono);background:rgba(0,0,0,.6);color:#fff;padding:5px 7px;border-radius:3px}
+.post .d{font:500 12.5px/1.4 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.post h3{margin:0}
+.post p{font-size:14px;color:var(--muted);margin:0;white-space:pre-line}
+.post .del{align-self:flex-start;font:400 12px/1 var(--mono);background:none;border:0;color:var(--hot);cursor:pointer;padding:4px 0}
+.empty{color:var(--muted);font-size:14px}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,12,13,.92);display:flex;align-items:center;justify-content:center;gap:8px;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb[hidden]{display:none}
+.lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0;max-width:min(1100px,100%)}
+.lb img{max-height:80vh;max-width:100%;object-fit:contain;border-radius:3px}
+.lb figcaption{color:#e8ecee;font:400 13px/1.5 var(--mono);text-align:center}
+.lbx,.lbn{background:none;border:0;color:#fff;font:300 40px/1 var(--display);cursor:pointer;padding:8px}
+.lbx{position:absolute;top:calc(8px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px))}
+@media (max-width:560px){.lbn{position:absolute;bottom:calc(10px + env(safe-area-inset-bottom,0px))}#lb-prev{left:20px}#lb-next{right:20px}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:10px}
+.contact > div{min-width:0}
+.addr{font:400 14px/1.7 var(--mono)}
+.copy{margin-top:10px;font:500 12.5px/1 var(--mono);background:none;border:1px solid var(--line);color:var(--fg);padding:8px 12px;border-radius:3px;cursor:pointer}
+.copy:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:640px){.contact{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding-block:22px;font:400 12px/1.6 var(--mono);color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#about">KOLAB <small>HANYANG UNIV.</small></a>
+    <nav id="nav">
+      <a href="#about">about</a>
+      <a href="#people">members</a>
+      <a href="#research">research</a>
+      <a href="#publications">publications</a>
+      <a href="#news">news</a>
+      <a href="#moments">moments</a>
+      <a href="#contact">contact</a>
+      <button id="theme" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ABOUT -->
+<section class="view" id="v-about">
+  <div class="hero">
+    <span class="eyebrow">Advanced Biosystems Engineering Laboratory</span>
+    <h1>Laboratory for Advanced<br>Microphysiological Systems</h1>
+    <span class="ko">한양대학교 생명공학과 · 미세생리시스템 연구실</span>
+    <img class="portrait" src="images/people/ko.jpg" alt="Prof. Jihoon Ko">
+    <div class="pi"><b>Jihoon</b> Ko, Ph.D.</div>
+    <div class="pi-meta">Assistant Professor, Department of Bioengineering, Hanyang University<br><span class="mail">kchip [at] hanyang.ac.kr</span></div>
+    <div class="links">
+      <a href="https://scholar.google.co.kr/citations?user=h2xps9oAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://orcid.org/0000-0002-6555-3728" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://www.instagram.com/kolabkr" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>We develop advanced <span class="kw">Microphysiological Systems</span> through a multidisciplinary approach that integrates <span class="kw">microfluidics</span>, <span class="kw">3D cell culture</span>, and advanced biomaterials. Our platforms enable the study of disease mechanisms, drug efficacy evaluation, and personalized medicine. By bridging lab discoveries and real-world applications, we contribute to human health and to alternatives to animal testing.</p>
+    <p>우리 연구실은 미세유체기술, 3D 세포 배양, 첨단 생체재료를 통합하는 다학제적 접근을 통해 첨단 Microphysiological Systems를 개발합니다. 이러한 플랫폼은 질병 메커니즘 연구, 약물 효능 평가, 개인 맞춤형 의학 발전을 가능하게 합니다.</p>
+    <p>Our research focuses on:</p>
+    <ul>
+      <li>Vascularized human organ models and engineered microvascular networks</li>
+      <li>Tumor–immune microenvironments and patient-derived disease models</li>
+      <li>High-throughput, automation-ready organ-on-a-chip platforms for drug screening and safety assessment</li>
+      <li><span class="kw">AI</span>-enabled bioimage analysis for label-free phenotyping of complex 3D tissues</li>
+    </ul>
+    <div class="call">
+      <h3>We are actively recruiting passionate and driven students</h3>
+      <p>If you are interested in next-generation biomedical technologies, including microfluidics, 3D printing, 3D cell culture, and AI-based data analysis, come explore, learn, and create with us at Hanyang University. <a href="#contact">How to apply →</a></p>
+    </div>
+  </div>
+
+  <h2>news</h2>
+  <table class="news" id="news-top"></table>
+  <a class="more" href="#news">All news →</a>
+
+  <h2>selected publications</h2>
+  <ul class="pubs" id="pubs-sel"></ul>
+  <a class="more" href="#publications">All publications →</a>
+</section>
+
+<!-- MEMBERS -->
+<section class="view" id="v-people">
+  <h1>members</h1>
+  <p class="lede">Principal investigator, graduate students, undergraduate researchers and alumni.</p>
+
+  <div class="pi-card">
+    <img src="images/people/ko.jpg" alt="Prof. Jihoon Ko">
+    <div>
+      <span class="eyebrow">Principal Investigator</span>
+      <h2 style="margin:8px 0 2px">Jihoon Ko, Ph.D. <span style="color:var(--muted);font-weight:400">고지훈</span></h2>
+      <span class="role">Assistant Professor · Department of Bioengineering, Hanyang University</span>
+      <span class="mail">kchip [at] hanyang.ac.kr · ORCID 0000-0002-6555-3728</span>
+      <p style="margin-top:14px;font-size:14.5px">His research focuses on human-relevant microphysiological systems (MPS) that integrate microengineering, vascular biology, organoids, immune systems, and AI-enabled bioimage analysis. His group builds engineered human tissue models of complex physiological and pathological microenvironments, with particular interest in vascularized organ models, tumor–immune microenvironments, high-throughput microfluidic platforms, and patient-specific disease models.</p>
+      <div class="stats"><span><b>43+</b> publications</span><span>h-index <b>23</b></span><span>i10 <b>29</b></span><span><b>3,500+</b> citations</span><span>FWCI <b>3.57</b></span></div>
+    </div>
+  </div>
+  <div class="cv">
+    <div><h4>Appointments</h4><ul>
+      <li><span>2026.09–</span><span>Assistant Professor, Dept. of Bioengineering, Hanyang University</span></li>
+      <li><span>2023.03–26.08</span><span>Assistant Professor, Dept. of BioNano Technology, Gachon University</span></li>
+      <li><span>2021.09–23.02</span><span>Research Professor, Dept. of Medicine, Sungkyunkwan University</span></li>
+      <li><span>2021.03–23.02</span><span>Research Fellow, Hematology &amp; Oncology, Samsung Medical Center (PI: Prof. Jeeyun Lee)</span></li>
+    </ul></div>
+    <div><h4>Education</h4><ul>
+      <li><span>2021</span><span>Ph.D. Mechanical Engineering, Seoul National University (Advisor: Prof. Noo Li Jeon). Outstanding Doctoral Dissertation Award</span></li>
+      <li><span>2015</span><span>B.S. Mechanical Engineering, Hanyang University</span></li>
+    </ul></div>
+    <div style="grid-column:1/-1"><h4>Selected honors &amp; awards</h4><ul>
+      <li><span>2026</span><span>Yamaguchi Medal – Emerging Technology, Asian Pacific Association for Biomechanics (WCB 2026)</span></li>
+      <li><span>2026</span><span>바이오칩 젊은 인재상, The Korean BioChip Society</span></li>
+      <li><span>2025</span><span>Young Academic Salon Award, Microsystems &amp; Nanoengineering</span></li>
+      <li><span>2024</span><span>Young Scientist Researcher, The Korean Society of Mechanical Engineers</span></li>
+      <li><span>2022 · 2020</span><span>Gold Prize · Silver Prize, IBS Art in Science, Institute for Basic Science</span></li>
+      <li><span>2021</span><span>Best Paper Award, The Korean Society of Mechanical Engineers</span></li>
+      <li><span>2019</span><span>Best Paper Award, Korean BioChip Society · Young Researcher Session Award, IEEE-NANOMED</span></li>
+    </ul></div>
+  </div>
+
+  <h2>graduate students</h2>
+  <div id="grads"></div>
+
+  <h2>undergraduate researchers</h2>
+  <div class="ugrid" id="ugrads"></div>
+
+  <h2>alumni</h2>
+  <ul class="alumni" id="alumni"></ul>
+</section>
+
+<!-- RESEARCH -->
+<section class="view" id="v-research">
+  <h1>research</h1>
+  <p class="lede">Our lab drives biomedical engineering to benefit society through real-world applications in healthcare, pharmaceuticals, cosmetics, and beyond.</p>
+
+  <h2 style="margin-top:20px">funded projects <span style="color:var(--muted);font-weight:400;font-size:.7em">ongoing</span></h2>
+  <ul class="funds">
+    <li><span>Multi-organoid digital twin platform for predicting therapeutic responses in autoimmune diseases<br><small style="color:var(--muted)">Excellent Young Researcher Program · MSIT / NRF</small><span class="pi-tag">PI</span></span><span class="yrs">2026–2031</span></li>
+    <li><span>Immune cell discovery platform for cancer therapy<br><small style="color:var(--muted)">Engineering Research Center (ERC) · MSIT / NRF · Co-Investigator</small></span><span class="yrs">2023–2030</span></li>
+    <li><span>Microphysiological systems for immunotherapy safety evaluation<br><small style="color:var(--muted)">Korea ARPA-H Project · MOHW / KHIDI</small></span><span class="yrs">2024–2029</span></li>
+    <li><span>AI-designed probiotic–nanodrug oral therapeutics for autoimmune diseases, with an MPS–semiconductor sensor evaluation platform<br><small style="color:var(--muted)">Nano &amp; Future Materials Program · MSIT / NRF · Co-Investigator</small></span><span class="yrs">2026–2030</span></li>
+    <li><span>Customized 3D biofabrication materials and components for drug safety evaluation<br><small style="color:var(--muted)">Materials &amp; Components Technology Program · MOTIE / KEIT · Co-Investigator</small></span><span class="yrs">2024–2027</span></li>
+  </ul>
+
+  <h2>research areas</h2>
+  <div id="topics"></div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="view" id="v-publications">
+  <h1>publications</h1>
+  <div class="stats"><span>h-index <b>24</b></span><span>i10-index <b>33</b></span><span>citations <b>&gt;3,500</b> (Jul 2026)</span><span>FWCI <b>3.57</b> (SciVal 2022–25)</span></div>
+  <div class="links" style="justify-content:flex-start"><a href="https://scholar.google.co.kr/citations?user=h2xps9oAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a><a href="https://orcid.org/0000-0002-6555-3728" target="_blank" rel="noopener">ORCID</a></div>
+  <p class="lede" style="margin-top:14px">† equal contribution · * corresponding author</p>
+
+  <h2>under evaluation</h2>
+  <ul class="pubs" id="pubs-rev"></ul>
+  <h2>selected</h2>
+  <ul class="pubs" id="pubs-sel2"></ul>
+  <h2>all publications</h2>
+  <div id="pubs-all"></div>
+</section>
+
+<!-- NEWS -->
+<section class="view" id="v-news">
+  <h1>news</h1>
+  <p class="lede">Papers, awards, and milestones from KOLAB.</p>
+  <table class="news" id="news-all"></table>
+</section>
+
+<!-- MOMENTS -->
+<section class="view" id="v-moments">
+  <h1>moments</h1>
+  <p class="lede">Conferences, lab meetings, and everyday life at KOLAB.</p>
+
+
+  <div class="posts" id="posts"></div>
+  <p class="empty" id="posts-empty" hidden>Loading gallery…</p>
+
+  <h2>archive</h2>
+  <ul class="tl" id="moments"></ul>
+</section>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lbx" id="lb-close" type="button" aria-label="Close">×</button>
+  <button class="lbn" id="lb-prev" type="button" aria-label="Previous photo">‹</button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button class="lbn" id="lb-next" type="button" aria-label="Next photo">›</button>
+</div>
+
+<!-- CONTACT -->
+<section class="view" id="v-contact">
+  <h1>contact</h1>
+  <div class="call" style="margin-top:20px">
+    <h3>Seeking motivated researchers</h3>
+    <p>딥러닝 기반 이미지 분석과 오가노이드 및 세포배양칩 개발에 관심있는 연구원을 모집합니다. 관심 있는 분들은 CV와 성적표를 이메일로 보내주세요.</p>
+    <p>We welcome future researchers interested in solving real-world problems together.</p>
+  </div>
+  <div class="contact" style="margin-top:34px">
+    <div>
+      <span class="eyebrow">Email</span>
+      <div class="addr" id="em">kchip@hanyang.ac.kr</div>
+      <button class="copy" id="copy" type="button">Copy email</button>
+    </div>
+    <div>
+      <span class="eyebrow">Address</span>
+      <div class="addr">Department of Bioengineering<br>Hanyang University<br>222 Wangsimni-ro, Seongdong-gu<br>Seoul 04763, Republic of Korea</div>
+      <a class="more" href="https://maps.google.com/?q=Hanyang+University+Seoul" target="_blank" rel="noopener">Open in maps →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2023–2026 Advanced Biosystems Engineering Laboratory (KOLAB)</span><span>Dept. of Bioengineering · Hanyang University</span></div></footer>
+
+<script>
+const IMG = {
+"ko": "images/people/ko.jpg",
+"wooju": "images/people/wooju.jpg",
+"sujin": "images/people/sujin.jpg",
+"sangyoon": "images/people/sangyoon.jpg",
+"heesuh": "images/people/heesuh.jpg",
+"yeongseo": "images/people/yeongseo.jpg",
+"eunseo": "images/people/eunseo.jpg",
+"minseo": "images/people/minseo.jpg",
+"taeim": "images/people/taeim.jpg",
+"jaehong": "images/people/jaehong.jpg",
+"yedam": "images/people/yedam.jpg",
+"r_platform": "images/research/platform.jpg",
+"r_ai": "images/research/ai.jpg",
+"r_tumor": "images/research/tumor.jpg",
+"r_skin": "images/research/skin.jpg",
+"r_time": "images/research/time.jpg",
+"r_organoid": "images/research/organoid.jpg",
+"r_brain": "images/research/brain.jpg",
+"g0": "images/gallery/g0.jpg",
+"g1": "images/gallery/g1.jpg",
+"g2": "images/gallery/g2.jpg",
+"g3": "images/gallery/g3.jpg",
+"g4": "images/gallery/g4.jpg",
+"g5": "images/gallery/g5.jpg",
+"g6": "images/gallery/g6.jpg",
+"g7": "images/gallery/g7.jpg"
+};
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const ini = n => n.split(' ').map(w=>w[0]).join('').slice(0,2);
+const avatar = (key,name,cls='ph') => IMG[key] ? `<img class="${cls}" src="${IMG[key]}" alt="${name}">` : `<div class="${cls} ini" aria-hidden="true">${ini(name)}</div>`;
+
+/* ---------- people ---------- */
+const grads = [
+ {k:'wooju',ko:'박우주',en:'Wooju Park',role:'석박통합과정 (1) · Lab Manager',m:'wooju.pk [at] gmail.com',
+  p:'2024년 1월 연구실에 합류하여 한양대학교 생명공학과 석박통합과정에서 연구를 수행하고 있습니다. 인공지능학을 함께 전공한 경험을 바탕으로 AI/ML 기반 바이오이미지 분석 및 정량화 기술을 개발하며, MPS 제작부터 3D 혈관 모델링, 약물평가, AI 기반 영상분석까지 아우르는 통합 연구 역량을 구축하고 있습니다. Materials Today Advances와 Advanced Healthcare Materials에 제1저자로 연구를 발표하였고, 2025년 한국바이오칩학회 춘계학술대회에서 최우수 포스터 발표상을 수상하였습니다.'},
+ {k:'sujin',ko:'김수진',en:'Sujin Kim',role:'석박통합과정 (1)',m:'sujinsu1111 [at] gmail.com',
+  p:'2023년 연구실에 합류하여 혈관화 미세생리시스템과 종양–면역 미세환경 모델링을 연구하고 있습니다. Lab on a Chip에 공동 제1저자로 3차원 종양 spheroid와 perfusable vascular network를 결합한 나노약물 전달 평가 플랫폼을 발표하였습니다. 최근에는 macrophage, NK 및 CAR-NK cell과 혈관 사이의 상호작용을 규명하고, 면역세포의 trafficking, extravasation, tumor infiltration 및 target-cell killing을 재현하는 vascularized tumor–immune MPS를 개발하고 있습니다. 2025년 KMEMS 춘계학술대회 우수논문상을 수상하였습니다.'},
+ {k:'sangyoon',ko:'경상윤',en:'Sangyoon Kyung',role:'석사과정 (3)',m:'10quadrillionsy [at] gmail.com',
+  p:'2024년 5월 연구실에 합류하였습니다. 3차원 CAD 설계와 3D 프린팅 기반 프로토타입 제작에 강점을 가지고 새로운 아이디어를 미세유체 디바이스로 구현하고 있습니다. 한국콜마㈜와의 산학협력을 통해 피부 및 안구 자극을 동시에 평가하는 표준화 미세유체칩을 개발하였으며, “생체 장벽 투과성 평가용 미세유체칩” 특허를 출원하였습니다.'},
+ {k:'hyeryung',ko:'박혜령',en:'HyeRyung Park',role:'석사과정 (0)',m:'qkrgpfud7045 [at] naver.com',p:''},
+ {k:'yerim',ko:'김예림',en:'Yerim Kim',role:'석사과정 (0)',m:'shaina0112 [at] naver.com',p:''},
+];
+document.getElementById('grads').innerHTML = grads.map(g=>`
+ <div class="person">${avatar(g.k,g.en)}<div>
+  <h3>${g.ko} <span style="font-weight:400;color:var(--muted)">${g.en}</span></h3>
+  <span class="role">${g.role}</span><span class="mail">${g.m}</span>
+  ${g.p?`<p>${g.p}</p>`:''}</div></div>`).join('');
+
+const ugs = [
+ ['heesuh','이희수','Heesuh Yi','2023.10–','Chemical & Biological Eng., Gachon Univ.','Brain organoid-on-a-chip과 neural probe 통합 디자인 개발'],
+ ['yeongseo','진영서','Yeongseo Jin','2025.07–','BioNano Technology, Gachon Univ.','칩 제작과 오가노이드 공배양'],
+ ['eunseo','박은서','Eun Seo Park','2025.07–','BioNano Technology, Gachon Univ.','신경계 기반 통증 및 면역 연구'],
+ ['minseo','변민서','Minseo Byeon','2025.07–','BioNano Technology, Gachon Univ.','혈관–면역, 오가노이드 및 스페로이드 상호작용'],
+ ['soeun','김소은','Soeun Kim','2026.04–','BioNano Technology, Gachon Univ.',''],
+ ['subeen','양수빈','Subeen Yang','2026.04–','Chemical & Biological Eng., Gachon Univ.',''],
+ ['sebin','김세빈','Sebin Kim','2026.04–','Chemical & Biological Eng., Gachon Univ.',''],
+ ['minwoo','정민우','Minwoo Chung','2026.04–','BioNano Technology, Gachon Univ.',''],
+];
+document.getElementById('ugrads').innerHTML = ugs.map(u=>`
+ <div class="ug">${avatar(u[0],u[2])}<span class="n">${u[1]} <span style="font-weight:400;color:var(--muted)">${u[2]}</span></span>
+ <span class="role" style="margin:0">${u[3]}</span><span class="s">${u[4]}</span>${u[5]?`<span class="s">${u[5]}</span>`:''}</div>`).join('');
+
+const alumni = [
+ ['taeim','이태임','Taeim Lee','M.S., Gachon University (2026.02)'],
+ ['jaehong','민재홍','Jaehong Min','M.S., Gachon University (2026.02) · Now Ph.D. student, Kyushu University'],
+ ['yedam','이예담','Yedam Lee','Researcher, KOLAB (2023.06–2025.09) · Now M.S. student, TU München'],
+ ['','한건우','Geonwoo Han','Now M.S. student, GIST'],
+ ['','최수인','Suin Choi','Undergraduate, Gachon Univ.'],
+ ['','엄세림','Serim Eom','Undergraduate, Gachon Univ.'],
+ ['','맹윤정','Yunjeong Maeng','Undergraduate, Gachon Univ.'],
+];
+document.getElementById('alumni').innerHTML = alumni.map(a=>`<li>${avatar(a[0],a[2],'')}<div><b>${a[1]}</b> ${a[2]}<small>${a[3]}</small></div></li>`).join('');
+
+/* ---------- research ---------- */
+const topics = [
+ ['r_platform','Customizable 3D Cell Culture Platforms','We engineer 3D cell culture chips using advanced microfabrication, from microfluidic chip arrays and modular systems to compact well-plate devices. They mimic in vivo conditions for high-resolution studies of cell behavior and disease. We are now focused on organoid-on-a-chip systems for more physiologically relevant in vitro models.','',''],
+ ['r_ai','AI/ML-driven Data Analysis','We use machine learning to analyze complex biomedical images, enabling virtual staining, segmentation, and morphological quantification. A user-friendly graphical interface is in development so these tools are accessible to every lab, reducing reliance on traditional staining.','',''],
+ ['','Standardized and Automation-Compatible Organ Chip','We are establishing standardized organ-on-a-chip formats and workflows fully compatible with automated liquid handling and dispensing. Consistent chip specifications and procedures reduce operator-dependent variability and support reproducible, scalable high-throughput screening.','','Sangyoon Kyung'],
+ ['','Angiogenesis-on-a-Chip','A 3D angiogenesis model within a microfluidic chip enables real-time live imaging of vascular sprouting, remodeling, and barrier function. Patient-derived endothelial cells capture patient-specific vascular morphogenesis for personalized drug screening in a high-throughput format.','','Jaehong Min & Sujin Kim'],
+ ['r_tumor','Vascularized Tumor-on-a-Chip','We engineer perfusable microvascular networks within 3D tumor spheroids and organoids to observe tumor–vasculature interactions in real time. Using patient-derived specimens, the platform serves as an in vitro avatar for personalized drug screening, drug penetration, and resistance studies.','',''],
+ ['r_skin','Vascularized Skin-on-a-Chip','This model integrates epidermis, dermis, and perfusable microvascular networks. Designed for high-throughput use, it enables reliable testing of skin irritation and sensitization as an alternative to animal-based assays.','Kolmar Korea',''],
+ ['r_time','Tumor Immune Microenvironment (TIME)','We recreate the tumor immune microenvironment in vitro to study macrophage polarization, endothelial interaction, and tumor–immune crosstalk, with real-time analysis of immune responses for evaluating immunotherapies.','',''],
+ ['r_organoid','Patient-derived Organoid Development','Patient-specific organoids derived from clinical specimens recapitulate key structural and functional features of native tissue, enabling personalized studies of disease progression and drug response.','Gil Medical Center','Yedam Lee'],
+ ['r_brain','Brain Organoid-on-a-Chip','Our platform supports complex neural networks and axonal myelination for studies of pain signaling, analgesic screening, and neurological disorders, and for evaluating cell-based therapies for neurodegenerative and neuropathic conditions.','KIST','Heesuh Yi'],
+];
+document.getElementById('topics').innerHTML = topics.map(t=>`
+ <article class="topic${IMG[t[0]]?'':' noimg'}">${IMG[t[0]]?`<img src="${IMG[t[0]]}" alt="${t[1]}">`:''}<div>
+  <h3>${t[1]}</h3><p>${t[2]}</p>
+  ${t[3]?`<span class="collab">In collaboration with ${t[3]}</span><br>`:''}${t[4]?`<span class="credit">Credit: ${t[4]}</span>`:''}</div></article>`).join('');
+
+/* ---------- publications ---------- */
+// [authors, title, venue, year, note]
+const REV = [
+ ['Kim, S.†, Kim, O.†, Min, J., Park, W., Lee, Y., Ryu, T.*, Jo, D.H.*, Ko, J.*','A Patient-Derived Angiogenesis-on-a-Chip Reveals NDP-Associated Vascular Dysfunction in Familial Exudative Vitreoretinopathy','Advanced Science','Under review'],
+ ['Lee, T.†, Kyung, S.Y.†, Park, W., Kwon, M., Chae, H., Park, B.-J.*, Ko, J.*','Skin-on-a-Plate: A Reconfigurable Plate-Format Microfluidic Platform for Directional Exposure and Automation-Ready Workflows','Microsystems & Nanoengineering','Under review'],
+ ['Lee, J.†, Kim, D.†, Ko, J.*, Lee, S.*, Jeon, N.L.*','Organ-on-a-Chip for Advanced Cell Therapeutics: Reconstituting Microenvironments for Stem Cells and Immune Cells','Current Opinion in Biomedical Engineering','Under review'],
+ ['Lee, J.†, Park, W.†, Choi, D., Yang, S., Ahn, J.*, Ko, J.*','From Virtual Staining to Digital Twins: Artificial Intelligence for Living Microphysiological Systems','Advanced Science','Under review'],
+ ['Ahn, J.†, Ahn, H.†, Cho, M., Mun, S., Koo, Y., Jin, G., Choi, Y., Kwon, Y., Yang, S.-H., Kim, J., Ko, J., Zouboulis, C.C., Lee, K.-G.*, Bang, S.*','Spatially Resolved Multicompartmental Responses in a Sebocyte Spheroid-Integrated Skin Microphysiological System','Nature Communications','Under review'],
+ ['Kyung, S., Jo, W.-J., Jin, Y., Park, E., Kim, K.-S.*, Ko, J.*','Sustaining Microvessel Longevity and Barrier Function On-Chip Through Persistent S1PR1 Activation','','In preparation'],
+ ['Kim, S., Park, E., Byeon, M., Yang, S., Ko, J.*','Macrophage Polarization Shapes Vascular Fate: Visualizing Inflammatory and Reparative Endothelial Responses in an Open Microfluidic Co-Culture Chip','','In preparation'],
+];
+const SEL = [
+ ['Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*','Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms','ACS Nano, 18(36), 24909–24928',2024,'IF 16.0 · JCR Top 6%'],
+ ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 307, 122470',2024,'IF 12.9 · JCR Top 3.6%'],
+ ['Ko, J., Park, D., Lee, J., Jung, S., Baek, K., Sung, K.E., Lee, J., Jeon, N.L.','Microfluidic high-throughput 3D cell culture','Nature Reviews Bioengineering, 2(6), 453–469',2024,'Journal cover'],
+ ['Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.','Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer','Science Advances, 9(47), eadk1098',2023,'IF 12.5'],
+ ['Leung, C.M., Haan, P., Ronaldson-Bouchard, K., Kim, G.-A., Ko, J., Rho, H.S., Chen, Z., Habibovic, P., Jeon, N.L., Takayama, S., Shuler, M.L., Vunjak-Novakovic, G., Frey, O., Verpoorte, E., Toh, Y.-C.','A Guide to the Organ-on-a-Chip','Nature Reviews Methods Primers, 2, 33',2022,'IF 56.0 · Cited by 1,500'],
+ ['Shin, J.†, Ko, J.†, Jeong, S., Won, P., Lee, Y., Kim, J., Hong, S., Jeon, N.L., Ko, S.H.','Monolithic digital patterning of polydimethylsiloxane with successive laser pyrolysis','Nature Materials, 20(1), 100–107',2021,'Journal cover'],
+];
+const ALL = [
+ ['Yi, H.†, Jin, Y.†, Lee, T.†, Yang, S., Kim, S., Han, J.Y.*, Ko, J.*','Engineering Mechanobiology in Microphysiological Systems: From Mechanical Microenvironments to Quantitative Readouts','Journal of Mechanical Science and Technology (Accepted)',2026],
+ ['Park, W.†, Jin, Y.†, Park, E.S.†, Byeon, M.†, Kyung, S.Y.†, Maeng, Y., Ahn, J., Bang, S.*, Ko, J.*','From elastomer to thermoplastic: A material translation framework for scalable vascularized organ-on-a-chip drug screening','Materials Today Advances, 31, 100954',2026],
+ ['Choi, H.†, Kim, S.†, Ko, J.*, Jeon, N.L.*','Capillary Flow Patterning-Based Organotypic Models for Spatially Resolved Assessment of CAR-Engineered Immune Cells','Annual Review of Biomedical Engineering (Accepted)',2026],
+ ['Kim, B.-K.†, Min, J.†, Park, S.-H., Shin, S., Yu, S., Park, J.-E., Kim, S., Park, W., Ko, J.*, Kwon, S.*','Synergistic Inhibition of VEGF-induced Angiogenesis and Vascular Leakage by Bicistronic Co-expression of Aflibercept and COMP-Ang1','Advanced Healthcare Materials, e71568',2026],
+ ['Lee, J.†, Min, J.†, Park, W.†, Hyung, S., Jung, S., Lee, K., Jeon, J., Jeon, N.L., Lee, J.*, Jang, H.R.*, Ko, J.*','High-Throughput Digital Profiling of Tumor-Associated Vascular Networks in Patient-Derived Microphysiological Systems','Advanced Healthcare Materials, e05866',2026],
+ ['Byeon, M.†, Park, E.†, Ko, J.*','Human-Relevant Microphysiological Systems: Evidence for Defined Contexts of Use','International Journal of Stem Cells (Accepted)',2026],
+ ['Ahn, J.†, Mun, S.†, Koo, Y.†, Lee, S., Yang, S.H., Choi, S.H., Mok, J.H., Ahn, J., Cho, S.*, Ko, J.*, Bang, S.*','A Monolithic 3D-Printed Platform for Functional Maturation and In Situ Contractility Assessment of 3D Skeletal Muscle','Biomaterials Research, 30, 0363',2026],
+ ['Kim, S.†, Lee, Y.†, Park, E., Byeon, M., Choi, H., Bang, S., Jeon, N.L.*, Ko, J.*','Immune Microphysiological Systems for Human Innate Immunity','Advanced Materials Technologies, e71051',2026],
+ ['Ahn, J., Jin, G., Cho, M., Do, M., Ahn, J., Ko, J.*, Bang, S.*','Engineering Skin Microphysiological Systems for Transdermal Drug Screening based on Strategic Model Selection and Quantitative Prediction Roadmaps','Materials Today Bio, 103223',2026],
+ ['Lee, Y.†, Kim, S.†, Koh, H., Han, J.Y.*, Ko, J.*','A Tumor Spheroid Array Chip for High-Fidelity Evaluation of Liposomal Drug Delivery Through the EPR Effect','Lab on a Chip, 26, 2439–2450',2026,'Front cover'],
+ ['Cho, G.-B., Lee, H.-J., Heo, Y.J., Ko, J., Lee, W.-S., Hyung, S.','Tumor-Immune-On-Chip to Evaluate Pathophysiological Feature of T Lymphocytes Expanded from Patient Tumors and Lymph Node Tissues','Cancer Medicine, 15(5), e71906',2026],
+ ['Jin, A.†, Shim, S.W.†, Shim, M., Lee, Y.K., Hong, J., Roh, D., Ko, J., Hyung, S.*, Oh, S.B.*, Jeon, N.L.*','Microfluidic Cell Culture Platform for Modeling Aligned Peripheral Nerve Bundle, Connection, and Myelination','Advanced Healthcare Materials, e04121',2026],
+ ['Lee, T., Kyung, S.Y., Kwon, M., Park, B.-J., Ko, J.*','Innovations in Skin Microphysiological Systems for Nonclinical Testing and FDA Modernization','Microsystems & Nanoengineering, 12(1), 44',2026,"Editor's Pick"],
+ ['Jeong, M.†, Park, K.†, Jung, D., Shin, S., Ko, J.*, Bang, S.*, Ahn, J.*','Male and female reproductive system platform based MPS for different steps in Assisted Reproductive Technology (ART) process','Materials Today Bio, 103050',2026],
+ ['Ahn, H.†, Min, J.†, Park, W., Park, S., Ko, J.*, Ahn, J.*','A Perfusable Blood Vessel-on-a-Chip Enabling Simultaneous Measurement of Transendothelial Electrical Resistance and Vascular Permeability','Advanced Materials Technologies, e02113',2025],
+ ['Yi, H.†, Lee, G.†, Park, S., Ha, J., Choi, D., Ko, J.*, Ahn, J.*','Reconstructing the Female Reproductive System Using 3D Bioprinting in Tissue Engineering','Materials Today Bio, 102127',2025],
+ ['Kim, M., Yoon, J., Kim, D., Kim, J., Kim, J.S., Go, G., Song, J., Son, S., Park, K., Lee, J., Lee, D., Cho, S., Choi, W., Min, J., Cho, Y.S., Lee, S.J., Yi, H.G., Choi, A., Jeon, S., Lee, H., Choi, D., Han, S., Ko, J., Cho, D.W., Kim, D.S., Jang, J., Kang, H.W.','Advanced Biomanufacturing Technologies for Micro-physiological Systems','International Journal of Precision Engineering and Manufacturing, 26, 2411–2462',2025],
+ ['Hyung, S.†, Ko, J.†, An, M., Kim, S.T., Park, S.H., Hong, J.Y., Lim, S.H., Kim, K.-M., Lee, J.','Angiogenesis Gene Signatures in Patient-Derived Tumor Spheroids for Genetic and Tumor Angiogenesis Profiling','Journal of Materials Chemistry B, 13, 11597–11610',2025,'Journal cover'],
+ ['Park, W., Kim, C., Ko, J.*','AI-Powered Image Standardization in Microphysiological System Platforms','JMST Advances, 7(3), 163–175',2025],
+ ['Lee, T., Min, J., Lee, Y., Ko, J.*','Clinical Potential of Patient-Derived Microphysiological Systems','Journal of the Korean Medical Association, 68(1), 6–8',2025],
+ ['Lee, Y.†, Min, J.†, Kim, S.†, Ko, J.*','AI-driven Microphysiological Systems for Advancing Nanoparticle Therapeutics','Advanced Intelligent Systems, 2500022',2025],
+ ['Lee, Y.†, Min, J.†, Kim, S., Park, W., Ko, J.*, Jeon, N.L.*','Recapitulating the Cancer-Immunity Cycle on a Chip','Advanced Healthcare Materials, e2401927',2025],
+ ['Ko, J., Hyung, S., Cheong, S., Jeon, N.L.*','Revealing the Clinical Potential of High-Resolution Organoids','Advanced Drug Delivery Reviews, 201, 115202',2024],
+ ['Park, S., Kim, Y., Lee, J., Jung, S., Hong, J., Kim, S., Lee, S.-R., Song, J., Park, S., Oh, Y.S., Ko, J., Jeon, N.L.','Flow-IMPACT: A Pumpless, High-Throughput 3D Cell Culture Platform for Investigation of Synergistic Angiogenic Effects','Advanced Materials Technologies, 10(11), 2401526',2024,'Journal cover'],
+ ['Ko, J.*, Song, J., Lee, Y., Choi, N., Kim, H.*','Understanding Organotropism in Cancer Metastasis Using Microphysiological Systems','Lab on a Chip, 24, 1542–1556',2024],
+ ['Lee, J.†, Kim, S.†, Ko, J.†, Park, S., Lee, S.R., Kim, Y., Kim, W., Chung, Y., Kwon, O.H., Jeon, N.L.','Angio-Net: Deep Learning-based Label-free Detection and Morphometric Analysis of In Vitro Angiogenesis','Lab on a Chip, 24, 751–763',2024],
+ ['Lee, J., Jung, S., Hong, H.K., Jo, H., Rhee, S., Jeong, Y.L., Ko, J., Cho, Y.B., Jeon, N.L.','Vascularized Tissue Mesh-Assisted Platform (VT-MAP) for the Personalized Drug Screening of Colorectal Cancer Organoids','Lab on a Chip, 24, 2208–2223',2024],
+ ['Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*','Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms','ACS Nano, 18(36), 24909–24928',2024],
+ ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 307, 122470',2024],
+ ['Ko, J., Park, D., Lee, J., Jung, S., Baek, K., Sung, K.E., Lee, J., Jeon, N.L.','Microfluidic high-throughput 3D cell culture','Nature Reviews Bioengineering, 2(6), 453–469',2024,'Journal cover'],
+ ['Ko, J.*, Song, J., Choi, N., Kim, H.N.','Patient-Derived Microphysiological Systems for Precision Medicine','Advanced Healthcare Materials, 13(7), e2303161',2023,'Journal cover'],
+ ['Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.','Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer','Science Advances, 9(47), eadk1098',2023],
+ ['Lee, W., Yoon, B., Lee, J., Jung, S., Oh, Y.S., Ko, J.*, Jeon, N.L.*','Machine Learning-Aided Three-Dimensional Morphological Quantification of Angiogenic Vasculature in the Multiculture Microfluidic Platform','BioChip Journal, 17(3), 357–368',2023],
+ ['Song, J.†, Ko, J.†, Choi, N., Jeon, N.L., Kim, H.N.','Tumor Spheroid-Based and Microtumor-Based Vascularized Models for Replicating the Vascularized Tumor Microenvironment','Organoid, 3, e6',2023],
+ ['Jung, J., Kim, S.T., Ko, J., Hong, J.Y., Park, J.O., Ha, S.Y., Lee, J.','Clinical Implication of HER2 Aberration in Patients With Metastatic Cancer Using Next-Generation Sequencing: A Pan-Tumor Analysis','JCO Precision Oncology, 7, e2200537',2023],
+ ['Park, S., Kim, Y., Ko, J., Song, J., Lee, J., Hong, Y.K., Jeon, N.L.','One-Step Achievement of Tumor Spheroid-Induced Angiogenesis in a High-Throughput Microfluidic Platform','Organoid, 3, e3',2023],
+ ['Ko, J.†, Jung, J.†, Kim, S.T., Hong, J.Y., Park, S., Park, J.O., Park, Y.S., Lim, H.Y., Ahn, S., Kim, K.-M., Kang, W.K., Lee, J.','MET Gene Alterations Predict Poor Survival Following Chemotherapy in Patients with Metastatic Cancer','Pathology and Oncology Research, 28, 1610697',2022],
+ ['Ko, J., Park, D., Lee, S., Gumuscu, B., Jeon, N.L.','Engineering Organ-on-a-Chip to Accelerate Translational Research','Micromachines, 13(8), 1200',2022],
+ ['Kim, Y.†, Ko, J.†, Shin, N., Park, S., Lee, S.R., Kim, S., Song, J., Lee, S., Kang, K.-S., Lee, J., Jeon, N.L.','All-in-One Microfluidic Design to Integrate Vascularized Tumor Spheroid into High-Throughput Platform','Biotechnology and Bioengineering, 119(12), 3678–3693',2022],
+ ['Leung, C.M., Haan, P., Ronaldson-Bouchard, K., Kim, G.-A., Ko, J., Rho, H.S., Chen, Z., Habibovic, P., Jeon, N.L., Takayama, S., Shuler, M.L., Vunjak-Novakovic, G., Frey, O., Verpoorte, E., Toh, Y.-C.','A Guide to the Organ-on-a-Chip','Nature Reviews Methods Primers, 2, 33',2022],
+ ['Ahn, J., Kim, D.H., Koo, D.J., Lim, J., Park, T.E., Lee, J., Ko, J., Kim, S., Kim, M., Kang, K.S., Kim, S.Y., Kim, Y., Jeon, N.L.','3D Microengineered Vascularized Tumor Spheroids for Drug Delivery and Efficacy Testing','Acta Biomaterialia, 165, 153–167',2022],
+ ['Shin, N., Kim, Y., Ko, J., Choi, S.W., Hyung, S., Lee, S.E., Park, S., Song, J., Jeon, N.L., Kang, K.S.','Vascularization of iNSC Spheroid in a 3D Spheroid-on-a-Chip Platform Enhances Neural Maturation','Biotechnology and Bioengineering, 119(9), 2256–2268',2022],
+ ['Lee, B., Kim, S., Ko, J., Lee, S.R., Kim, Y., Park, S., Kim, J., Hyung, S., Kim, H.Y., Jeon, N.L.','3D Micromesh-Based Hybrid Bioprinting: Multidimensional Liquid Patterning for 3D Microtissue Engineering','NPG Asia Materials, 14, 6',2022],
+ ['Shin, J.†, Ko, J.†, Jeong, S., Won, P., Lee, Y., Kim, J., Hong, S., Jeon, N.L., Ko, S.H.','Monolithic digital patterning of polydimethylsiloxane with successive laser pyrolysis','Nature Materials, 20(1), 100–107',2021,'Journal cover'],
+ ['Lee, S.Y.†, Byeon, S.†, Ko, J.†, Hyung, S., Lee, I.K., Jeon, N.L., Hong, J.Y., Kim, S.T., Park, S.H., Lee, J.','Reducing Tumor Invasiveness by Ramucirumab and TGF-β Receptor Kinase Inhibitor in a Diffuse-Type Gastric Cancer Patient-Derived Cell Model','Cancer Medicine, 10(20), 7253–7262',2021],
+ ['Kim, S.†, Ko, J.†, Lee, S.R., Park, D., Park, S., Jeon, N.L.','Anchor-IMPACT: A Standardized Microfluidic Platform for High-Throughput Anti-Angiogenic Drug Screening','Biotechnology and Bioengineering, 118(6), 2524–2535',2021],
+ ['Jusoh, N.†, Ko, J.†, Jeon, N.L.','Microfluidics-Based Skin Irritation Test Using In Vitro 3D Angiogenesis Platform','APL Bioengineering, 3(3), 036101',2019],
+ ['Ko, J.†, Ahn, J.†, Kim, S., Lee, Y., Lee, J., Park, D., Jeon, N.L.','Tumor Spheroid-on-a-Chip: A Standardized Microfluidic Culture Platform for Investigating Tumor Angiogenesis','Lab on a Chip, 19, 2822–2833',2019],
+ ['Ko, J., Lee, Y., Lee, S., Lee, S.R., Jeon, N.L.','Human Ocular Angiogenesis-Inspired Vascular Models on an Injection-Molded Microfluidic Chip','Advanced Healthcare Materials, 8(15), e1900328',2019,'Journal cover'],
+ ['Lee, S.R., Hyung, S., Bang, S., Lee, Y., Ko, J., Lee, S., Kim, H.J., Jeon, N.L.','Modeling Neural Circuit, Blood–Brain Barrier, and Myelination on a Microfluidic 96-Well Plate','Biofabrication, 11(3), 035013',2019],
+ ['Park, D., Son, K., Hwang, Y., Ko, J., Lee, Y., Doh, J., Jeon, N.L.','High-Throughput Microfluidic 3D Cytotoxicity Assay for Cancer Immunotherapy','Frontiers in Immunology, 10, 1133',2019],
+ ['Ahn, J., Ko, J., Lee, S., Yu, J., Kim, Y.T., Jeon, N.L.','Microfluidics in Nanoparticle Drug Delivery; From Synthesis to Pre-Clinical Screening','Advanced Drug Delivery Reviews, 128, 29–53',2018],
+ ['Lee, S., Ko, J., Park, D., Lee, S.R., Chung, M., Lee, Y., Jeon, N.L.','Microfluidic-Based Vascularized Microphysiological Systems','Lab on a Chip, 18(18), 2686–2709',2018],
+ ['Park, D., Kang, M., Choi, J.W., Paik, S.M., Ko, J., Lee, S., Lee, Y., Son, K., Ha, J., Choi, M., Park, W., Kim, H.Y., Jeon, N.L.','Microstructure Guided Multi-Scale Liquid Patterning on an Open Surface','Lab on a Chip, 18(14), 2013–2022',2018],
+ ['Bang, S., Lee, S.R., Ko, J., Son, K., Tahk, D., Ahn, J., Im, C., Jeon, N.L.','A Low Permeability Microfluidic Blood-Brain Barrier Platform with Direct Contact Between Perfusable Vascular Network and Astrocytes','Scientific Reports',2017],
+ ['Oh, S., Ryu, H., Tahk, D., Ko, J., Chung, Y., Lee, H.K., Lee, T.R., Jeon, N.L.','Open-Top Microfluidic Device for In Vitro Three-Dimensional Capillary Beds','Lab on a Chip, 17(20), 3405–3414',2017],
+];
+const bold = a => esc(a).replace(/Ko, J\.([†*‡]*)/g,'<b>Ko, J.$1</b>');
+const short = v => { const j=v.split(',')[0].replace(/\(Accepted\)/,'').trim();
+  const map={'Advanced Healthcare Materials':'Adv. Healthc. Mater.','Advanced Materials Technologies':'Adv. Mater. Technol.','Materials Today Bio':'Mater. Today Bio','Materials Today Advances':'Mater. Today Adv.','Lab on a Chip':'Lab Chip','Biotechnology and Bioengineering':'Biotechnol. Bioeng.','Advanced Drug Delivery Reviews':'Adv. Drug Deliv. Rev.','Nature Reviews Bioengineering':'Nat. Rev. Bioeng.','Nature Reviews Methods Primers':'Nat. Rev. Methods Primers','Microsystems & Nanoengineering':'Microsyst. Nanoeng.','Annual Review of Biomedical Engineering':'Annu. Rev. Biomed. Eng.','International Journal of Stem Cells':'Int. J. Stem Cells','Journal of Materials Chemistry B':'J. Mater. Chem. B','Journal of Mechanical Science and Technology':'J. Mech. Sci. Technol.','International Journal of Precision Engineering and Manufacturing':'IJPEM','Journal of the Korean Medical Association':'J. Korean Med. Assoc.','Advanced Intelligent Systems':'Adv. Intell. Syst.','Pathology and Oncology Research':'Pathol. Oncol. Res.','Frontiers in Immunology':'Front. Immunol.','Biomaterials Research':'Biomater. Res.','Current Opinion in Biomedical Engineering':'Curr. Opin. Biomed. Eng.','Nature Communications':'Nat. Commun.','Advanced Science':'Adv. Sci.','Scientific Reports':'Sci. Rep.','JCO Precision Oncology':'JCO Precis. Oncol.','APL Bioengineering':'APL Bioeng.','Acta Biomaterialia':'Acta Biomater.','NPG Asia Materials':'NPG Asia Mater.'};
+  return map[j]||j; };
+const pubLi = (p,rev) => {
+  const [a,t,v,y,note]=p;
+  const tag = rev ? (v?short(v):y) : short(v);
+  const venue = rev ? `${v?esc(v)+' · ':''}${y}` : `${esc(v)}, ${y}`;
+  return `<li><span class="tag${rev?' rev':''}">${esc(tag)}</span><div><span class="t">${esc(t)}</span><span class="a">${bold(a)}</span><span class="v">${venue}</span>${note&&!rev?`<span class="note">${esc(note)}</span>`:''}</div></li>`;
+};
+document.getElementById('pubs-rev').innerHTML = REV.map(p=>pubLi(p,true)).join('');
+const selHTML = SEL.map(p=>pubLi(p)).join('');
+document.getElementById('pubs-sel').innerHTML = selHTML;
+document.getElementById('pubs-sel2').innerHTML = selHTML;
+let html='', cur=null;
+ALL.forEach(p=>{ if(p[3]!==cur){ if(cur!==null) html+='</ul>'; cur=p[3]; html+=`<div class="yr">${cur}</div><ul class="pubs">`; } html+=pubLi(p); });
+document.getElementById('pubs-all').innerHTML = html+'</ul>';
+
+/* ---------- news ---------- */
+const NEWS = [
+ ['2026.09.05','우주, 영서, 은서, 민서, 상윤의 논문 <em>“From elastomer to thermoplastic: A material translation framework for scalable vascularized organ-on-a-chip drug screening”</em>이 Materials Today Advances에 게재되었습니다.'],
+ ['2026.09.01','고지훈 교수가 한양대학교 생명공학과에 부임했습니다. KOLAB은 한양대학교에서 새롭게 시작합니다.'],
+ ['2026.08.26','수진이 주저자로 참여한 논문 <em>“Capillary Flow Patterning-Based Organotypic Models for Spatially Resolved Assessment of CAR-Engineered Immune Cells”</em>이 Annual Review of Biomedical Engineering에 Accept 되었습니다.'],
+ ['2026.08.10','민서와 은서가 주저자로 참여한 논문 <em>“Human-Relevant Microphysiological Systems: Evidence for Defined Contexts of Use”</em>이 International Journal of Stem Cells에 Accept 되었습니다.'],
+ ['2026.08.01','(주)아이진과의 공동 연구 <em>“Inhibition of VEGF-induced Angiogenesis and Vascular Leakage by Bicistronic Co-expression of Aflibercept and COMP-Ang1”</em>이 Advanced Healthcare Materials에 게재 승인되었습니다.'],
+ ['2026.06.22','우주가 주저자로 참여한 <em>“High-Throughput Digital Decoding of Vascular Heterogeneity in Patient-Specific Tumor Microenvironments”</em>가 Advanced Healthcare Materials에 Accept 되었습니다.'],
+ ['2026.05.15','2026 한국바이오칩학회 춘계국제학술대회에서 고지훈 교수가 바이오칩 젊은 인재상, 수진이 최우수 포스터 발표상, 민서가 우수 포스터 발표상을 수상했습니다.'],
+ ['2026.05.11','수진이 주저자로 참여한 <em>“Immune Microphysiological Systems for Human Innate Immunity”</em>가 Advanced Materials Technologies에 Accept 되었습니다.'],
+ ['2026.04.21','KOLAB 논문이 Lab on a Chip (Vol. 26, Issue 8) Front Cover로 선정되었습니다.'],
+ ['2026.04.16','Kyushu University Jeonghyun Kim 교수 연구실과 연구 협력 MOU를 체결했습니다.'],
+ ['2026.04.13','고지훈 교수가 Asian-Pacific Association for Biomechanics의 Yamaguchi Medal 2026 (Emerging Technology – AI) 수상자로 선정되었습니다. (WCB 2026, Vancouver)'],
+ ['2026.02.12','태임과 재홍이 석사 학위를 취득했습니다.'],
+ ['2026.01.16','상윤이 2026 한국줄기세포학회 동계학술대회에서 KSSCR Best Poster Award를 수상했습니다.'],
+ ['2025.12.05','예담과 수진의 <em>“A Tumor Spheroid Array Chip for High-Fidelity Evaluation of Liposomal Drug Delivery Through the EPR Effect”</em>가 Lab on a Chip에 게재 승인되었습니다 (Front Cover).'],
+ ['2025.12.05','태임과 상윤이 한국콜마와 공동 작성한 <em>“Innovations in Skin Microphysiological Systems for Nonclinical Testing and FDA Modernization”</em>이 Microsystems &amp; Nanoengineering에 게재 승인되었습니다 (Editor’s Pick).'],
+ ['2025.12.03','고지훈 교수가 총무로 활동하는 한국줄기세포학회 오가노이드 및 3D 모델 분과의 첫 학술대회가 기초과학연구원에서 개최되었습니다.'],
+ ['2025.11.26','재홍(주저자), 우주(공동저자)의 TEER 측정 통합 vessel-on-a-chip 논문이 Advanced Materials Technologies에 게재 승인되었습니다.'],
+ ['2025.11.14','2025 바이오칩학회 추계학술대회에서 상윤, 우주가 최우수 포스터 발표상, 재홍이 우수 포스터 발표상을 수상했습니다.'],
+ ['2025.11.12','태임이 바이오칩학회 Young Pioneer Session에서 Skin-on-a-Plate 연구로 구두 발표했습니다.'],
+ ['2025.11.10','태임, 상윤이 한국콜마와 공동연구한 Skin-on-a-Chip 관련 특허 3건이 출원되었습니다.'],
+ ['2025.09.18','우주의 「미세생리시스템 분석에서의 AI/ML 기반 표준화」 논문이 기계저널에 소개되었습니다.'],
+ ['2025.09.03','상윤(생체 장벽 투과성 평가용 미세유체칩)과 희수(다세포 공배양 가능한 오픈형 오가노이드 칩)의 특허가 출원되었습니다.'],
+ ['2025.08.08','재홍이 공동저자로 참여한 <em>“Advanced Biomanufacturing Technologies for Micro-physiological Systems”</em>가 IJPEM에 게재 승인되었습니다.'],
+ ['2025.07.22','희수가 주저자로 참여한 <em>“Reconstructing the Female Reproductive System Using 3D Bioprinting in Tissue Engineering”</em>이 Materials Today Bio에 게재 승인되었습니다 (BRIC 한빛사 선정).'],
+ ['2025.07.20','삼성서울병원과의 협업 연구가 Journal of Materials Chemistry B에 게재 승인되었습니다 (Front Cover).'],
+ ['2025.07.12','우주가 주저자로 참여한 <em>“AI-Powered Image Standardization in Microphysiological System Platforms”</em>가 JMST Advances에 게재 승인되었습니다.'],
+ ['2025.07.11','신규 학부연구원 영서, 세림, 윤정, 은서, 민서가 합류했습니다.'],
+ ['2025.07.09','재홍이 JCK MEMS/NEMS 2025에서 Best Student Paper Award를 수상했습니다.'],
+ ['2025.07.04','태임, 재홍, 예담의 리뷰 <em>“Clinical Potential of Patient-Derived Microphysiological Systems”</em>가 대한의사협회지에 게재 승인되었습니다.'],
+ ['2025.06.03','예담, 재홍, 수진의 리뷰 <em>“AI-driven Microphysiological Systems for Advancing Nanoparticle Therapeutics”</em>가 Advanced Intelligent Systems에 게재 승인되었습니다.'],
+ ['2025.05.16','우주가 한국바이오칩학회 2025 춘계학술대회에서 최우수 포스터 발표상을 수상했습니다.'],
+ ['2025.03.28','예담, 수진이 2025 KMEMS 춘계학술대회에서 우수논문상을 수상했습니다.'],
+ ['2024.08.21','재홍(주저자), 우주(공동저자)의 <em>“Recapitulating the Cancer-Immunity Cycle on a Chip”</em>이 Advanced Healthcare Materials에 게재 승인되었습니다.'],
+ ['2024.05.24','재홍이 한국바이오칩학회 2024 춘계학술대회에서 우수 포스터 발표상을 수상했습니다.'],
+ ['2023.12.28','예담이 공동저자로 참여한 <em>“Understanding Organotropism in Cancer Metastasis Using Microphysiological Systems”</em>가 Lab on a Chip에 게재 승인되었습니다.'],
+ ['2023.03.02','가천대학교 바이오나노학과에서 KOLAB이 문을 열었습니다.'],
+];
+const nrow = n => `<tr><td class="d">${n[0]}</td><td>${n[1]}</td></tr>`;
+document.getElementById('news-top').innerHTML = NEWS.slice(0,6).map(nrow).join('');
+document.getElementById('news-all').innerHTML = NEWS.map(nrow).join('');
+
+/* ---------- moments ---------- */
+const MOM = [
+ ['2026.08.24','Summer’s End at Namhansanseong','남한산성에서 여름의 끝과 새 학기의 시작을 함께했습니다.'],
+ ['2026.08.20','Congratulations on Sujin’s Graduation','수진의 학사 졸업을 축하합니다.'],
+ ['2026.08.13','2026 MPS-NEXT','가천대–성균관대–동국대 MPS-NEXT Mini Symposium 개최. 상윤, 우주, 은서 발표.'],
+ ['2026.05','May the Force be with KOLAB','민우, 소은, 수빈, 세빈, 예인이 새로 합류했습니다.'],
+ ['2026.05.15','Korean BioChip Society Conference','여수에서 열린 춘계 국제학술대회에 참석했습니다.'],
+ ['2026.04.16','KOLAB × KYUSHU','Kyushu University를 방문해 연구 발표와 공동 연구를 논의했습니다.'],
+ ['2026.02.12','Graduation','재홍 &amp; 태임의 석사 졸업, 우주의 학부 졸업을 축하합니다.'],
+ ['2026.01.17','Integrated Physician-Scientist Program','가천대학교 의과대학 융합형 의과학자 학부 심화과정을 진행했습니다.'],
+ ['2026.01.14','Winter Membership Training @Vivaldi','KSSCR 동계학술대회 참석과 함께한 겨울 MT.'],
+ ['2025.12.17','BK21 Research Day','태임 최우수상, 수진 우수상 수상.'],
+ ['2025.11.12','Korean BioChip Society 2025 Fall Meeting','제주에서 태임, 재홍, 상윤, 우주, 수진, 수인의 연구 발표.'],
+ ['2025.10.24','Clean Room Renovation','KOLAB 클린룸 확장 개편.'],
+ ['2025.09.10','2025 KSBM Fall Meeting','부산 BEXCO에서 열린 한국생체재료학회 추계학술대회.'],
+ ['2025.08.19','2025 MPS-NEXT','가천대–성균관대–동국대–서울대–KIST 합동 심포지엄. 태임 최우수상, 우주 우수상, 상윤 장려상.'],
+ ['2025.08.14','KOLAB Running Club','제1회 고랩 러닝 클럽.'],
+ ['2025.07.30','Summer MT @영흥도','서로 알아가는 즐겁고 유익한 시간.'],
+ ['2025.06.10','Visiting KIAT Europe','KIAT 유럽 사무소 방문.'],
+ ['2025.01.10','New Cell Culture Room','세포배양실 확장 이전.'],
+ ['2024.12.16','US-Japan Symposium on Drug Delivery Systems','16th US-Japan Symposium에서 Robert Langer 교수와 함께.'],
+ ['2024.05.31','World Biomaterials Congress 2024','세계생체재료학회 초청 연사 및 좌장.'],
+ ['2023.11','Opening Our Cell Culture Room','바이오나노연구원 세포배양실 오픈.'],
+ ['2023.03.02','KOLAB is now open','가천대학교 바이오나노학과에서 KOLAB의 첫 시작.'],
+];
+document.getElementById('moments').innerHTML = MOM.map(m=>`<li><span class="d">${m[0]}</span><div><b>${m[1]}</b><span class="x">${m[2]}</span></div></li>`).join('');
+
+/* ---------- gallery (gallery.json) ---------- */
+const $ = id => document.getElementById(id);
+const escA = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+let POSTS = [];
+function renderPosts(){
+  const list = [...POSTS].sort((a,b)=> String(b.date||'').localeCompare(String(a.date||'')));
+  $('posts').innerHTML = list.map((p,i)=>{
+    const n = (p.photos||[]).length;
+    return `<article class="post">
+      ${n?`<button class="cover" type="button" data-open="${i}" aria-label="Open photos: ${escA(p.title)}"><img src="${escA(p.photos[0])}" alt="${escA(p.title)}" loading="lazy">${n>1?`<span class="count">${n} photos</span>`:''}</button>`:''}
+      <span class="d">${escA(p.date)}</span><h3>${escA(p.title)}</h3>
+      ${p.caption?`<p>${escA(p.caption)}</p>`:''}
+    </article>`;}).join('');
+  POSTS = list;
+  $('posts-empty').hidden = list.length>0;
+  if(!list.length) $('posts-empty').textContent='No gallery posts yet.';
+}
+fetch('gallery.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{POSTS=Array.isArray(d)?d:[];renderPosts();})
+  .catch(()=>{ $('posts-empty').hidden=false; $('posts-empty').textContent='Gallery could not be loaded (check gallery.json format).'; });
+
+let LB = {items:[], i:0};
+function lbShow(){ const it=LB.items[LB.i]; $('lb-img').src=it.src; $('lb-img').alt=it.cap; $('lb-cap').textContent = it.cap + (LB.items.length>1?`  ·  ${LB.i+1} / ${LB.items.length}`:''); $('lb-prev').hidden=$('lb-next').hidden=LB.items.length<2; }
+function lbOpen(items,i=0){ LB={items,i}; $('lb').hidden=false; lbShow(); $('lb-close').focus(); }
+function lbClose(){ $('lb').hidden=true; $('lb-img').removeAttribute('src'); }
+$('lb-close').onclick=lbClose;
+$('lb-prev').onclick=()=>{LB.i=(LB.i-1+LB.items.length)%LB.items.length;lbShow()};
+$('lb-next').onclick=()=>{LB.i=(LB.i+1)%LB.items.length;lbShow()};
+$('lb').addEventListener('click',e=>{ if(e.target.id==='lb') lbClose(); });
+document.addEventListener('keydown',e=>{ if($('lb').hidden) return; if(e.key==='Escape') lbClose(); if(e.key==='ArrowLeft') $('lb-prev').click(); if(e.key==='ArrowRight') $('lb-next').click(); });
+$('posts').addEventListener('click', e=>{
+  const o = e.target.closest('[data-open]'); if(!o) return;
+  const p = POSTS[+o.dataset.open]; if(p) lbOpen(p.photos.map(src=>({src,cap:`${p.date} · ${p.title}`})));
+});
+
+/* ---------- routing + theme ---------- */
+const views = ['about','people','research','publications','news','moments','contact'];
+function show(){
+  const h = (location.hash||'').slice(1);
+  const v = views.includes(h) ? h : 'about';
+  views.forEach(x=>document.getElementById('v-'+x).classList.toggle('on', x===v));
+  document.querySelectorAll('#nav a').forEach(a=>a.toggleAttribute('aria-current', a.getAttribute('href')==='#'+v) && a.setAttribute('aria-current','page'));
+  window.scrollTo(0,0);
+}
+document.addEventListener('click', e=>{
+  const a = e.target.closest('a[href^="#"]'); if(!a) return;
+  e.preventDefault(); history.pushState(null,'',a.getAttribute('href')); show();
+});
+window.addEventListener('popstate', show); window.addEventListener('hashchange', show); show();
+
+document.getElementById('theme').addEventListener('click', ()=>{
+  const r=document.documentElement;
+  const dark = r.dataset.theme ? r.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme = dark ? 'light' : 'dark';
+  try{ localStorage.setItem('kolab-theme', r.dataset.theme) }catch(e){}
+});
+try{ const t=localStorage.getItem('kolab-theme'); if(t) document.documentElement.dataset.theme=t }catch(e){}
+
+document.getElementById('copy').addEventListener('click', async e=>{
+  const b=e.currentTarget;
+  try{ await navigator.clipboard.writeText('kchip@hanyang.ac.kr'); b.textContent='Copied'; }
+  catch(err){ const s=getSelection(), r=document.createRange(); r.selectNodeContents(document.getElementById('em')); s.removeAllRanges(); s.addRange(r); b.textContent='Selected — press Ctrl/Cmd+C'; }
+  setTimeout(()=>b.textContent='Copy email',2200);
+});
+</script>
+
+</body>
+</html>
