@@ -302,6 +302,43 @@ h2{font-stretch:112%}
 .pubs a.pl{color:var(--fg)}
 .pubs a.pl:hover{color:var(--accent)}
 .pubs a.doi{display:inline-block;margin-top:4px;font:400 11.5px/1.4 var(--mono);color:var(--accent);overflow-wrap:anywhere}
+
+/* readability + new blocks */
+:root{--muted:#a3b0b6}
+body{font-size:16px}
+.fig,.mod{font-size:11.5px}
+.pubs .a,.tl span.x,.post p,.theme p{color:#b3bfc4}
+.src{font:400 12px/1.5 var(--mono);color:var(--muted);margin:2px 0 0}
+.axes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 8px}
+.axes a{display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--line);border-radius:3px;color:var(--fg);font:500 14px/1.35 var(--display)}
+.axes a b{font:500 12px/1 var(--mono);color:var(--accent)}
+.axes a:hover{border-color:var(--accent);text-decoration:none}
+@media (max-width:760px){.axes{grid-template-columns:repeat(2,1fr)}}
+.axis{padding-top:26px;scroll-margin-top:80px}
+.axh{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;margin:28px 0 4px}
+.axh h2{margin:0}
+.axh p{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+.axn{font:600 40px/1 var(--display);font-stretch:118%;color:var(--accent);opacity:.85}
+.keys{display:flex;flex-direction:column;gap:8px;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.kp{display:flex;flex-direction:column;gap:2px;color:var(--fg)}
+a.kp:hover{text-decoration:none}
+a.kp:hover .kt{color:var(--accent)}
+.kt{font-size:13.5px;line-height:1.45}
+.kv{font:400 11.5px/1.4 var(--mono);color:var(--muted)}
+.cta a.join{border-color:var(--ch-green);color:var(--ch-green)}
+.jgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+.jgrid > *{min-width:0}
+@media (max-width:760px){.jgrid{grid-template-columns:1fr}}
+.jcard{border:1px solid var(--line);border-radius:3px;padding:20px 22px;background:var(--surface)}
+.jcard ul{margin:8px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:12px;font-size:15px}
+.jcard ul.tags{list-style:none;padding:0;flex-direction:row;flex-wrap:wrap;gap:8px}
+.jcard ul.tags li{font:400 12.5px/1 var(--mono);border:1px solid var(--line);border-radius:99px;padding:8px 11px;color:var(--fg)}
+.ko3{color:var(--muted);font-size:14px}
+.steps{list-style:none;padding:0;margin:0 0 24px;counter-reset:s;display:grid;gap:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:16px 0;border-top:1px solid var(--line)}
+.steps li::before{content:counter(s,decimal-leading-zero);font:500 13px/1.6 var(--mono);color:var(--accent);grid-row:span 2}
+.steps b{font-weight:600}
+.steps li > span{color:#b9c4c9;font-size:15px}
 </style>
 </head>
 <body>
@@ -317,6 +354,7 @@ h2{font-stretch:112%}
       <a href="#people">people</a>
       <a href="#news">news</a>
       <a href="#moments">moments</a>
+      <a href="#join">join</a>
       <a href="#contact">contact</a>
     </nav>
   </div>
@@ -333,7 +371,7 @@ h2{font-stretch:112%}
         <h1>Human tissue,<br><em>engineered</em> on a chip.</h1>
         <p>We build vascularized microphysiological systems that recreate human tissue microenvironments, and we read them with quantitative, AI-enabled imaging.</p>
         <p class="ko2">한양대학교 생명공학과 미세생리시스템 연구실<br>Laboratory for Advanced Microphysiological Systems</p>
-        <div class="cta"><a class="pri" href="#research">Explore research</a><a href="#atlas">Image atlas →</a></div>
+        <div class="cta"><a class="pri" href="#research">Explore research</a><a href="#atlas">Image atlas →</a><a class="join" href="#join">Join KOLAB</a></div>
       </div>
       <figure class="plate" data-atlas="tumor-angiogenesis">
         <img src="images/research/tumor-angiogenesis.jpg" alt="Tumor angiogenesis on a chip: green vessels sprouting toward a red tumor spheroid">
@@ -345,7 +383,7 @@ h2{font-stretch:112%}
 
   <h2>what we study</h2>
   <div class="themes">
-    <a class="theme" href="#research"><div class="im"><img src="images/research/perfusable-vessel.jpg" alt="Perfusable blood vessel network"></div><h3>Vascularized human models</h3><p>Engineered, perfusable microvascular networks inside organ and tumor models.</p></a>
+    <a class="theme" href="#research"><div class="im"><img src="images/research/perfusable-vessel.jpg" alt="Perfusable blood vessel network"></div><h3>Vascularized &amp; organ models</h3><p>Engineered, perfusable microvascular networks inside organ and tumor models.</p></a>
     <a class="theme" href="#research"><div class="im"><img src="images/research/tumor-vasculature.jpg" alt="3D reconstruction of a vascularized tumor"></div><h3>Tumor &amp; immune microenvironment</h3><p>Patient-derived tumors, immune cell trafficking and immune–vascular crosstalk.</p></a>
     <a class="theme" href="#research"><div class="im"><img src="images/research/platforms.jpg" alt="Microfluidic culture platforms"></div><h3>High-throughput platforms</h3><p>Standardized, automation-ready organ chips for drug screening and safety.</p></a>
     <a class="theme" href="#research"><div class="im"><img src="images/research/ai-segmentation.jpg" alt="AI segmentation of vessel networks"></div><h3>AI bioimage analysis</h3><p>Virtual staining, segmentation and label-free phenotyping of 3D tissues.</p></a>
@@ -369,7 +407,7 @@ h2{font-stretch:112%}
 
   <div class="call">
     <h3>We are recruiting graduate students and undergraduate researchers</h3>
-    <p>Microfluidics, 3D printing, 3D cell culture, organoids and AI-based image analysis. 관심 있는 분들은 CV와 성적표를 보내주세요. <a href="#contact">How to apply →</a></p>
+    <p>Microfluidics, 3D printing, 3D cell culture, organoids and AI-based image analysis. 관심 있는 분들은 CV와 성적표를 보내주세요. <a href="#join">How to join →</a></p>
   </div>
 
   <h2>news</h2>
@@ -394,7 +432,8 @@ h2{font-stretch:112%}
       <span class="role">Assistant Professor · Department of Bioengineering, Hanyang University</span>
       <span class="mail">kchip [at] hanyang.ac.kr · ORCID 0000-0002-6555-3728</span>
       <p style="margin-top:14px;font-size:14.5px">His research focuses on human-relevant microphysiological systems (MPS) that integrate microengineering, vascular biology, organoids, immune systems, and AI-enabled bioimage analysis. His group builds engineered human tissue models of complex physiological and pathological microenvironments, with particular interest in vascularized organ models, tumor–immune microenvironments, high-throughput microfluidic platforms, and patient-specific disease models.</p>
-      <div class="stats"><span><b>43+</b> publications</span><span>h-index <b>23</b></span><span>i10 <b>29</b></span><span><b>3,500+</b> citations</span><span>FWCI <b>3.57</b></span></div>
+      <div class="stats"><span><b>60+</b> publications</span><span>h-index <b>24</b></span><span>i10-index <b>33</b></span><span><b>3,500+</b> citations</span><span>FWCI <b>3.57</b></span></div>
+      <p class="src">h-index, i10-index, citations: Google Scholar, July 2026 · FWCI: Scopus/SciVal, 2022–2025</p>
     </div>
   </div>
   <div class="cv">
@@ -432,13 +471,11 @@ h2{font-stretch:112%}
 
 <!-- RESEARCH -->
 <section class="view" id="v-research">
-  <h1>research</h1>
-  <p class="lede">Our lab drives biomedical engineering to benefit society through real-world applications in healthcare, pharmaceuticals, cosmetics, and beyond.</p>
+  <span class="fig">Research</span>
+  <h1>Research</h1>
+  <p class="lede">We engineer human-relevant microphysiological systems and apply them to healthcare, pharmaceuticals, cosmetics, and alternatives to animal testing.</p>
 
-
-  <div id="topics"></div>
-
-  <h2 >funded projects <span style="color:var(--muted);font-weight:400;font-size:.7em">ongoing</span></h2>
+  <h2>Funded projects <span style="color:var(--muted);font-weight:400;font-size:.7em">ongoing</span></h2>
   <ul class="funds">
     <li><span>Multi-organoid digital twin platform for predicting therapeutic responses in autoimmune diseases<br><small style="color:var(--muted)">Excellent Young Researcher Program · MSIT / NRF</small><span class="pi-tag">PI</span></span><span class="yrs">2026–2031</span></li>
     <li><span>Immune cell discovery platform for cancer therapy<br><small style="color:var(--muted)">Engineering Research Center (ERC) · MSIT / NRF · Co-Investigator</small></span><span class="yrs">2023–2030</span></li>
@@ -447,6 +484,14 @@ h2{font-stretch:112%}
     <li><span>Customized 3D biofabrication materials and components for drug safety evaluation<br><small style="color:var(--muted)">Materials &amp; Components Technology Program · MOTIE / KEIT · Co-Investigator</small></span><span class="yrs">2024–2027</span></li>
   </ul>
 
+  <h2>Research areas</h2>
+  <div class="axes" role="navigation" aria-label="Research areas">
+    <a href="#ax-vascular"><b>01</b> Vascularized &amp; organ models</a>
+    <a href="#ax-tumor"><b>02</b> Tumor &amp; immune microenvironment</a>
+    <a href="#ax-platform"><b>03</b> High-throughput platforms</a>
+    <a href="#ax-ai"><b>04</b> AI bioimage analysis</a>
+  </div>
+  <div id="topics"></div>
 </section>
 
 <!-- ATLAS -->
@@ -469,7 +514,8 @@ h2{font-stretch:112%}
 <!-- PUBLICATIONS -->
 <section class="view" id="v-publications">
   <h1>publications</h1>
-  <div class="stats"><span>h-index <b>24</b></span><span>i10-index <b>33</b></span><span>citations <b>&gt;3,500</b> (Jul 2026)</span><span>FWCI <b>3.57</b> (SciVal 2022–25)</span></div>
+  <div class="stats"><span>h-index <b>24</b></span><span>i10-index <b>33</b></span><span>citations <b>&gt;3,500</b></span><span>FWCI <b>3.57</b></span></div>
+  <p class="src">h-index, i10-index, citations: Google Scholar, July 2026 · FWCI (Field-Weighted Citation Impact): Scopus/SciVal, 2022–2025</p>
   <div class="links" style="justify-content:flex-start"><a href="https://scholar.google.co.kr/citations?user=h2xps9oAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a><a href="https://orcid.org/0000-0002-6555-3728" target="_blank" rel="noopener">ORCID</a></div>
   <p class="lede" style="margin-top:14px">† equal contribution · * corresponding author</p>
 
@@ -507,6 +553,39 @@ h2{font-stretch:112%}
   <button class="lbn" id="lb-next" type="button" aria-label="Next photo">›</button>
 </div>
 
+<!-- JOIN -->
+<section class="view" id="v-join">
+  <span class="fig">Join KOLAB</span>
+  <h1>Build human tissue on a chip with us</h1>
+  <p class="lede">We are looking for students who want to connect biology, engineering and AI. 바이오와 AI를 함께 다루며 차세대 인체 모사 플랫폼을 만들 연구원을 찾습니다.</p>
+
+  <div class="jgrid">
+    <div class="jcard">
+      <h3>Who we are looking for</h3>
+      <ul>
+        <li><b>Integrated M.S.–Ph.D. (석박통합과정) applicants are preferred.</b> M.S. applicants are also welcome.<br><span class="ko3">석박통합과정 지원자를 우대합니다. 석사과정 지원도 환영합니다.</span></li>
+        <li><b>Preferred: AI × Bio.</b> Interest or experience in AI/deep learning together with biology, such as bioimage analysis, organoids or cell-culture chips.<br><span class="ko3">우대 역량: AI 바이오. 딥러닝 기반 이미지 분석, 오가노이드, 세포배양칩 개발에 관심 있는 분.</span></li>
+      </ul>
+    </div>
+    <div class="jcard">
+      <h3>What you will work with</h3>
+      <ul class="tags">
+        <li>Microfluidic chip design &amp; 3D printing</li><li>3D cell culture &amp; organoids</li><li>Engineered microvasculature</li>
+        <li>Confocal imaging</li><li>Deep-learning image analysis</li><li>Drug screening assays</li><li>Industry &amp; hospital collaborations</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>How to join</h2>
+  <ol class="steps">
+    <li><b>Send your CV and transcript</b><span>Email both to <span class="mail">kchip@hanyang.ac.kr</span>. 이메일로 CV와 성적표를 보내주세요.</span></li>
+    <li><b>Interview</b><span>We will contact you for a meeting with Prof. Ko. 서류 검토 후 면담을 진행합니다.</span></li>
+    <li><b>Six-month internship</b><span>Before admission, you join the lab as an intern for about six months to get to know the research and the team. 입학 전 약 6개월간 인턴 연구원으로 함께 연구합니다.</span></li>
+    <li><b>Admission</b><span>You begin your graduate program in the following semester. Funding and stipends are discussed individually. 인건비 등 지원 사항은 면담 후 개별적으로 논의합니다.</span></li>
+  </ol>
+  <div class="cta"><a class="pri" href="#contact">Contact &amp; address</a><a href="#people">Meet the team →</a></div>
+</section>
+
 <!-- CONTACT -->
 <section class="view" id="v-contact">
   <h1>contact</h1>
@@ -530,7 +609,7 @@ h2{font-stretch:112%}
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2023–2026 Advanced Biosystems Engineering Laboratory (KOLAB)</span><span>Dept. of Bioengineering · Hanyang University</span></div></footer>
+<footer><div class="wrap"><span>© 2023–2026 KOLAB · Laboratory for Advanced Microphysiological Systems</span><span>Dept. of Bioengineering · Hanyang University</span></div></footer>
 
 <script>
 const IMG = {
@@ -560,14 +639,14 @@ const avatar = (key,name,cls='ph') => IMG[key] ? `<img class="${cls}" src="${IMG
 
 /* ---------- people ---------- */
 const grads = [
- {k:'wooju',ko:'박우주',en:'Wooju Park',role:'석박통합과정 (1) · Lab Manager',m:'wooju.pk [at] gmail.com',
+ {k:'wooju',ko:'박우주',en:'Wooju Park',role:'석박통합과정 1학기 · Lab Manager',m:'wooju.pk [at] gmail.com',
   p:'2024년 1월 연구실에 합류하여 한양대학교 생명공학과 석박통합과정에서 연구를 수행하고 있습니다. 인공지능학을 함께 전공한 경험을 바탕으로 AI/ML 기반 바이오이미지 분석 및 정량화 기술을 개발하며, MPS 제작부터 3D 혈관 모델링, 약물평가, AI 기반 영상분석까지 아우르는 통합 연구 역량을 구축하고 있습니다. Materials Today Advances와 Advanced Healthcare Materials에 제1저자로 연구를 발표하였고, 2025년 한국바이오칩학회 춘계학술대회에서 최우수 포스터 발표상을 수상하였습니다.'},
- {k:'sujin',ko:'김수진',en:'Sujin Kim',role:'석박통합과정 (1)',m:'sujinsu1111 [at] gmail.com',
+ {k:'sujin',ko:'김수진',en:'Sujin Kim',role:'석박통합과정 1학기',m:'sujinsu1111 [at] gmail.com',
   p:'2023년 연구실에 합류하여 혈관화 미세생리시스템과 종양–면역 미세환경 모델링을 연구하고 있습니다. Lab on a Chip에 공동 제1저자로 3차원 종양 spheroid와 perfusable vascular network를 결합한 나노약물 전달 평가 플랫폼을 발표하였습니다. 최근에는 macrophage, NK 및 CAR-NK cell과 혈관 사이의 상호작용을 규명하고, 면역세포의 trafficking, extravasation, tumor infiltration 및 target-cell killing을 재현하는 vascularized tumor–immune MPS를 개발하고 있습니다. 2025년 KMEMS 춘계학술대회 우수논문상을 수상하였습니다.'},
- {k:'sangyoon',ko:'경상윤',en:'Sangyoon Kyung',role:'석사과정 (3)',m:'10quadrillionsy [at] gmail.com',
+ {k:'sangyoon',ko:'경상윤',en:'Sangyoon Kyung',role:'석사과정 3학기',m:'10quadrillionsy [at] gmail.com',
   p:'2024년 5월 연구실에 합류하였습니다. 3차원 CAD 설계와 3D 프린팅 기반 프로토타입 제작에 강점을 가지고 새로운 아이디어를 미세유체 디바이스로 구현하고 있습니다. 한국콜마㈜와의 산학협력을 통해 피부 및 안구 자극을 동시에 평가하는 표준화 미세유체칩을 개발하였으며, “생체 장벽 투과성 평가용 미세유체칩” 특허를 출원하였습니다.'},
- {k:'hyeryung',ko:'박혜령',en:'HyeRyung Park',role:'석사과정 (0)',m:'qkrgpfud7045 [at] naver.com',p:''},
- {k:'yerim',ko:'김예림',en:'Yerim Kim',role:'석사과정 (0)',m:'shaina0112 [at] naver.com',p:''},
+ {k:'hyeryung',ko:'박혜령',en:'HyeRyung Park',role:'석사과정 입학 예정 (2027.03) · 인턴 연구원',m:'qkrgpfud7045 [at] naver.com',p:''},
+ {k:'yerim',ko:'김예림',en:'Yerim Kim',role:'석사과정 입학 예정 (2027.03) · 인턴 연구원',m:'shaina0112 [at] naver.com',p:''},
 ];
 document.getElementById('grads').innerHTML = grads.map(g=>`
  <div class="person">${avatar(g.k,g.en)}<div>
@@ -600,26 +679,6 @@ const alumni = [
 ];
 document.getElementById('alumni').innerHTML = alumni.map(a=>`<li>${avatar(a[0],a[2],'')}<div><b>${a[1]}</b> ${a[2]}<small>${a[3]}</small></div></li>`).join('');
 
-/* ---------- research ---------- */
-const MODN = {fluor:'fluorescence', r3d:'3D reconstruction', bf:'brightfield', dev:'device', ai:'AI analysis'};
-const modTag = m => `<span class="mod ${m}"><i></i>${MODN[m]||''}</span>`;
-const topics = [
- ['platforms','dev','Customizable 3D Cell Culture Platforms','We engineer 3D cell culture chips using advanced microfabrication, from microfluidic chip arrays and modular systems to compact well-plate devices. They mimic in vivo conditions for high-resolution studies of cell behavior and disease. We are now focused on organoid-on-a-chip systems for more physiologically relevant in vitro models.','',''],
- ['ai-segmentation','ai','AI/ML-driven Data Analysis','We use machine learning to analyze complex biomedical images, enabling virtual staining, segmentation, and morphological quantification. A user-friendly graphical interface is in development so these tools are accessible to every lab, reducing reliance on traditional staining.','',''],
- ['mps-plate','dev','Standardized and Automation-Compatible Organ Chip','We are establishing standardized organ-on-a-chip formats and workflows fully compatible with automated liquid handling and dispensing. Consistent chip specifications and procedures reduce operator-dependent variability and support reproducible, scalable high-throughput screening.','','Sangyoon Kyung'],
- ['corneal','fluor','Angiogenesis-on-a-Chip','A 3D angiogenesis model within a microfluidic chip enables real-time live imaging of vascular sprouting, remodeling, and barrier function. Patient-derived endothelial cells capture patient-specific vascular morphogenesis for personalized drug screening in a high-throughput format.','','Jaehong Min & Sujin Kim'],
- ['tumor-vasculature','r3d','Vascularized Tumor-on-a-Chip','We engineer perfusable microvascular networks within 3D tumor spheroids and organoids to observe tumor–vasculature interactions in real time. Using patient-derived specimens, the platform serves as an in vitro avatar for personalized drug screening, drug penetration, and resistance studies.','',''],
- ['vascularized-skin','r3d','Vascularized Skin-on-a-Chip','This model integrates epidermis, dermis, and perfusable microvascular networks. Designed for high-throughput use, it enables reliable testing of skin irritation and sensitization as an alternative to animal-based assays.','Kolmar Korea',''],
- ['immune-cells','fluor','Tumor Immune Microenvironment (TIME)','We recreate the tumor immune microenvironment in vitro to study macrophage polarization, endothelial interaction, and tumor–immune crosstalk, with real-time analysis of immune responses for evaluating immunotherapies.','',''],
- ['organoids','bf','Patient-derived Organoid Development','Patient-specific organoids derived from clinical specimens recapitulate key structural and functional features of native tissue, enabling personalized studies of disease progression and drug response.','Gil Medical Center','Yedam Lee'],
- ['brain-organoid','fluor','Brain Organoid-on-a-Chip','Our platform supports complex neural networks and axonal myelination for studies of pain signaling, analgesic screening, and neurological disorders, and for evaluating cell-based therapies for neurodegenerative and neuropathic conditions.','KIST','Heesuh Yi'],
-];
-document.getElementById('topics').innerHTML = topics.map((t,i)=>`
- <article class="rfig">
-  <figure class="ri" data-atlas="${t[0]}"><img src="images/research/${t[0]}.jpg" alt="${t[2]}" loading="lazy"></figure>
-  <div class="rt"><span class="fig">Fig. ${String(i+2).padStart(2,'0')}</span><h3>${t[2]}</h3>${modTag(t[1])}<p>${t[3]}</p>
-  ${t[4]?`<span class="collab">In collaboration with ${t[4]}</span>`:''}${t[5]?`<span class="credit">Credit: ${t[5]}</span>`:''}</div></article>`).join('');
-
 /* ---------- publications ---------- */
 // [authors, title, venue, year, note]
 const REV = [
@@ -632,11 +691,11 @@ const REV = [
  ['Kim, S., Park, E., Byeon, M., Yang, S., Ko, J.*','Macrophage Polarization Shapes Vascular Fate: Visualizing Inflammatory and Reparative Endothelial Responses in an Open Microfluidic Co-Culture Chip','','In preparation'],
 ];
 const SEL = [
- ['Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*','Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms','ACS Nano, 18(36), 24909–24928',2024,'IF 16.0 · JCR Top 6%'],
- ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 307, 122470',2024,'IF 12.9 · JCR Top 3.6%'],
+ ['Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*','Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms','ACS Nano, 18(36), 24909–24928',2024],
+ ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 306, 122504',2024],
  ['Ko, J., Park, D., Lee, J., Jung, S., Baek, K., Sung, K.E., Lee, J., Jeon, N.L.','Microfluidic high-throughput 3D cell culture','Nature Reviews Bioengineering, 2(6), 453–469',2024,'Journal cover'],
- ['Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.','Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer','Science Advances, 9(47), eadk1098',2023,'IF 12.5'],
- ['Leung, C.M., Haan, P., Ronaldson-Bouchard, K., Kim, G.-A., Ko, J., Rho, H.S., Chen, Z., Habibovic, P., Jeon, N.L., Takayama, S., Shuler, M.L., Vunjak-Novakovic, G., Frey, O., Verpoorte, E., Toh, Y.-C.','A Guide to the Organ-on-a-Chip','Nature Reviews Methods Primers, 2, 33',2022,'IF 56.0 · Cited by 1,500'],
+ ['Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.','Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer','Science Advances, 9(47), eadk1098',2023],
+ ['Leung, C.M., Haan, P., Ronaldson-Bouchard, K., Kim, G.-A., Ko, J., Rho, H.S., Chen, Z., Habibovic, P., Jeon, N.L., Takayama, S., Shuler, M.L., Vunjak-Novakovic, G., Frey, O., Verpoorte, E., Toh, Y.-C.','A Guide to the Organ-on-a-Chip','Nature Reviews Methods Primers, 2, 33',2022],
  ['Shin, J.†, Ko, J.†, Jeong, S., Won, P., Lee, Y., Kim, J., Hong, S., Jeon, N.L., Ko, S.H.','Monolithic digital patterning of polydimethylsiloxane with successive laser pyrolysis','Nature Materials, 20(1), 100–107',2021,'Journal cover'],
 ];
 const ALL = [
@@ -668,7 +727,7 @@ const ALL = [
  ['Lee, J.†, Kim, S.†, Ko, J.†, Park, S., Lee, S.R., Kim, Y., Kim, W., Chung, Y., Kwon, O.H., Jeon, N.L.','Angio-Net: Deep Learning-based Label-free Detection and Morphometric Analysis of In Vitro Angiogenesis','Lab on a Chip, 24, 751–763',2024],
  ['Lee, J., Jung, S., Hong, H.K., Jo, H., Rhee, S., Jeong, Y.L., Ko, J., Cho, Y.B., Jeon, N.L.','Vascularized Tissue Mesh-Assisted Platform (VT-MAP) for the Personalized Drug Screening of Colorectal Cancer Organoids','Lab on a Chip, 24, 2208–2223',2024],
  ['Jung, S., Cheong, S., Lee, Y., Lee, J., Lee, J., Kwon, M.-S., Oh, Y.S., Kim, T., Ha, S., Kim, S.J., Jo, D.H., Ko, J.*, Jeon, N.L.*','Integrating Vascular Phenotypic and Proteomic Analysis in Open Microfluidic Platforms','ACS Nano, 18(36), 24909–24928',2024],
- ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 307, 122470',2024],
+ ['Ko, J.†, Hyung, S.†, An, M.†, Jung, S., Kim, S.T., Park, S.H., Park, J.O., Lim, H.Y., Kang, W.K., Kim, K.-M., Yoo, S., Jeon, N.L., Lee, J.','Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','Biomaterials, 306, 122504',2024],
  ['Ko, J., Park, D., Lee, J., Jung, S., Baek, K., Sung, K.E., Lee, J., Jeon, N.L.','Microfluidic high-throughput 3D cell culture','Nature Reviews Bioengineering, 2(6), 453–469',2024,'Journal cover'],
  ['Ko, J.*, Song, J., Choi, N., Kim, H.N.','Patient-Derived Microphysiological Systems for Precision Medicine','Advanced Healthcare Materials, 13(7), e2303161',2023,'Journal cover'],
  ['Hyung, S.†, Ko, J.†, Heo, Y.J., Blum, S.M., Kim, S.T., Park, S.H., Park, J.O., Kang, W.K., Lim, H.Y., Klempner, S.J., Lee, J.','Patient-derived exosomes facilitate therapeutic targeting of oncogenic MET in advanced gastric cancer','Science Advances, 9(47), eadk1098',2023],
@@ -717,6 +776,43 @@ document.getElementById('pubs-sel2').innerHTML = selHTML;
 let html='', cur=null;
 ALL.forEach(p=>{ if(p[3]!==cur){ if(cur!==null) html+='</ul>'; cur=p[3]; html+=`<div class="yr">${cur}</div><ul class="pubs">`; } html+=pubLi(p); });
 document.getElementById('pubs-all').innerHTML = html+'</ul>';
+
+/* ---------- research ---------- */
+const MODN = {fluor:'fluorescence', r3d:'3D reconstruction', bf:'brightfield', dev:'device', ai:'AI analysis'};
+const modTag = m => `<span class="mod ${m}"><i></i>${MODN[m]||''}</span>`;
+const AXES = [
+ ['ax-vascular','01','Vascularized & organ models','Perfusable human microvasculature and the organ models built around it.'],
+ ['ax-tumor','02','Tumor & immune microenvironment','Patient-derived tumors, organoids and immune cells in a vascularized 3D context.'],
+ ['ax-platform','03','High-throughput platforms','Standardized, automation-ready organ chips for drug screening and safety testing.'],
+ ['ax-ai','04','AI bioimage analysis','Quantitative, label-free readouts from complex 3D tissue images.'],
+];
+// [axis, image, modality, title, text, collaborator, credit, [key paper titles]]
+const topics = [
+ ['ax-vascular','corneal','fluor','Angiogenesis-on-a-Chip','A 3D angiogenesis model within a microfluidic chip enables real-time live imaging of vascular sprouting, remodeling, and barrier function. Patient-derived endothelial cells capture patient-specific vascular morphogenesis for personalized drug screening in a high-throughput format.','','Jaehong Min & Sujin Kim',['Human Ocular Angiogenesis-Inspired Vascular Models on an Injection-Molded Microfluidic Chip','Synergistic Inhibition of VEGF-induced Angiogenesis and Vascular Leakage by Bicistronic Co-expression of Aflibercept and COMP-Ang1']],
+ ['ax-vascular','vascularized-skin','r3d','Vascularized Skin-on-a-Chip','This model integrates epidermis, dermis, and perfusable microvascular networks. Designed for high-throughput use, it enables reliable testing of skin irritation and sensitization as an alternative to animal-based assays.','Kolmar Korea','',['Innovations in Skin Microphysiological Systems for Nonclinical Testing and FDA Modernization','Microfluidics-Based Skin Irritation Test Using In Vitro 3D Angiogenesis Platform']],
+ ['ax-vascular','brain-organoid','fluor','Brain Organoid-on-a-Chip','Our platform supports complex neural networks and axonal myelination for studies of pain signaling, analgesic screening, and neurological disorders, and for evaluating cell-based therapies for neurodegenerative and neuropathic conditions.','KIST','Heesuh Yi',['Modeling Neural Circuit, Blood–Brain Barrier, and Myelination on a Microfluidic 96-Well Plate','A Microfluidic Cell Culture Platform for Modeling Aligned Peripheral Nerve Bundle, Connection, and Myelination']],
+ ['ax-tumor','tumor-vasculature','r3d','Vascularized Tumor-on-a-Chip','We engineer perfusable microvascular networks within 3D tumor spheroids and organoids to observe tumor–vasculature interactions in real time. Using patient-derived specimens, the platform serves as an in vitro avatar for personalized drug screening, drug penetration, and resistance studies.','','',['Patient-derived tumor spheroid-induced angiogenesis preclinical platform for exploring therapeutic vulnerabilities in cancer','A Tumor Spheroid Array Chip for High-Fidelity Evaluation of Liposomal Drug Delivery Through the EPR Effect']],
+ ['ax-tumor','immune-cells','fluor','Tumor Immune Microenvironment (TIME)','We recreate the tumor immune microenvironment in vitro to study macrophage polarization, endothelial interaction, and tumor–immune crosstalk, with real-time analysis of immune responses for evaluating immunotherapies.','','',['Recapitulating the Cancer-Immunity Cycle on a Chip','Immune Microphysiological Systems for Human Innate Immunity']],
+ ['ax-tumor','organoids','bf','Patient-derived Organoid Development','Patient-specific organoids derived from clinical specimens recapitulate key structural and functional features of native tissue, enabling personalized studies of disease progression and drug response.','Gil Medical Center','Yedam Lee',['Revealing the Clinical Potential of High-Resolution Organoids','Vascularized Tissue Mesh-Assisted Platform (VT-MAP) for the Personalized Drug Screening of Colorectal Cancer Organoids']],
+ ['ax-platform','platforms','dev','Customizable 3D Cell Culture Platforms','We engineer 3D cell culture chips using advanced microfabrication, from microfluidic chip arrays and modular systems to compact well-plate devices. They mimic in vivo conditions for high-resolution studies of cell behavior and disease. We are now focused on organoid-on-a-chip systems for more physiologically relevant in vitro models.','','',['Microfluidic high-throughput 3D cell culture','Anchor-IMPACT: A Standardized Microfluidic Platform for High-Throughput Anti-Angiogenic Drug Screening']],
+ ['ax-platform','mps-plate','dev','Standardized and Automation-Compatible Organ Chip','We are establishing standardized organ-on-a-chip formats and workflows fully compatible with automated liquid handling and dispensing. Consistent chip specifications and procedures reduce operator-dependent variability and support reproducible, scalable high-throughput screening.','','Sangyoon Kyung',['From elastomer to thermoplastic: A material translation framework for scalable vascularized organ-on-a-chip drug screening']],
+ ['ax-ai','ai-segmentation','ai','AI/ML-driven Data Analysis','We use machine learning to analyze complex biomedical images, enabling virtual staining, segmentation, and morphological quantification. A user-friendly graphical interface is in development so these tools are accessible to every lab, reducing reliance on traditional staining.','','',['Angio-Net: Deep Learning-based Label-free Detection and Morphometric Analysis of In Vitro Angiogenesis','AI-Powered Image Standardization in Microphysiological System Platforms']],
+];
+const pubIndex = {}; [...SEL, ...ALL].forEach(p=>{ if(!pubIndex[p[1]]) pubIndex[p[1]]=p; });
+const keyPaper = title => { const p = pubIndex[title]; const doi = DOI[title];
+  const venue = p ? `${p[2].split(',')[0].replace(/\s*\(Accepted\)/,'')}, ${p[3]}` : '';
+  const inner = `<span class="kt">${esc(title)}</span><span class="kv">${esc(venue)}</span>`;
+  return doi ? `<a class="kp" href="https://doi.org/${doi}" target="_blank" rel="noopener">${inner}</a>` : `<span class="kp">${inner}</span>`; };
+let fig = 1;
+document.getElementById('topics').innerHTML = AXES.map(ax=>`
+ <section class="axis" id="${ax[0]}"><div class="axh"><span class="axn">${ax[1]}</span><div><h2>${esc(ax[2])}</h2><p>${esc(ax[3])}</p></div></div>
+ ${topics.filter(t=>t[0]===ax[0]).map(t=>{ fig++; return `
+ <article class="rfig">
+  <figure class="ri" data-atlas="${t[1]}"><img src="images/research/${t[1]}.jpg" alt="${t[3]}" loading="lazy"></figure>
+  <div class="rt"><span class="fig">Fig. ${String(fig).padStart(2,'0')}</span><h3>${t[3]}</h3>${modTag(t[2])}<p>${t[4]}</p>
+  ${t[5]?`<span class="collab">In collaboration with ${t[5]}</span>`:''}${t[6]?`<span class="credit">Credit: ${t[6]}</span>`:''}
+  ${t[7].length?`<div class="keys"><span class="fig">Key papers</span>${t[7].map(keyPaper).join('')}</div>`:''}</div></article>`;}).join('')}
+ </section>`).join('');
 
 /* ---------- news ---------- */
 const NEWS = [
@@ -827,7 +923,7 @@ $('posts').addEventListener('click', e=>{
 /* ---------- image atlas (atlas.json) ---------- */
 let ATLAS = [];
 const STRIP = ['corneal','vascular-mimicry','brain-organoid','perfusable-vessel','immune-cells','keratinocytes'];
-function atlasItems(list){ return list.map(a=>({src:a.src, cap:`${a.title}${a.note?' · '+a.note:''}`})); }
+function atlasItems(list){ return list.map(a=>({src:a.src, cap:`${a.title}${a.note?' · '+a.note:''}${a.desc?' — '+a.desc:''}`})); }
 function openAtlasById(id){
   const i = ATLAS.findIndex(a=>a.id===id);
   if (i>=0) lbOpen(atlasItems(ATLAS), i);
@@ -857,7 +953,7 @@ document.addEventListener('click',e=>{
 }, true);
 
 /* ---------- routing + theme ---------- */
-const views = ['about','research','atlas','publications','people','news','moments','contact'];
+const views = ['about','research','atlas','publications','people','news','moments','join','contact'];
 function show(){
   const h = (location.hash||'').slice(1);
   const v = views.includes(h) ? h : 'about';
@@ -867,6 +963,8 @@ function show(){
 }
 document.addEventListener('click', e=>{
   const a = e.target.closest('a[href^="#"]'); if(!a) return;
+  const tgt = a.getAttribute('href').slice(1);
+  if (tgt.startsWith('ax-')) { e.preventDefault(); document.getElementById(tgt)?.scrollIntoView({behavior:'smooth'}); return; }
   e.preventDefault(); history.pushState(null,'',a.getAttribute('href')); show();
 });
 window.addEventListener('popstate', show); window.addEventListener('hashchange', show); show();

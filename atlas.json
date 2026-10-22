@@ -4,132 +4,151 @@
     "title": "Tumor angiogenesis",
     "type": "fluor",
     "src": "images/research/tumor-angiogenesis.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Endothelial sprouts growing toward a tumor spheroid in a microfluidic chip; used to study tumor-induced angiogenesis and anti-angiogenic drugs."
   },
   {
     "id": "corneal",
     "title": "Corneal neovascularization",
     "type": "fluor",
     "src": "images/research/corneal.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Ocular angiogenesis-inspired vascular model: sprouting vessels around a circular region, mimicking corneal neovascularization."
   },
   {
     "id": "perfusable-vessel",
     "title": "Perfusable blood vessel",
     "type": "fluor",
     "src": "images/research/perfusable-vessel.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Self-assembled, perfusable microvascular network formed in 3D hydrogel inside the chip."
   },
   {
     "id": "brain-organoid",
     "title": "Brain organoid-on-a-chip",
     "type": "fluor",
     "src": "images/research/brain-organoid.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Brain organoid-on-a-chip with extensive neurite outgrowth."
   },
   {
     "id": "vascular-mimicry",
     "title": "Vascular mimicry",
     "type": "r3d",
     "src": "images/research/vascular-mimicry.jpg",
-    "note": ""
+    "note": "",
+    "desc": "3D reconstruction of vessels interacting with a tumor mass."
   },
   {
     "id": "vascularized-skin",
     "title": "Vascularized skin",
     "type": "r3d",
     "src": "images/research/vascularized-skin.jpg",
-    "note": ""
+    "note": "",
+    "desc": "3D reconstruction of a vascularized skin model with perfusable microvessels beneath the skin layers."
   },
   {
     "id": "immune-cells",
     "title": "Tumor immune microenvironment",
     "type": "fluor",
     "src": "images/research/immune-cells.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Immune cells in a reconstructed tumor immune microenvironment."
   },
   {
     "id": "tumor-vasculature",
     "title": "Vascularized tumor",
     "type": "r3d",
     "src": "images/research/tumor-vasculature.jpg",
-    "note": ""
+    "note": "",
+    "desc": "3D reconstruction of a vascularized tumor model for tumor–vasculature interaction and drug penetration studies."
   },
   {
     "id": "keratinocytes",
     "title": "Keratinocytes",
     "type": "fluor",
     "src": "images/research/keratinocytes.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   },
   {
     "id": "organoids",
     "title": "Patient-derived organoids",
     "type": "bf",
     "src": "images/research/organoids.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Patient-derived organoids grown from clinical specimens (brightfield)."
   },
   {
     "id": "ai-segmentation",
     "title": "AI vessel segmentation",
     "type": "ai",
     "src": "images/research/ai-segmentation.jpg",
-    "note": ""
+    "note": "",
+    "desc": "AI-based vessel analysis: raw image (top), skeletonized network (middle) and detected sprout tips and branch points (bottom)."
   },
   {
     "id": "stretchable",
     "title": "Stretchable culture",
     "type": "fluor",
     "src": "images/research/stretchable.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   },
   {
     "id": "tumor-3d",
     "title": "Vascularized tumor spheroid",
     "type": "r3d",
     "src": "images/research/tumor-3d.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   },
   {
     "id": "coculture",
     "title": "Vascular co-culture",
     "type": "fluor",
     "src": "images/research/coculture.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   },
   {
     "id": "endothelial-ring",
     "title": "Endothelial network",
     "type": "fluor",
     "src": "images/research/endothelial-ring.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   },
   {
     "id": "platforms",
     "title": "3D cell culture platforms",
     "type": "dev",
     "src": "images/research/platforms.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Examples of our microfluidic chip arrays, modular systems and well-plate-based devices."
   },
   {
     "id": "chips",
     "title": "Microfluidic chips",
     "type": "dev",
     "src": "images/research/chips.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   },
   {
     "id": "mps-plate",
     "title": "Microphysiological system plate",
     "type": "dev",
     "src": "images/research/mps-plate.jpg",
-    "note": ""
+    "note": "",
+    "desc": "Standardized, plate-format microphysiological system designed for automated workflows."
   },
   {
     "id": "chip-flow",
     "title": "Chip flow test",
     "type": "dev",
     "src": "images/research/chip-flow.jpg",
-    "note": ""
+    "note": "",
+    "desc": ""
   }
 ]
