@@ -675,7 +675,6 @@ const IMG = {
 "sujin": "images/people/sujin.jpg",
 "sangyoon": "images/people/sangyoon.jpg",
 "heesuh": "images/people/heesuh.jpg",
-"yeongseo": "images/people/yeongseo.jpg",
 "eunseo": "images/people/eunseo.jpg",
 "minseo": "images/people/minseo.jpg",
 "taeim": "images/people/taeim.jpg",
@@ -694,7 +693,8 @@ const IMG = {
 };
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const ini = n => n.split(' ').map(w=>w[0]).join('').slice(0,2);
-const avatar = (key,name,cls='ph') => IMG[key] ? `<img class="${cls}" src="${IMG[key]}" alt="${name}">` : `<div class="${cls} ini" aria-hidden="true">${ini(name)}</div>`;
+const INI = {yeongseo:'JY'};
+const avatar = (key,name,cls='ph') => IMG[key] ? `<img class="${cls}" src="${IMG[key]}" alt="${name}">` : `<div class="${cls} ini" aria-hidden="true">${INI[key]||ini(name)}</div>`;
 
 /* ---------- people ---------- */
 const grads = [
