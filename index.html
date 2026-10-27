@@ -879,7 +879,7 @@ document.getElementById('topics').innerHTML = AXES.map(ax=>`
 
 /* ---------- metrics: count-up tiles + bar charts ---------- */
 const CITES = [[2018,35],[2019,105],[2020,162],[2021,253],[2022,332],[2023,521],[2024,768],[2025,917],[2026,811]]; // Google Scholar, 2026-10-28
-const PUBS = (()=>{ const m={}; ALL.forEach(p=>{ m[p[3]]=(m[p[3]]||0)+1; }); const ys=Object.keys(m).map(Number); const out=[]; for(let y=Math.min(...ys);y<=Math.max(...ys);y++) out.push([y,m[y]||0]); return out; })();
+const PUBS = (()=>{ const m={}; ALL.forEach(p=>{ m[p[3]]=(m[p[3]]||0)+1; }); const ys=Object.keys(m).map(Number); const out=[]; for(let y=Math.max(2021,Math.min(...ys));y<=Math.max(...ys);y++) out.push([y,m[y]||0]); return out; })();
 document.getElementById('t-pubs').dataset.count = ALL.length; document.getElementById('pi-pubs').textContent = ALL.length; document.getElementById('t-pubs').textContent = ALL.length;
 function barChart(el, data, partialYear, hatchId, W=560){
   const H=210,pl=34,pr=6,pt=18,pb=24, n=data.length;
