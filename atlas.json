@@ -32,6 +32,14 @@
     "desc": "Brain organoid-on-a-chip with extensive neurite outgrowth."
   },
   {
+    "id": "neural-spheroid-axons",
+    "title": "Axonal outgrowth from a 3D neural spheroid",
+    "type": "fluor",
+    "src": "images/research/neural-spheroid-axons.jpg",
+    "note": "Confocal",
+    "desc": "Human neural progenitor (ReN cell)-derived spheroid cultured in 3D, with axons sprouting radially from the spheroid core. Blue: nuclei; green: neuronal processes."
+  },
+  {
     "id": "vascular-mimicry",
     "title": "Vascular mimicry",
     "type": "r3d",
