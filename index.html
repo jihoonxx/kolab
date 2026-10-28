@@ -693,7 +693,7 @@ const IMG = {
 };
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const ini = n => n.split(' ').map(w=>w[0]).join('').slice(0,2);
-const INI = {yeongseo:'JY'};
+const INI = {yeongseo:'YJ'};
 const avatar = (key,name,cls='ph') => IMG[key] ? `<img class="${cls}" src="${IMG[key]}" alt="${name}">` : `<div class="${cls} ini" aria-hidden="true">${INI[key]||ini(name)}</div>`;
 
 /* ---------- people ---------- */
@@ -716,9 +716,9 @@ document.getElementById('grads').innerHTML = grads.map(g=>`
   ${g.p?`<p>${g.p}</p>`:''}</div></div>`).join('');
 
 const ugs = [
- ['heesuh','이희수','Heesuh Yi','2023.10–','Chemical & Biological Eng., Gachon Univ.','Brain organoid-on-a-chip과 neural probe 통합 디자인 개발'],
- ['minseo','변민서','Minseo Byeon','2025.07–','BioNano Technology, Gachon Univ.','혈관–면역, 오가노이드 및 스페로이드 상호작용'],
- ['eunseo','박은서','Eun Seo Park','2025.07–','BioNano Technology, Gachon Univ.','신경계 기반 통증 및 면역 연구'],
+ ['heesuh','이희수','Heesuh Yi','2023.10–','Chemical & Biological Eng., Gachon Univ.',''],
+ ['minseo','변민서','Minseo Byeon','2025.07–','BioNano Technology, Gachon Univ.',''],
+ ['eunseo','박은서','Eun Seo Park','2025.07–','BioNano Technology, Gachon Univ.',''],
  ['subeen','양수빈','Subeen Yang','2026.04–','Chemical & Biological Eng., Gachon Univ.',''],
  ['yeongseo','진영서','Yeongseo Jin','2025.07–','BioNano Technology, Gachon Univ.','칩 제작과 오가노이드 공배양'],
  ['sebin','김세빈','Sebin Kim','2026.04–','Chemical & Biological Eng., Gachon Univ.',''],
@@ -730,9 +730,9 @@ document.getElementById('ugrads').innerHTML = ugs.map(u=>`
  <span class="role" style="margin:0">${u[3]}</span><span class="s">${u[4]}</span>${u[5]?`<span class="s">${u[5]}</span>`:''}</div>`).join('');
 
 const alumni = [
+ ['yedam','이예담','Yedam Lee','Researcher, KOLAB (2023.06–2025.09) · Now M.S. student, TU München'],
  ['taeim','이태임','Taeim Lee','M.S., Gachon University (2026.02)'],
  ['jaehong','민재홍','Jaehong Min','M.S., Gachon University (2026.02) · Now Ph.D. student, Kyushu University'],
- ['yedam','이예담','Yedam Lee','Researcher, KOLAB (2023.06–2025.09) · Now M.S. student, TU München'],
  ['','한건우','Geonwoo Han','Now M.S. student, GIST'],
  ['','최수인','Suin Choi','Undergraduate, Gachon Univ.'],
  ['','엄세림','Serim Eom','Undergraduate, Gachon Univ.'],
