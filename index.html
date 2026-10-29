@@ -568,7 +568,7 @@ a.kp:hover .kt{color:var(--accent)}
   <h1>publications</h1>
   <div class="tiles" id="tiles">
     <div class="tile2"><span class="tn" data-count="0" id="t-pubs">0</span><span class="tl">Publications</span><span class="ts">peer-reviewed</span></div>
-    <div class="tile2"><span class="tn" data-count="3969">3,969</span><span class="tl">Citations</span><span class="ts">Google Scholar</span></div>
+    <div class="tile2"><span class="tn" data-count="3974">3,974</span><span class="tl">Citations</span><span class="ts">Google Scholar</span></div>
     <div class="tile2"><span class="tn" data-count="24">24</span><span class="tl">h-index</span><span class="ts">Google Scholar</span></div>
     <div class="tile2"><span class="tn" data-count="36">36</span><span class="tl">i10-index</span><span class="ts">Google Scholar</span></div>
     <div class="tile2"><span class="tn" data-count="3.57" data-dec="2">3.57</span><span class="tl">FWCI</span><span class="ts">SciVal 2022–2025</span></div>
@@ -577,7 +577,7 @@ a.kp:hover .kt{color:var(--accent)}
     <figure class="chart"><figcaption><b>Citations per year</b><span>Google Scholar</span></figcaption><div class="cbox" id="ch-cites" role="img" aria-label="Citations per year"></div></figure>
     <figure class="chart"><figcaption><b>Publications per year</b><span>peer-reviewed, incl. accepted</span></figcaption><div class="cbox" id="ch-pubs" role="img" aria-label="Publications per year"></div></figure>
   </div>
-  <p class="src">Google Scholar metrics as of 28 October 2026 (2026 is year-to-date) · FWCI (Field-Weighted Citation Impact): Scopus/SciVal, 2022–2025</p>
+  <p class="src">Google Scholar metrics as of 29 October 2026 (2026 is year-to-date) · FWCI (Field-Weighted Citation Impact): Scopus/SciVal, 2022–2025</p>
   <div class="links" style="justify-content:flex-start"><a href="https://scholar.google.co.kr/citations?user=h2xps9oAAAAJ&hl=ko" target="_blank" rel="noopener">Google Scholar</a><a href="https://orcid.org/0000-0002-6555-3728" target="_blank" rel="noopener">ORCID</a></div>
   <p class="lede" style="margin-top:14px">† equal contribution · * corresponding author</p>
 
@@ -878,7 +878,7 @@ document.getElementById('topics').innerHTML = AXES.map(ax=>`
 
 
 /* ---------- metrics: count-up tiles + bar charts ---------- */
-const CITES = [[2018,35],[2019,105],[2020,162],[2021,253],[2022,332],[2023,521],[2024,768],[2025,917],[2026,811]]; // Google Scholar, 2026-10-28
+const CITES = [[2018,35],[2019,105],[2020,162],[2021,253],[2022,332],[2023,521],[2024,768],[2025,917],[2026,817]]; // Google Scholar, 2026-10-29
 const PUBS = (()=>{ const m={}; ALL.forEach(p=>{ m[p[3]]=(m[p[3]]||0)+1; }); const ys=Object.keys(m).map(Number); const out=[]; for(let y=Math.max(2021,Math.min(...ys));y<=Math.max(...ys);y++) out.push([y,m[y]||0]); return out; })();
 document.getElementById('t-pubs').dataset.count = ALL.length; document.getElementById('pi-pubs').textContent = ALL.length; document.getElementById('t-pubs').textContent = ALL.length;
 function barChart(el, data, partialYear, hatchId, W=560){
