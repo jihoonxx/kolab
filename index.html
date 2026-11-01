@@ -387,6 +387,9 @@ a.kp:hover .kt{color:var(--accent)}
 .cbox .bar.partialp{fill:url(#hatch-p)}
 .cbox g.b:hover .bar{opacity:.75}
 .ctip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:6px 9px;font:400 12px/1.4 var(--mono);color:var(--fg);white-space:nowrap;transform:translate(-50%,-110%);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.tile video{width:100%;display:block}
+.vbadge{position:absolute;top:10px;left:10px;font:500 11px/1 var(--mono);color:#fff;background:rgba(0,0,0,.6);padding:6px 8px;border-radius:99px;letter-spacing:.04em}
+.lb video{max-height:80vh;max-width:100%;border-radius:3px;background:#000}
 </style>
 </head>
 <body>
@@ -611,7 +614,7 @@ a.kp:hover .kt{color:var(--accent)}
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button class="lbx" id="lb-close" type="button" aria-label="Close">×</button>
   <button class="lbn" id="lb-prev" type="button" aria-label="Previous photo">‹</button>
-  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <figure><img id="lb-img" alt=""><video id="lb-vid" hidden controls muted loop playsinline preload="metadata"></video><figcaption id="lb-cap"></figcaption></figure>
   <button class="lbn" id="lb-next" type="button" aria-label="Next photo">›</button>
 </div>
 
@@ -1008,9 +1011,12 @@ fetch('gallery.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{POSTS=Array.
   .catch(()=>{ $('posts-empty').hidden=false; $('posts-empty').textContent='Gallery could not be loaded (check gallery.json format).'; });
 
 let LB = {items:[], i:0};
-function lbShow(){ const it=LB.items[LB.i]; $('lb-img').src=it.src; $('lb-img').alt=it.cap; $('lb-cap').textContent = it.cap + (LB.items.length>1?`  ·  ${LB.i+1} / ${LB.items.length}`:''); $('lb-prev').hidden=$('lb-next').hidden=LB.items.length<2; }
+function lbShow(){ const it=LB.items[LB.i]; const v=$('lb-vid'), im=$('lb-img');
+  if(it.video){ im.hidden=true; im.removeAttribute('src'); v.hidden=false; v.poster=it.src; v.src=it.video; v.play().catch(()=>{}); }
+  else { v.pause(); v.removeAttribute('src'); v.hidden=true; im.hidden=false; im.src=it.src; im.alt=it.cap; }
+  $('lb-cap').textContent = it.cap + (LB.items.length>1?`  ·  ${LB.i+1} / ${LB.items.length}`:''); $('lb-prev').hidden=$('lb-next').hidden=LB.items.length<2; }
 function lbOpen(items,i=0){ LB={items,i}; $('lb').hidden=false; lbShow(); $('lb-close').focus(); }
-function lbClose(){ $('lb').hidden=true; $('lb-img').removeAttribute('src'); }
+function lbClose(){ $('lb').hidden=true; $('lb-img').removeAttribute('src'); const v=$('lb-vid'); v.pause(); v.removeAttribute('src'); v.load(); }
 $('lb-close').onclick=lbClose;
 $('lb-prev').onclick=()=>{LB.i=(LB.i-1+LB.items.length)%LB.items.length;lbShow()};
 $('lb-next').onclick=()=>{LB.i=(LB.i+1)%LB.items.length;lbShow()};
@@ -1024,14 +1030,17 @@ $('posts').addEventListener('click', e=>{
 /* ---------- image atlas (atlas.json) ---------- */
 let ATLAS = [];
 const STRIP = ['corneal','vascular-mimicry','brain-organoid','perfusable-vessel','immune-cells','keratinocytes'];
-function atlasItems(list){ return list.map(a=>({src:a.src, cap:`${a.title}${a.note?' · '+a.note:''}${a.desc?' — '+a.desc:''}`})); }
+function atlasItems(list){ return list.map(a=>({src:a.src, video:a.video||'', cap:`${a.title}${a.note?' · '+a.note:''}${a.desc?' — '+a.desc:''}`})); }
 function openAtlasById(id){
   const i = ATLAS.findIndex(a=>a.id===id);
   if (i>=0) lbOpen(atlasItems(ATLAS), i);
 }
 function renderAtlas(f='all'){
   const list = ATLAS.filter(a=>f==='all'||a.type===f);
-  $('masonry').innerHTML = list.map(a=>`<figure class="tile" data-atlas="${escA(a.id)}"><img src="${escA(a.src)}" alt="${escA(a.title)}" loading="lazy"><figcaption><b>${escA(a.title)}</b>${modTag(a.type)}</figcaption></figure>`).join('');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('masonry').innerHTML = list.map(a=>`<figure class="tile${a.video?' vtile':''}" data-atlas="${escA(a.id)}">${a.video
+    ? `<video src="${escA(a.video)}" poster="${escA(a.src)}" muted loop playsinline preload="metadata"${still?'':' autoplay'} aria-label="${escA(a.title)}"></video><span class="vbadge">▶ Time-lapse</span>`
+    : `<img src="${escA(a.src)}" alt="${escA(a.title)}" loading="lazy">`}<figcaption><b>${escA(a.title)}</b>${modTag(a.type)}</figcaption></figure>`).join('');
 }
 function renderStrip(){
   $('strip').innerHTML = STRIP.map(id=>ATLAS.find(a=>a.id===id)).filter(Boolean)

@@ -8,6 +8,15 @@
     "desc": "Endothelial sprouts growing toward a tumor spheroid in a microfluidic chip; used to study tumor-induced angiogenesis and anti-angiogenic drugs."
   },
   {
+    "id": "huvec-sprouting",
+    "title": "Live imaging of endothelial sprouting",
+    "type": "bf",
+    "src": "images/research/huvec-sprouting.jpg",
+    "video": "videos/huvec-sprouting.mp4",
+    "note": "Time-lapse",
+    "desc": "Time-lapse imaging of human umbilical vein endothelial cells (HUVECs) sprouting from a microfluidic channel into the 3D hydrogel and forming a vascular network over time."
+  },
+  {
     "id": "corneal",
     "title": "Corneal neovascularization",
     "type": "fluor",
