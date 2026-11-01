@@ -74,6 +74,15 @@
     "desc": "Immune cells in a reconstructed tumor immune microenvironment."
   },
   {
+    "id": "nk-tumor-killing",
+    "title": "NK cells attacking a vascularized tumor",
+    "type": "fluor",
+    "src": "images/research/nk-tumor-killing.jpg",
+    "video": "videos/nk-tumor-killing.mp4",
+    "note": "Time-lapse",
+    "desc": "Time-lapse confocal imaging of a vascularized colorectal tumor model on a chip. NK cells (white) move through the engineered microvasculature (red) and converge on a colorectal cancer cluster (green), so immune-cell cytotoxicity can be followed in a human-relevant 3D microenvironment."
+  },
+  {
     "id": "tumor-vasculature",
     "title": "Vascularized tumor",
     "type": "r3d",
