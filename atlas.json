@@ -153,6 +153,15 @@
     "desc": ""
   },
   {
+    "id": "skin-on-a-plate",
+    "title": "Automated liquid handling on plate-format chips",
+    "type": "dev",
+    "src": "images/research/skin-on-a-plate.jpg",
+    "video": "videos/skin-on-a-plate.mp4",
+    "note": "Video",
+    "desc": "Standardized, plate-format Skin-on-a-Plate chips running on an automated liquid handler: liquid handling proceeds across many chips in parallel, without manual pipetting."
+  },
+  {
     "id": "mps-plate",
     "title": "Microphysiological system plate",
     "type": "dev",

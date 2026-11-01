@@ -390,6 +390,7 @@ a.kp:hover .kt{color:var(--accent)}
 .tile video{width:100%;display:block}
 .vbadge{position:absolute;top:10px;left:10px;font:500 11px/1 var(--mono);color:#fff;background:rgba(0,0,0,.6);padding:6px 8px;border-radius:99px;letter-spacing:.04em}
 .lb video{max-height:80vh;max-width:100%;border-radius:3px;background:#000}
+.rfig .ri video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 </style>
 </head>
 <body>
@@ -860,10 +861,11 @@ const topics = [
  ['ax-tumor','immune-cells','fluor','Tumor Immune Microenvironment (TIME)','We recreate the tumor immune microenvironment in vitro to study macrophage polarization, endothelial interaction, and tumor–immune crosstalk, with real-time analysis of immune responses for evaluating immunotherapies.','','',['Recapitulating the Cancer-Immunity Cycle on a Chip','Immune Microphysiological Systems for Human Innate Immunity']],
  ['ax-tumor','organoids','bf','Patient-derived Organoid Development','Patient-specific organoids derived from clinical specimens recapitulate key structural and functional features of native tissue, enabling personalized studies of disease progression and drug response.','Gil Medical Center','Yedam Lee',['Revealing the Clinical Potential of High-Resolution Organoids','Vascularized Tissue Mesh-Assisted Platform (VT-MAP) for the Personalized Drug Screening of Colorectal Cancer Organoids']],
  ['ax-platform','platforms','dev','Customizable 3D Cell Culture Platforms','We engineer 3D cell culture chips using advanced microfabrication, from microfluidic chip arrays and modular systems to compact well-plate devices. They mimic in vivo conditions for high-resolution studies of cell behavior and disease. We are now focused on organoid-on-a-chip systems for more physiologically relevant in vitro models.','','',['Microfluidic high-throughput 3D cell culture','Anchor-IMPACT: A Standardized Microfluidic Platform for High-Throughput Anti-Angiogenic Drug Screening']],
- ['ax-platform','mps-plate','dev','Standardized and Automation-Compatible Organ Chip','We are establishing standardized organ-on-a-chip formats and workflows fully compatible with automated liquid handling and dispensing. Consistent chip specifications and procedures reduce operator-dependent variability and support reproducible, scalable high-throughput screening.','','Sangyoon Kyung',['From elastomer to thermoplastic: A material translation framework for scalable vascularized organ-on-a-chip drug screening']],
+ ['ax-platform','skin-on-a-plate','dev','Standardized and Automation-Compatible Organ Chip','Our organ chips share a standardized, plate-format layout, so they fit directly onto automated liquid handlers built for conventional well plates. As the video shows, liquid handling can then run across many chips in parallel instead of by hand. Consistent chip geometry and operating procedures reduce operator-dependent variability and make drug and safety testing reproducible and scalable. We demonstrated this approach with Skin-on-a-Plate, a reconfigurable plate-format skin model with automation-ready workflows.','','Sangyoon Kyung',['Skin-on-a-Plate: A Reconfigurable Plate-Format Microfluidic Platform for Directional Exposure and Automation-Ready Workflows','From elastomer to thermoplastic: A material translation framework for scalable vascularized organ-on-a-chip drug screening']],
  ['ax-ai','ai-segmentation','ai','AI/ML-driven Data Analysis','We use machine learning to analyze complex biomedical images, enabling virtual staining, segmentation, and morphological quantification. A user-friendly graphical interface is in development so these tools are accessible to every lab, reducing reliance on traditional staining.','','',['Angio-Net: Deep Learning-based Label-free Detection and Morphometric Analysis of In Vitro Angiogenesis','AI-Powered Image Standardization in Microphysiological System Platforms']],
 ];
-const pubIndex = {}; [...SEL, ...ALL].forEach(p=>{ if(!pubIndex[p[1]]) pubIndex[p[1]]=p; });
+const TOPIC_VIDEO = {'skin-on-a-plate':'videos/skin-on-a-plate.mp4'};
+const pubIndex = {}; [...SEL, ...ALL, ...REV].forEach(p=>{ if(!pubIndex[p[1]]) pubIndex[p[1]]=p; });
 const keyPaper = title => { const p = pubIndex[title]; const doi = DOI[title];
   const venue = p ? `${p[2].split(',')[0].replace(/\s*\(Accepted\)/,'')}, ${p[3]}` : '';
   const inner = `<span class="kt">${esc(title)}</span><span class="kv">${esc(venue)}</span>`;
@@ -873,7 +875,7 @@ document.getElementById('topics').innerHTML = AXES.map(ax=>`
  <section class="axis" id="${ax[0]}"><div class="axh"><span class="axn">${ax[1]}</span><div><h2>${esc(ax[2])}</h2><p>${esc(ax[3])}</p></div></div>
  ${topics.filter(t=>t[0]===ax[0]).map(t=>{ fig++; return `
  <article class="rfig">
-  <figure class="ri" data-atlas="${t[1]}"><img src="images/research/${t[1]}.jpg" alt="${t[3]}" loading="lazy"></figure>
+  <figure class="ri" data-atlas="${t[1]}">${TOPIC_VIDEO[t[1]] ? `<video src="${TOPIC_VIDEO[t[1]]}" poster="images/research/${t[1]}.jpg" muted loop playsinline preload="metadata"${matchMedia('(prefers-reduced-motion: reduce)').matches?'':' autoplay'} aria-label="${t[3]}"></video><span class="vbadge">▶ Video</span>` : `<img src="images/research/${t[1]}.jpg" alt="${t[3]}" loading="lazy">`}</figure>
   <div class="rt"><span class="fig">Fig. ${String(fig).padStart(2,'0')}</span><h3>${t[3]}</h3>${modTag(t[2])}<p>${t[4]}</p>
   ${t[5]?`<span class="collab">In collaboration with ${t[5]}</span>`:''}${t[6]?`<span class="credit">Credit: ${t[6]}</span>`:''}
   ${t[7].length?`<div class="keys"><span class="fig">Key papers</span>${t[7].map(keyPaper).join('')}</div>`:''}</div></article>`;}).join('')}
