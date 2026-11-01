@@ -1031,7 +1031,7 @@ $('posts').addEventListener('click', e=>{
 
 /* ---------- image atlas (atlas.json) ---------- */
 let ATLAS = [];
-const STRIP = ['corneal','vascular-mimicry','brain-organoid','perfusable-vessel','immune-cells','keratinocytes'];
+const STRIP = ['corneal','tumor-vessel-3d','brain-organoid','perfusable-vessel','immune-cells','keratinocytes'];
 function atlasItems(list){ return list.map(a=>({src:a.src, video:a.video||'', cap:`${a.title}${a.note?' · '+a.note:''}${a.desc?' — '+a.desc:''}`})); }
 function openAtlasById(id){
   const i = ATLAS.findIndex(a=>a.id===id);

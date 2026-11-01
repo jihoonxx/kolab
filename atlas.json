@@ -49,12 +49,13 @@
     "desc": "Human neural progenitor (ReN cell)-derived spheroid cultured in 3D, with axons sprouting radially from the spheroid core. Blue: nuclei; green: neuronal processes."
   },
   {
-    "id": "vascular-mimicry",
-    "title": "Vascular mimicry",
+    "id": "tumor-vessel-3d",
+    "title": "Vascularized tumor spheroid in 3D",
     "type": "r3d",
-    "src": "images/research/vascular-mimicry.jpg",
-    "note": "",
-    "desc": "3D reconstruction of vessels interacting with a tumor mass."
+    "src": "images/research/tumor-vessel-3d.jpg",
+    "video": "videos/tumor-vessel-3d.mp4",
+    "note": "3D fly-through",
+    "desc": "3D fly-through of a confocal reconstruction: perfusable microvessels (green) wrapping around and penetrating a tumor spheroid (red)."
   },
   {
     "id": "vascularized-skin",
@@ -109,14 +110,6 @@
     "title": "Stretchable culture",
     "type": "fluor",
     "src": "images/research/stretchable.jpg",
-    "note": "",
-    "desc": ""
-  },
-  {
-    "id": "tumor-3d",
-    "title": "Vascularized tumor spheroid",
-    "type": "r3d",
-    "src": "images/research/tumor-3d.jpg",
     "note": "",
     "desc": ""
   },
