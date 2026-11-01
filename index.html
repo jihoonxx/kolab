@@ -391,6 +391,23 @@ a.kp:hover .kt{color:var(--accent)}
 .vbadge{position:absolute;top:10px;left:10px;font:500 11px/1 var(--mono);color:#fff;background:rgba(0,0,0,.6);padding:6px 8px;border-radius:99px;letter-spacing:.04em}
 .lb video{max-height:80vh;max-width:100%;border-radius:3px;background:#000}
 .rfig .ri video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+
+/* moments albums */
+.ayear{font:600 13px/1 var(--mono);letter-spacing:.14em;color:var(--accent);margin:34px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.ayear:first-child{margin-top:8px}
+.album{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:28px;align-items:center;padding:18px 0 30px}
+.amosaic{display:grid;grid-template-columns:2fr 1fr;gap:6px;aspect-ratio:3/2;min-width:0}
+.album.single .amosaic{grid-template-columns:1fr}
+.amosaic button{padding:0;border:0;background:var(--surface);cursor:zoom-in;overflow:hidden;border-radius:3px;position:relative;display:block;width:100%;height:100%}
+.amosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.amosaic button:hover img{transform:scale(1.04)}
+.aside{display:grid;grid-template-rows:1fr 1fr;gap:6px;min-height:0}
+.ath .more{position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.55);color:#fff;font:600 22px/1 var(--display)}
+.ainfo{min-width:0;display:flex;flex-direction:column;gap:8px}
+.ameta{font:400 12px/1.5 var(--mono);color:var(--muted)}
+.ainfo h3{font-size:21px;font-stretch:108%;margin:0}
+.ainfo p{margin:0;font-size:15px;color:var(--text2)}
+@media (max-width:760px){.album{grid-template-columns:1fr;gap:14px;padding-bottom:22px}}
 </style>
 </head>
 <body>
@@ -602,14 +619,14 @@ a.kp:hover .kt{color:var(--accent)}
 
 <!-- MOMENTS -->
 <section class="view" id="v-moments">
-  <h1>moments</h1>
-  <p class="lede">Conferences, lab meetings, and everyday life at KOLAB.</p>
+  <span class="fig">Moments</span>
+  <h1>Life at KOLAB</h1>
+  <p class="lede">Conferences, workshops, milestones and everyday life of the lab. Select a photo to browse the album.</p>
 
+  <div id="albums"></div>
+  <p class="empty" id="posts-empty" hidden>Loading albums…</p>
 
-  <div class="posts" id="posts"></div>
-  <p class="empty" id="posts-empty" hidden>Loading gallery…</p>
-
-  <h2>archive</h2>
+  <h2>earlier moments</h2>
   <ul class="tl" id="moments"></ul>
 </section>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
@@ -968,11 +985,8 @@ document.getElementById('news-all').innerHTML = NEWS.map(nrow).join('');
 /* ---------- moments ---------- */
 const MOM = [
  ['2026.08.24','Summer’s End at Namhansanseong','남한산성에서 여름의 끝과 새 학기의 시작을 함께했습니다.'],
- ['2026.08.20','Congratulations on Sujin’s Graduation','수진의 학사 졸업을 축하합니다.'],
  ['2026.08.13','2026 MPS-NEXT','가천대–성균관대–동국대 MPS-NEXT Mini Symposium 개최. 상윤, 우주, 은서 발표.'],
  ['2026.05','May the Force be with KOLAB','민우, 소은, 수빈, 세빈, 예인이 새로 합류했습니다.'],
- ['2026.05.15','Korean BioChip Society Conference','여수에서 열린 춘계 국제학술대회에 참석했습니다.'],
- ['2026.04.16','KOLAB × KYUSHU','Kyushu University를 방문해 연구 발표와 공동 연구를 논의했습니다.'],
  ['2026.02.12','Graduation','재홍 &amp; 태임의 석사 졸업, 우주의 학부 졸업을 축하합니다.'],
  ['2026.01.17','Integrated Physician-Scientist Program','가천대학교 의과대학 융합형 의과학자 학부 심화과정을 진행했습니다.'],
  ['2026.01.14','Winter Membership Training @Vivaldi','KSSCR 동계학술대회 참석과 함께한 겨울 MT.'],
@@ -995,22 +1009,26 @@ document.getElementById('moments').innerHTML = MOM.map(m=>`<li><span class="d">$
 /* ---------- gallery (gallery.json) ---------- */
 const $ = id => document.getElementById(id);
 const escA = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-let POSTS = [];
-function renderPosts(){
-  const list = [...POSTS].sort((a,b)=> String(b.date||'').localeCompare(String(a.date||'')));
-  $('posts').innerHTML = list.map((p,i)=>{
-    const n = (p.photos||[]).length;
-    return `<article class="post">
-      ${n?`<button class="cover" type="button" data-open="${i}" aria-label="Open photos: ${escA(p.title)}"><img src="${escA(p.photos[0])}" alt="${escA(p.title)}" loading="lazy">${n>1?`<span class="count">${n} photos</span>`:''}</button>`:''}
-      <span class="d">${escA(p.date)}</span><h3>${escA(p.title)}</h3>
-      ${p.caption?`<p>${escA(p.caption)}</p>`:''}
-    </article>`;}).join('');
-  POSTS = list;
-  $('posts-empty').hidden = list.length>0;
-  if(!list.length) $('posts-empty').textContent='No gallery posts yet.';
+let ALBUMS = [];
+const fmtDate = a => { const d=s=>s.replace(/-/g,'.'); if(!a.end) return d(a.date);
+  const [y1,m1,d1]=a.date.split('-'), [y2,m2,d2]=a.end.split('-'); return `${y1}.${m1}.${d1}–${m2===m1?'':m2+'.'}${d2}`; };
+function renderAlbums(){
+  const list=[...ALBUMS].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  ALBUMS=list; let html='', yr=null;
+  list.forEach((a,i)=>{
+    const y=String(a.date).slice(0,4); if(y!==yr){ yr=y; html+=`<div class="ayear">${y}</div>`; }
+    const ph=a.photos||[], extra=ph.length-3;
+    const thumbs=ph.slice(1,3).map((s,j)=>`<button type="button" class="ath" data-al="${i}" data-ix="${j+1}" aria-label="Open photo ${j+2}"><img src="${escA(s)}" alt="" loading="lazy">${j===1&&extra>0?`<span class="more">+${extra}</span>`:''}</button>`).join('');
+    html+=`<article class="album${ph.length<2?' single':''}">
+      <div class="amosaic"><button type="button" class="amain" data-al="${i}" data-ix="0" aria-label="Open album: ${escA(a.title)}"><img src="${escA(ph[0]||'')}" alt="${escA(a.title)}" loading="lazy"></button>${ph.length>1?`<div class="aside">${thumbs}</div>`:''}</div>
+      <div class="ainfo"><span class="ameta">${fmtDate(a)}${a.place?` · ${escA(a.place)}`:''} · ${ph.length} photo${ph.length>1?'s':''}</span><h3>${escA(a.title)}</h3>${a.caption?`<p>${escA(a.caption)}</p>`:''}</div>
+    </article>`;
+  });
+  $('albums').innerHTML=html; $('posts-empty').hidden=list.length>0;
+  if(!list.length) $('posts-empty').textContent='No albums yet.';
 }
-fetch('gallery.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{POSTS=Array.isArray(d)?d:[];renderPosts();})
-  .catch(()=>{ $('posts-empty').hidden=false; $('posts-empty').textContent='Gallery could not be loaded (check gallery.json format).'; });
+fetch('gallery.json',{cache:'no-cache'}).then(r=>r.json()).then(d=>{ALBUMS=Array.isArray(d)?d:[];renderAlbums();})
+  .catch(()=>{ $('posts-empty').hidden=false; $('posts-empty').textContent='Albums could not be loaded (check gallery.json format).'; });
 
 let LB = {items:[], i:0};
 function lbShow(){ const it=LB.items[LB.i]; const v=$('lb-vid'), im=$('lb-img');
@@ -1024,9 +1042,9 @@ $('lb-prev').onclick=()=>{LB.i=(LB.i-1+LB.items.length)%LB.items.length;lbShow()
 $('lb-next').onclick=()=>{LB.i=(LB.i+1)%LB.items.length;lbShow()};
 $('lb').addEventListener('click',e=>{ if(e.target.id==='lb') lbClose(); });
 document.addEventListener('keydown',e=>{ if($('lb').hidden) return; if(e.key==='Escape') lbClose(); if(e.key==='ArrowLeft') $('lb-prev').click(); if(e.key==='ArrowRight') $('lb-next').click(); });
-$('posts').addEventListener('click', e=>{
-  const o = e.target.closest('[data-open]'); if(!o) return;
-  const p = POSTS[+o.dataset.open]; if(p) lbOpen(p.photos.map(src=>({src,cap:`${p.date} · ${p.title}`})));
+$('albums').addEventListener('click', e=>{
+  const o = e.target.closest('[data-al]'); if(!o) return;
+  const a = ALBUMS[+o.dataset.al]; if(a) lbOpen(a.photos.map(src=>({src,cap:`${fmtDate(a)} · ${a.title}`})), +o.dataset.ix);
 });
 
 /* ---------- image atlas (atlas.json) ---------- */
